@@ -8,20 +8,21 @@
       <!--</app-link>-->
     <!--</template>-->
     <template v-if="!item.children">
-      <app-link  :to="item.scriptid">
-        <el-menu-item :index=" item.scriptid " :class="{'submenu-title-noDropdown':!isNest}">
-          <span style="margin-left: 14px;">{{generateTitle(item.label)}}</span>
+      <app-link  :to="'/'+item.href" v-show="item.label!='用户反馈列表' & item.label!='线下还款' & item.label!='信审设置'">
+        <el-menu-item :index=" item.value " :class="{'submenu-title-noDropdown':!isNest}">
+          <span style="margin-left: 14px;">{{$t(item.href)}} </span>
+          <!-- <span style="margin-left: 14px;">{{generateTitle(item.label)}}</span> -->
         </el-menu-item>
       </app-link>
     </template>
-    <el-submenu v-else ref="subMenu" :index=" item.scriptid " popper-append-to-body>
+    <el-submenu v-else ref="subMenu" :index=" item.value " popper-append-to-body>
       <template slot="title">
         <i style="margin-left: 10px;" class="iconfont" :class='item.icon_cls '></i>
-        <span> {{generateTitle(item.label)}}</span>
+        <span style="margin-left: 4px;"> {{$t(item.href)}}</span>
       </template>
       <sidebar-item
         v-for="child in item.children"
-        :key="child.scriptid"
+        :key="child.value"
         :is-nest="true"
         :item="child"
         :base-path="child.path"

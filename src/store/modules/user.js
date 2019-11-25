@@ -79,7 +79,7 @@ const actions = {
   FedLogOut({commit, state}) {
     return new Promise((resolve, reject) => {
       axios({
-        url: "/system/login/logout.htm",
+        url: "/system/user/logout.htm",
         method: "post",
         data: {}
       }).then(data => {

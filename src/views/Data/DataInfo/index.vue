@@ -1,197 +1,274 @@
 <template>
-  <div class="index_box">
-    <div class="user_data">
-      <div class="box_list">
-        <div class="list_top">
-          <p>昨日 | 新增用户数</p>
-          <p style="color: gray">3-13(三)</p>
-          <p><span style="font-size: 24px;font-weight: bold">100</span><span style="color: gray"> 人</span></p>
+  <section style="margin-top: 10px;min-width: 1200px; overflow: auto;">
+    <div v-if="isShow">
+      <div class="box">
+        <div class="title">
+          <span class="sp"></span>
+          <span>{{$t('index.Todaydata')}}</span>
         </div>
-        <div class="list_foot">
-          <span>周同比 </span><span class="iconfont icon-xia" style="color: green"></span><span>12%</span>
-          <span style="display: inline-block;width: 20px"></span>
-          <span>日环比 </span><span class="iconfont icon-xia1" style="color: red"></span><span>11%</span>
-        </div>
+        <el-row>
+          <el-col :span="4">
+            <div class="grid-content bg-purple">
+              <p>{{$t('index.Numberofregistrationstoday')}}</p>
+              <p>{{todayCount.register}}</p>
+            </div>
+          </el-col>
+          <el-col :span="4">
+            <div class="grid-content bg-purple">
+              <p>{{$t('index.Numberofloanapplications')}}</p>
+              <p>{{todayCount.borrow}}</p>
+            </div>
+          </el-col>
+          <el-col :span="4">
+            <div class="grid-content bg-purple">
+              <p>{{$t('index.PassCount')}}</p>
+              <p>{{todayCount.borrowPass}}</p>
+            </div>
+          </el-col>
+          <el-col :span="4">
+            <div class="grid-content bg-purple">
+              <p>{{$t('index.PassRate')}}</p>
+              <p>{{todayCount.passApr}}%</p>
+            </div>
+          </el-col>
+          <el-col :span="4">
+            <div class="grid-content bg-purple">
+              <p>{{$t('index.LoanAmount')}}</p>
+              <p>{{todayCount.borrowLoan}}</p>
+            </div>
+          </el-col>
+          <el-col :span="4">
+            <div class="grid-content bg-purple">
+              <p>{{$t('index.Reimbursementamount')}}</p>
+              <p>{{todayCount.borrowRepay}}</p>
+            </div>
+          </el-col>
+        </el-row>
       </div>
-      <div class="box_list">
-        <div class="list_top">
-          <p>UV_全站</p>
-          <p style="color: gray">3-13(三)</p>
-          <p><span style="font-size: 24px;font-weight: bold">1276</span><span style="color: gray"> 人</span></p>
+      <div class="box" style="margin-top: 10px">
+        <div class="title">
+          <span class="sp"></span>
+          <span>{{$t('index.Theaccumulateddata')}}</span>
         </div>
-        <div class="list_foot">
-          <span>周同比 </span><span class="iconfont icon-xia" style="color: green"></span><span>_</span>
-          <span style="display: inline-block;width: 20px"></span>
-          <span>日环比 </span><span class="iconfont icon-xia1" style="color: red"></span><span>11%</span>
-        </div>
+        <el-row>
+          <el-col :span="8">
+            <div class="grid-content bg-purple">
+              <p>
+                <i class="iconfont icon-lishi" style="color: #1296db"></i>{{$t('index.Historicalloantotal')}}
+                <span
+                  style="font-size: 26px;color: #666"
+                >{{cumulativeCount.borrowMainLoanHistory}}</span> {{$t('index.unit')}}
+              </p>
+              <p>
+                <i class="iconfont icon-fangkuan" style="color: #1296db"></i>{{$t("index.Theinstallmentshouldreturntotal")}}
+                <span
+                  style="font-size: 26px;color: #666"
+                >{{cumulativeCount.BorrowLoanHistory}}</span> {{$t('index.unit')}}
+              </p>
+            </div>
+          </el-col>
+          <el-col :span="8">
+            <div class="grid-content bg-purple">
+              <p>
+                <i class="iconfont icon-yinhangqiahuankuan" style="color: #1296db;"></i>{{$t('index.Historicalrepaymenttotal')}}
+                <span
+                  style="font-size: 26px;color: #666"
+                >{{cumulativeCount.borrowMainRepayHistory}}</span> {{$t('index.unit')}}
+              </p>
+              <p>
+                <i class="iconfont icon-shuju" style="color: #1296db;"></i>{{$t('index.Amortizationtotal')}}
+                <span
+                  style="font-size: 26px;color: #666"
+                >{{cumulativeCount.borrowRepayHistory}}</span> {{$t('index.unit')}}
+              </p>
+            </div>
+          </el-col>
+          <el-col :span="8">
+            <div class="grid-content bg-purple">
+              <p>
+                <i class="iconfont icon-lilvfudongguize" style="color: #1296db;"></i>{{$t('index.Historicalrateofreturn')}}
+                <span
+                  style="font-size: 26px;color: #666"
+                >{{cumulativeCount.MainRepaymentRate*100 | toFixed}}</span> %
+              </p>
+              <p>
+                <i class="iconfont icon-shuju1" style="color: #1296db;"></i>{{$t('index.Installmentrate')}}
+                <span
+                  style="font-size: 26px;color: #666"
+                >{{cumulativeCount.RepaymentRate*100 | toFixed }}</span> %
+              </p>
+            </div>
+          </el-col>
+        </el-row>
       </div>
-      <div class="box_list">
-        <div class="list_top">
-          <p>PV_全站</p>
-          <p style="color: gray">3-13(三)</p>
-          <p><span style="font-size: 24px;font-weight: bold">100</span><span style="color: gray"> 人</span></p>
+      <div class="box" style="margin-top: 10px;padding-bottom: 16px">
+        <div class="title">
+          <span class="sp"></span>
+          <span>{{$t('index.Realtimedata')}}</span>
         </div>
-        <div class="list_foot">
-          <span>周同比 </span><span class="iconfont icon-xia" style="color: green"></span><span>12%</span>
-          <span style="display: inline-block;width: 20px"></span>
-          <span>日环比 </span><span class="iconfont icon-xia1" style="color: red"></span><span>11%</span>
-        </div>
+        <p>
+          <i class="iconfont icon-shuju2" style="color: #1296db;"></i>{{$t('index.Totalamounttoberepaid')}}
+          <span style="font-size: 26px;color: #666">{{realTimeCount.needRepay | toFixed}}</span> {{$t('index.yun')}}
+        </p>
+        <p>
+          <i class="iconfont icon-fangkuanguanli" style="color: #1296db;"></i>
+          {{$t('index.Totaloverduepayment')}}
+          <span
+            style="font-size: 26px;color: #666"
+          >{{realTimeCount.overdueRepay | toFixed}}</span>
+           {{$t('index.yun')}}
+          <span style="margin-left: 10px">{{realTimeCount.overdueRepay | toFixed}}</span>
+          <span style="color: #f50">({{$t('index.Principalandinterest')}})</span>/
+          <span>{{realTimeCount.overdueRepay | toFixed}} {{$t('index.yun')}}</span>
+          <span style="color: #f50">({{$t('index.penalty')}})</span>
+        </p>
       </div>
-      <div class="box_list">
-        <div class="list_top" style="border-bottom: none;">
-          <p>累计 | 注册量</p>
-          <p style="color: gray">2018/1/1-2019/03/13</p>
-          <p><span style="font-size: 24px;font-weight: bold">100</span><span style="color: gray"> 人</span></p>
+      <div
+        style="background-color: #fff;margin-top: 10px;padding-bottom: 50px;min-width: 1200px; overflow: auto;"
+      >
+        <div
+          style="display: flex;justify-content:space-around;border-bottom: 1px solid #f5f5f5;padding: 20px 0;"
+        >
+          <bar1 ref="bar1"/>
+          <bar2 ref="bar2"/>
+        </div>
+        <div style="display: flex;justify-content:space-around;padding: 20px 0;">
+          <!-- <pie2/>
+          <map-box/> -->
         </div>
       </div>
     </div>
-    <div class="pic">
-      <div class="pic_l">
-        <p style="font-size: 16px;font-weight: bold;color: gray;">每日用户注册趋势</p>
-        <p class="graymin" style="margin-top: 6px">2019/02/12 - 2019/03/13</p>
-        <p class="graymin" style="padding: 8px 0">3-13(三)</p>
-        <p><span style="font-size: 26px">4224</span><span style="color: gray"> 人</span></p>
-        <p class="ht"><span>环比 </span><span class="iconfont" :class="a<0?'icon-xia1':'icon-xia'" style="color: red;font-size: 14px;">1.4%</span></p>
-        <p class="ht"><span>同比 </span><span class="iconfont icon-xia1" style="color: red;font-size: 14px">2.67%</span></p>
-
-        <p style="border-bottom: 1px solid #ccc;margin: 30px 0;width: 100px;"></p>
-
-        <p class="totle">合计 <span style="font-size: 20px;">52130</span> 人</p>
-        <p class="totle">均值 <span style="font-size: 20px;">4201</span> 人</p>
-      </div>
-      <div class="pic_r">
-        <div style="min-height: 400px;background-color: #fff;" ref="myEchart"></div>
-      </div>
-
-    </div>
-
-  </div>
+    <div
+      v-else
+      style="text-align: center;font-size: 40px;font-weight: 700;margin-top: 30vh;color: gray;"
+    >后台管理系统</div>
+  </section>
 </template>
 
 <script>
-  // 引入基本模板
-  let echarts = require('echarts/lib/echarts')
-  // 引入柱状图组件
-  require('echarts/lib/chart/line')
-  // 引入提示框和title组件
-  require('echarts/lib/component/tooltip')
-  require('echarts/lib/component/title')
-  export default {
-    name: "test",
-    data () {
-      return {
-        msg: 'Welcome to Your Vue.js App',
-        a:1.4
-      }
-    },
-    mounted() {
-      this.drawLine();
-    },
-    methods: {
-      drawLine() {
-        // 基于准备好的dom，初始化echarts实例
-        let myChart = echarts.init(this.$refs.myEchart)
-        // 绘制图表
-        myChart.setOption({
-          // title: { text: 'ECharts 入门示例' },
-          tooltip: {
-            trigger: 'axis'
-          },
-          legend: {
+import MapBox from "./MapBox.vue";
+import pie2 from "./Pie2.vue";
+import bar1 from "./Bar1.vue";
+import bar2 from "./Bar2.vue";
+export default {
+  name: "index",
+  data() {
+    return {
+      isShow: false,
+      todayCount: {},
+      cumulativeCount: {},
+      realTimeCount: {}
+    };
+  },
+  filters: {
+    toFixed(type) {
+      type ? type : 0;
+      type = Number(type);
+      let result = type.toFixed(2);
+      return result;
+    }
+  },
+  components: {
+    MapBox,
+    pie2,
+    bar1,
+    bar2
+  },
+  computed: {},
+  mounted() {
+    setTimeout(() => {
+      // let power = this.$store.state.app.power;
+      // if (power.children) {
+        this.isShow = true;
+      //   let code = JSON.parse(power.children[0].code).data;
 
-          },
-          grid: {
-            left: '3%',
-            right: '4%',
-            bottom: '3%',
-            containLabel: true
-          },
-          //工具框，可以选择
-          toolbox: {
-            feature: {
-              saveAsImage: {}
-            }
-          },
-          xAxis: {
-            type: 'category',
-            data: ["2-2", "2-3", "2-4", "2-5", "2-6", "2-7"],
-            //坐标轴颜色
-            axisLine:{
-              lineStyle:{
-                // color:'#fff'
-              }
-            },
-          },
-          yAxis: {
-            type: 'value'
-          },
-          series: [{
-            name: '注册量',
-            type: 'line',
-            data: [50, 83, 96, 75, 112, 48],
-            color:['#40a9ff']
-          }]
-        });
-      }
-    },
-    beforeDestroy() {
-      if (!this.chart) { return }
-      this.chart.dispose();
-      this.chart = null;
-    },
-
+      //   for (let i in code) {
+      //     if (code[i].actionTag == "todayCount") {
+            //"首页今日数据统计"
+            let _this = this;
+            _this
+              .$axios({
+                method: "get",
+                url: "/manage/aindex/homeInfoTodayCount.htm"
+              })
+              .then(res => {
+                _this.todayCount = res.content;
+              })
+              .catch(err => {});
+          // } else if (code[i].actionTag == "CumulativeCount") {
+          //   //"首页累计数据统计"
+          //   let _this = this;
+            _this
+              .$axios({
+                method: "get",
+                url: "/manage/aindex/homeInfoCumulativeCount.htm"
+              })
+              .then(res => {
+                _this.cumulativeCount = res.content;
+              })
+              .catch(err => {});
+          // } else if (code[i].actionTag == "RealTimeCount") {
+          //   //"首页实时数据统计"
+          //   let _this = this;
+            _this
+              .$axios({
+                method: "get",
+                url: "/manage/aindex/homeInfoRealTimeCount.htm"
+              })
+              .then(res => {
+                _this.realTimeCount = res.content;
+              })
+              .catch(err => {});
+          // } else if (code[i].actionTag == "CountByProvince") {
+          //   //"首页地域数据统计"
+          // } else if (code[i].actionTag == "CountRepaySource") {
+          //   //"首页还款方式统计"
+          // } else if (code[i].actionTag == "FifteenDaysCount") {
+            //"首页每天放款量，应还款量与实还款量统计"
+            // let _this = this;
+            _this
+              .$axios({
+                method: "get",
+                url: "/manage/aindex/homeInfoFifteenDaysCount.htm"
+              })
+              .then(res => {
+                _this.$refs.bar1.fetch(res.content);
+                _this.$refs.bar2.fetch(res.content);
+              })
+              .catch(err => {});
+          // }
+        // }
+      // }
+    }, 1 * 1000);
+  },
+  created() {},
+  methods: {
+    changp() {
+      console.log(this.$store.state.app);
+    }
   }
+};
 </script>
 
-<style rel="stylesheet/scss" lang="scss">
-  .index_box{
-    margin:16px;
-  }
-  .user_data{
-    display: flex;
-    justify-content: space-between;
-    margin-top: 20px;
-    .box_list{
-      p{
-        margin: 10px 0;
-      }
-      width: 23%;
-      background-color: #fff;
-      padding: 10px 14px;
-      border-radius: 8px;
-      font-size: 14px;
-      .list_top{
-        border-bottom: 1px solid #ccc;
-      }
-      .list_foot{
-        color: gray;
-        padding: 8px 0 0 4px;
-      }
-    }
-  }
-  .pic{
-    background-color: #fff;
-    display: flex;
-    justify-content: left;
-    margin-top: 20px;
-    border-radius: 10px;
-    padding: 10px 16px;
-    .pic_l{
-      padding-right: 50px;
-      .ht{
-        font-size: 12px;color: gray;padding: 2px 0;
-      }
-      .totle{
-        font-size: 12px;
-        color: gray;
-      }
-    }
-    .pic_r{
-      width: 80%;
-    }
-  }
-  .graymin{
-    font-size: 14px;
-    color: gray
-  }
+<style scoped>
+.box {
+  background-color: #fff;
+}
+.box p {
+  color: #999;
+  text-align: center;
+  font-size: 14px;
+}
+.title {
+  padding: 10px 10px 0 10px;
+  font-size: 14px;
+}
+.sp {
+  display: inline-block;
+  width: 4px;
+  height: 12px;
+  background-color: #61abd0;
+  margin-right: 10px;
+  color: #666;
+}
 </style>

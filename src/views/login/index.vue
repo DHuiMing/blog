@@ -6,7 +6,7 @@
         <h3 class="title">
           {{ $t('login.title') }}
         </h3>
-        <lang-select class="set-language" />
+        <!-- <lang-select class="set-language" /> -->
       </div>
 
       <el-form-item prop="username">
@@ -60,6 +60,7 @@ import { validUsername } from '@/utils/validate'
 import LangSelect from '@/components/LangSelect'
 import SocialSign from './components/SocialSignin'
 import { MessageBox, Message } from 'element-ui'
+import { debuglog } from 'util';
 export default {
   name: 'Login',
   components: { LangSelect, SocialSign },
@@ -80,7 +81,7 @@ export default {
     }
     return {
       loginForm: {
-        username: 'admin',
+        username: 'nicehuang',
         password: '123456'
       },
       loginRules: {
@@ -143,19 +144,19 @@ export default {
         if (valid) {
           this.loading = true
           this.$axios({
-            url: "/system/login/login.htm",
+            url: "/system/user/login.htm",
             method: "post",
             data: _this.loginForm
           }).then(data => {
-            if (data.code == "0") {
-              // localStorage.setItem('user',loginForm.username)
-              _this.$store.dispatch('user/loginToken', _this.loginForm.username)
-              _this.$router.push({ path: _this.redirect || '/' })
-              Message.success('登录成功!')
+            if (data.code == "2000") {
+                localStorage.setItem('user',_this.loginForm.username)
+                _this.$store.dispatch('user/loginToken', _this.loginForm.username)
+                _this.$router.push({ path: _this.redirect || '/' })
+                Message.success(_this.$t("logind.LoginSuccessful"))
             }else if(data.code == "6520"){
-              MessageBox.confirm(data.msg, '确定登录', {
-                confirmButtonText: '确定登录',
-                cancelButtonText: '取消',
+              MessageBox.confirm(data.msg, _this.$t('tips.confirm'), {
+                confirmButtonText: _this.$t('tips.confirm'),
+                cancelButtonText: _this.$t('tips.cancel'),
                 type: 'warning'
               }).then(() => {
                 _this.loginAgain()
@@ -185,14 +186,14 @@ export default {
     loginAgain(){
       let _this = this
       _this.$axios({
-        url: "/system/login/confirmLogin.htm",
+        url: "/system/user/confirmLogin.htm",
         method: "post",
         data: _this.loginForm
       }).then(data => {
         localStorage.setItem('user',_this.loginForm.username)
         _this.$store.dispatch('user/loginToken', _this.loginForm.username)
         _this.$router.push({ path: _this.redirect || '/' })
-        Message.success('登录成功!')
+        Message.success(_this.$t("logind.LoginSuccessful"))
       }).catch(err => {
 
       })

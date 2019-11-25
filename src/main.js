@@ -20,10 +20,10 @@ import './utils/error-log' // error log
 
 import * as filters from './filters' // global filters
 
-import axios from './utils/axios';
+import axios from './utils/axios'
 import PermList from '@/utils/PermList.js'
-Vue.prototype.$axios=axios;
-Vue.prototype.$PermList = PermList;
+Vue.prototype.$axios = axios
+Vue.prototype.$PermList = PermList
 
 /**
  * If you don't want to use mock-server

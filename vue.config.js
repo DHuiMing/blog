@@ -36,7 +36,7 @@ module.exports = {
     },
     proxy: {
       '^/(.*\.htm)$': {
-        target: 'http://192.168.0.71:8000',
+        target: 'http://47.97.172.192:7080/cashloan-manage',
         changeOrigin: false,
         autoRewrite: true,
         // pathRewrite: {
