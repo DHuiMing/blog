@@ -16,20 +16,20 @@
             </el-table-column>
             <el-table-column :label="$t('table.name')"  prop="userName" fixed  align="center" width="120px">
             </el-table-column>
-            <el-table-column label="工号" prop="number" width="220px"  align="center">
+            <el-table-column :label="$t('coll.JobNumber')" prop="number" width="220px"  align="center">
             </el-table-column>
-            <el-table-column label="角色" prop="roleName" width="180px" align="center">
+            <el-table-column :label="$t('coll.Role')" prop="roleName" width="180px" align="center">
             </el-table-column>
             <el-table-column :label="$t('table.status')" fixed="right" align="center">
                 <template slot-scope="scope">
-                    <span>{{ scope.row.status==0?"正常" : scope.row.status==1 ? "锁定" : "-"}}</span>
+                    <span>{{ scope.row.status==0?$t('tips.Enabled') : scope.row.status==1 ? $t('tips.Disable') : "-"}}</span>
                 </template>
             </el-table-column>
             <el-table-column :label="$t('table.Operating')" fixed="right" width="300px" align="center">
                 <template slot-scope="scope">
                      <el-button type="primary" size="mini" @click="handleAction('Edit',scope.row)">{{$t('table.edit')}}</el-button>
                       <el-button v-if="scope.row.status==0" type="primary" size="mini" @click="handleAction('Lock',scope.row)">{{$t('tips.Disable')}}</el-button>
-                       <el-button v-else type="primary" size="mini" @click="handleAction('Lock',scope.row)">{{$t('tips.Enable')}}</el-button>
+                       <el-button v-else type="primary" size="mini" @click="handleAction('Lock',scope.row)">{{$t('tips.Enabled')}}</el-button>
                 </template>
             </el-table-column>
         </el-table>
@@ -46,7 +46,7 @@
             </el-pagination>
         </div>
         <detail-win v-if="detailWinShow" @refush="refush($event)" @hideWin="hideWin($event)"  ref="deatilwin" v-on:closeWin="closeDetailWin"></detail-win>
-        <el-dialog title="新增" :visible.sync="dialogFormVisible" v-if="dialogFormVisible" :before-close="handleClose" v-loading="formLoading">
+        <el-dialog title="" :visible.sync="dialogFormVisible" v-if="dialogFormVisible" :before-close="handleClose" v-loading="formLoading">
             <el-form :model="formInit" style="margin-right: 20px" ref="form">
                 <el-row :gutter="20">
                     <el-col :span="1" style="display: none;">
@@ -55,7 +55,7 @@
                         </el-form-item>
                     </el-col>
                     <el-col :span="11">
-                        <el-form-item label="工号" prop="number" :label-width="formLabelWidth" :rules="[{ required: true, message: '工号不能为空'}]">
+                        <el-form-item :label="$t('coll.JobNumber')" prop="number" :label-width="formLabelWidth" :rules="[{ required: true, message: '工号不能为空'}]">
                             <el-input v-model="formInit.number" autocomplete="off"></el-input>
                         </el-form-item>
                     </el-col>
@@ -70,8 +70,8 @@
                         </el-form-item>
                     </el-col>
                     <el-col :span="12">
-                        <el-form-item label="角色" prop="roleIds"  :label-width="formLabelWidth" :rules="[{ required: true, message: '不能为空'}]">
-                            <el-select v-model="formInit.roleIds" multiple placeholder="角色">
+                        <el-form-item :label="$t('coll.Role')" prop="roleIds"  :label-width="formLabelWidth" :rules="[{ required: true, message: '不能为空'}]">
+                            <el-select v-model="formInit.roleIds" multiple :placeholder="$t('coll.Role')">
                                 <el-option v-for="item in allList.roleList" :key="item.id"  :value="item.id" :label="item.name"></el-option>
                             </el-select>
                         </el-form-item>
@@ -84,19 +84,19 @@
                         </el-form-item>
                     </el-col>
                     <el-col :span="12">
-                        <el-form-item label="固定电话" prop="phone" :label-width="formLabelWidth">
+                        <el-form-item :label="$t('coll.Tel')" prop="phone" :label-width="formLabelWidth">
                             <el-input v-model="formInit.phone" autocomplete="off"></el-input>
                         </el-form-item>
                     </el-col>
                 </el-row>
                 <el-row :gutter="20">
                     <el-col :span="11">
-                        <el-form-item label="邮箱" prop="email" :label-width="formLabelWidth">
+                        <el-form-item :label="$t('coll.Mmailbox')" prop="email" :label-width="formLabelWidth">
                             <el-input v-model="formInit.email" autocomplete="off"></el-input>
                         </el-form-item>
                     </el-col>
                     <el-col :span="12">
-                        <el-form-item label="备注" prop="remark" :label-width="formLabelWidth">
+                        <el-form-item :label="$t('coll.Remarks')" prop="remark" :label-width="formLabelWidth">
                             <el-input v-model="formInit.remark" autocomplete="off"></el-input>
                         </el-form-item>
                     </el-col>

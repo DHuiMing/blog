@@ -30,7 +30,7 @@
             </el-table-column>
             <el-table-column :label="$t('coll.Applynumber')" prop="borrowMember" width="200px"  align="center">
             </el-table-column>
-            <el-table-column label="放款人数" prop="loanMember" width="200px"  align="center">
+            <el-table-column :label="$t('coll.LoanUser')" prop="loanMember" width="200px"  align="center">
             </el-table-column>
             <el-table-column label="放款金额(元)" prop="payAccount" width="200px"  align="center">
             </el-table-column>

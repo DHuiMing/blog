@@ -9,11 +9,11 @@
       highlight-current-row
       style="width: 100%;margin-bottom: 50px;"
     >
-      <el-table-column label="渠道" prop="time" width="200px" fixed align="center" ></el-table-column>
+      <el-table-column :label="$t('coll.Channel')" prop="time" width="200px" fixed align="center" ></el-table-column>
       <el-table-column :label="$t('coll.RegisterNumber')" prop="applyNumber" fixed="left" align="center" width="120px"></el-table-column>
-      <el-table-column label="登录人数" prop="loanNumber" width="200px" align="center"></el-table-column>
+      <el-table-column :label="$t('coll.LogginNumber')" prop="loanNumber" width="200px" align="center"></el-table-column>
       <el-table-column :label="$t('coll.Applynumber')" prop="loanAmount" width="200px" align="center"></el-table-column>
-      <el-table-column label="放款人数" prop="firstBorrowingNumber" width="200px" align="center"></el-table-column>
+      <el-table-column :label="$t('coll.LoanUser')" prop="firstBorrowingNumber" width="200px" align="center"></el-table-column>
        <el-table-column :label="$t('tab.Loanamount')" prop="firstBorrowingAmount" width="200px" align="center"></el-table-column>
       <el-table-column :label="$t('coll.RegisterApply')" prop="reBorrowingNumber" width="200px" align="center"></el-table-column>
       <el-table-column :label="$t('coll.ApplyApprovel')" prop="reBorrowingAmount" width="200px" align="center"></el-table-column>

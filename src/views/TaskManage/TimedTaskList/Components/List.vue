@@ -40,7 +40,7 @@
       <el-table-column :label="$t('table.Operating')" fixed="right" width="300px" align="center">
         <template slot-scope="scope">
           <el-button type="primary" size="mini" @click="handleAction('Edit',scope.row)">{{$t('table.edit')}}</el-button>
-           <el-button v-if="scope.row.state==20" type="primary" size="mini" @click="handleAction('Lock',scope.row)">{{$t('tips.Enable')}}</el-button>
+           <el-button v-if="scope.row.state==20" type="primary" size="mini" @click="handleAction('Lock',scope.row)">{{$t('tips.Enabled')}}</el-button>
             <el-button v-else type="primary" size="mini" @click="handleAction('Lock',scope.row)">{{$t('tips.Disable')}}</el-button>
              <el-button type="primary" size="mini" @click="handleAction('Run',scope.row)">立即执行一次</el-button>
         </template>
@@ -274,7 +274,7 @@ export default {
         this.formInit.code = row.code;
         this.dialogFormVisible = true;
       } else if (actionTag == "Lock") {
-        let state = row.state == 10 ? this.$t('tips.Disable') : this.$t('tips.Enable');
+        let state = row.state == 10 ? this.$t('tips.Disable') : this.$t('tips.Enabled');
         this.$confirm(this.$t('tips.Areyousureto') + state, "", {
           confirmButtonText: _this.$t('tips.confirm'),
           cancelButtonText: _this.$t('tips.cancel'),

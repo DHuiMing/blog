@@ -1,13 +1,13 @@
 <template>
     <section class="search-form" v-if="isShow">
         <el-form :inline="true" :model="formInline" class="demo-form-inline" size="mini">
-            <el-form-item label="角色名称">
+            <el-form-item :label="$t('coll.Charactername')">
                 <el-select style="width: 130px" v-model="formInline.id" placeholder="角色名称">
                     <el-option v-for="(item,index) in searchList.roleList" :label="item.name" :key="index"  :value="item.id">{{item.name}}</el-option>
                 </el-select>
             </el-form-item>
-            <el-form-item label="角色状态">
-                <el-select style="width: 130px" v-model="formInline.isDelete" placeholder="角色状态">
+            <el-form-item :label="$t('coll.RoleStatus')">
+                <el-select style="width: 130px" v-model="formInline.isDelete" :placeholder="$t('coll.RoleStatus')">
                     <el-option v-for="(item,index) in searchList.roleStateList" :label="item" :key="index"  :value="index">{{item}}</el-option>
                 </el-select>
             </el-form-item>

@@ -25,7 +25,7 @@
         <template slot-scope="scope">
           <el-button type="primary" size="mini" @click="handleAction('Edit',scope.row)">{{$t('table.edit')}}</el-button>
           <el-button v-if="scope.row.state==10" type="primary" size="mini" @click="handleAction('Lock',scope.row)">{{$t('tips.Disable')}}</el-button>
-          <el-button v-else type="primary" size="mini" @click="handleAction('Lock',scope.row)">{{$t('tips.Enable')}}</el-button>
+          <el-button v-else type="primary" size="mini" @click="handleAction('Lock',scope.row)">{{$t('tips.Enabled')}}</el-button>
         </template>
       </el-table-column> -->
     </el-table>
@@ -234,7 +234,7 @@ export default {
         this.formInit.codeType = row.codeType;
         this.dialogFormVisible = true;
       } else if (actionTag == "Lock") {
-        let state = row.state == 10 ? this.$t('tips.Disable') : this.$t('tips.Enable');
+        let state = row.state == 10 ? this.$t('tips.Disable') : this.$t('tips.Enabled');
         this.$confirm(this.$t('tips.Areyousureto') + state, "", {
           confirmButtonText: _this.$t('tips.confirm'),
           cancelButtonText: _this.$t('tips.cancel'),

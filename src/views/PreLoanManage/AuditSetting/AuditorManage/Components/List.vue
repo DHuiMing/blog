@@ -52,7 +52,7 @@
             size="mini"
             @click="handleAction('Lock',scope.row)"
           >{{$t('tips.Disable')}}</el-button>
-          <el-button v-else type="primary" size="mini" @click="handleAction('Lock',scope.row)">{{$t('tips.Enable')}}</el-button>
+          <el-button v-else type="primary" size="mini" @click="handleAction('Lock',scope.row)">{{$t('tips.Enabled')}}</el-button>
         </template>
       </el-table-column>
     </el-table>
@@ -184,7 +184,7 @@ export default {
           this.$refs.deatilwin.getUserInfo(item.code, row);
         }, 0.5 * 1000);
       } else if (actionTag == "Lock") {
-        let state = row.status == 1 ? this.$t('tips.Disable') : this.$t('tips.Enable');
+        let state = row.status == 1 ? this.$t('tips.Disable') : this.$t('tips.Enabled');
         this.$confirm(this.$t('tips.Areyousureto') + state, "", {
           confirmButtonText: _this.$t("tips.confirm"),
           cancelButtonText: _this.$t("tips.cancel"),

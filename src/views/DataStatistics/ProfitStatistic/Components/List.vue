@@ -12,8 +12,8 @@
       <el-table-column :label="$t('coll.Date')" prop="date" fixed align="center" ></el-table-column>
       <el-table-column :label="$t('tab.Loanamount')" prop="income"  align="center"></el-table-column>
       <el-table-column :label="$t('tab.RepaidAmout')" prop="expend"  align="center"></el-table-column>
-       <el-table-column label="放款利润" prop="loanProfit" align="center"></el-table-column>
-      <el-table-column label="放款利润率" prop="loanProfitRate" align="center"></el-table-column>
+       <el-table-column :label="$t('coll.LoanProfit')" prop="loanProfit" align="center"></el-table-column>
+      <el-table-column :label="$t('coll.LoanProfitRate')" prop="loanProfitRate" align="center"></el-table-column>
     </el-table>
     <div class="pagination-box">
       <el-pagination

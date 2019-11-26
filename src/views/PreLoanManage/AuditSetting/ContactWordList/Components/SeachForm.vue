@@ -6,7 +6,7 @@
             </el-form-item>
 
 
-            <!-- <el-form-item label="字典类型"  v-if="isShow">
+            <!-- <el-form-item :label="$t('coll.DictType')"  v-if="isShow">
                 <el-select style="width: 130px" v-model="formInline.state" :placeholder="$t('tab.All')">
                     <el-option v-for="(item,index) in searchList.allBorrowState" :label="item" :key="index"  :value="index">{{item}}</el-option>
                 </el-select>

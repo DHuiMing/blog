@@ -94,7 +94,7 @@
       <el-table-column :label="$t('tab.Repaymentdate')" prop="repaymentDate" width="180px" align="center"></el-table-column>
       <el-table-column :label="$t('tab.RepaidTime')" prop="repaidTime" width="180px" align="center"></el-table-column>
       <el-table-column :label="$t('tab.DaysOverdue')" prop="daysOverdue" width="180px" align="center"></el-table-column>-->
-      <!-- <el-table-column label="渠道" prop="channel" width="180px" align="center"></el-table-column> -->
+      <!-- <el-table-column :label="$t('coll.Channel')" prop="channel" width="180px" align="center"></el-table-column> -->
       <el-table-column :label="$t('tab.UserGroup')" prop="userGroup" width="180px" align="center">
         <template slot-scope="scope">
           <span>{{ scope.row.userGroup ? $t('tab.Oldcustomers'):$t('tab.Newcustomers')}}</span>

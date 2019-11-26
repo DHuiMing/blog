@@ -1,19 +1,19 @@
 <template>
     <section class="search-form">
         <el-form :inline="true" :model="formInline" class="demo-form-inline" size="mini">
-            <el-form-item label="工号">
+            <el-form-item :label="$t('coll.JobNumber')">
                 <el-input style="width: 130px" v-model="formInline.number"></el-input>
             </el-form-item>
             <el-form-item :label="$t('table.name')">
                 <el-input style="width: 130px" v-model="formInline.name"></el-input>
             </el-form-item>
-            <el-form-item label="角色" v-if="isShow">
-                <el-select style="width: 130px" v-model="formInline.roleId" placeholder="角色">
+            <el-form-item :label="$t('coll.Role')" v-if="isShow">
+                <el-select style="width: 130px" v-model="formInline.roleId" :placeholder="$t('coll.Role')">
                     <el-option v-for="(item,index) in allList.roleList" :label="item.name" :key="index"  :value="item.id">{{item.name}}</el-option>
                 </el-select>
             </el-form-item>
-            <el-form-item label="角色状态"  v-if="isShow">
-                <el-select style="width: 130px" v-model="formInline.status" placeholder="角色状态">
+            <el-form-item :label="$t('coll.RoleStatus')"  v-if="isShow">
+                <el-select style="width: 130px" v-model="formInline.status" :placeholder="$t('coll.RoleStatus')">
                     <el-option v-for="(item,index) in allList.userStateList" :label="item" :key="index"  :value="index">{{item}}</el-option>
                 </el-select>
             </el-form-item>

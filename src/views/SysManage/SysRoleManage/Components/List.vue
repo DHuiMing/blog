@@ -12,13 +12,13 @@
       highlight-current-row
       style="width: 100%;margin-bottom: 50px;"
     >
-      <el-table-column label="角色名称" prop="name" fixed align="center" width="200px"></el-table-column>
-      <el-table-column label="角色唯一标示" prop="nid" fixed align="center" width="120px"></el-table-column>
+      <el-table-column :label="$t('coll.Charactername')" prop="name" fixed align="center" width="200px"></el-table-column>
+      <el-table-column :label="$t('coll.RoleID')" prop="nid" fixed align="center" width="120px"></el-table-column>
       <el-table-column :label="$t('tab.CreatTime')" prop="addTime" width="220px" align="center"></el-table-column>
-      <el-table-column label="修改时间" prop="updateTime" width="180px" align="center"></el-table-column>
-      <el-table-column label="修改人" prop="updateUser" width="150px" align="center"></el-table-column>
-      <el-table-column label="备注" prop="remark" width="300px" align="center"></el-table-column>
-      <el-table-column label="是否停用" fixed="right" align="center">
+      <el-table-column :label="$t('coll.ModifyTime')" prop="updateTime" width="180px" align="center"></el-table-column>
+      <el-table-column :label="$t('coll.Modifier')" prop="updateUser" width="150px" align="center"></el-table-column>
+      <el-table-column :label="$t('coll.Remarks')" prop="remark" width="300px" align="center"></el-table-column>
+      <el-table-column :label="$t('coll.Availability')" fixed="right" align="center">
         <template slot-scope="scope">
           <span>{{ scope.row.isDelete==0?"否" : "是"}}</span>
         </template>
@@ -32,8 +32,8 @@
             size="mini"
             @click="handleAction('Lock',scope.row)"
           >{{$t('tips.Disable')}}</el-button>
-          <el-button v-else type="primary" size="mini" @click="handleAction('Lock',scope.row)">{{$t('tips.Enable')}}</el-button>
-          <el-button type="primary" size="mini" @click="handleAction('Allot',scope.row)">分配权限</el-button>
+          <el-button v-else type="primary" size="mini" @click="handleAction('Lock',scope.row)">{{$t('tips.Enabled')}}</el-button>
+          <el-button type="primary" size="mini" @click="handleAction('Allot',scope.row)">{{$t('coll.privilege')}}</el-button>
         </template>
       </el-table-column>
     </el-table>
@@ -66,13 +66,13 @@
       <el-form :model="formInit" style="margin-right: 20px" ref="form">
         <el-row :gutter="20">
           <el-col :span="1" style="display: none;">
-            <el-form-item label="角色名称" prop="id" :label-width="formLabelWidth">
+            <el-form-item :label="$t('coll.Charactername')" prop="id" :label-width="formLabelWidth">
               <el-input v-model="formInit.id" autocomplete="off"></el-input>
             </el-form-item>
           </el-col>
           <el-col :span="11">
             <el-form-item
-              label="角色名称"
+              :label="$t('coll.Charactername')"
               prop="name"
               :label-width="formLabelWidth"
               :rules="[{ required: true, message: '角色名称不能为空'}]"
@@ -82,7 +82,7 @@
           </el-col>
           <el-col :span="12">
             <el-form-item
-              label="角色唯一标示"
+              :label="$t('coll.RoleID')"
               prop="nid"
               :label-width="formLabelWidth"
               :rules="[{ required: true, message: '角色唯一标示不能为空'}]"
@@ -93,7 +93,7 @@
         </el-row>
         <el-row :gutter="20">
           <el-col :span="11">
-            <el-form-item label="备注" prop="remark" :label-width="formLabelWidth">
+            <el-form-item :label="$t('coll.Remarks')" prop="remark" :label-width="formLabelWidth">
               <el-input v-model="formInit.remark" autocomplete="off"></el-input>
             </el-form-item>
           </el-col>
@@ -256,7 +256,7 @@ export default {
         this.rest();
         this.dialogFormVisible = true;
         this.formInit.id = row.id;
-        this.formInit.isDelete = row.isDelete == 1 ? this.$t('tips.Disable') : this.$t('tips.Enable');
+        this.formInit.isDelete = row.isDelete == 1 ? this.$t('tips.Disable') : this.$t('tips.Enabled');
         this.formInit.name = row.name;
         this.formInit.nid = row.nid;
         this.formInit.remark = row.remark;

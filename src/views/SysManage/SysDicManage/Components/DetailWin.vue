@@ -1,7 +1,7 @@
 <template>
   <div>
     <el-dialog
-      title="接口详情"
+      title=""
       :visible.sync="dialogFormVisible"
       :before-close="handleClose"
       width="1000px"
@@ -18,15 +18,15 @@
         highlight-current-row
         style="width: 100%;padding-bottom: 50px"
       >
-        <el-table-column label="父节点" prop="parentId" fixed align="center" width="200px"></el-table-column>
+        <el-table-column :label="$t('tem.parentnode')" prop="parentId" fixed align="center" width="200px"></el-table-column>
         <el-table-column
-          label="名称"
+          :label="$t('table.name')"
           :show-overflow-tooltip="true"
           winth="200px"
           prop="itemValue"
           align="center"
         ></el-table-column>
-        <el-table-column label="代码" prop="itemCode" width="220px" align="center"></el-table-column>
+        <el-table-column :label="$t('tem.code')" prop="itemCode" width="220px" align="center"></el-table-column>
         <el-table-column :label="$t('table.Operating')" fixed="right" width="300px" align="center">
           <template slot-scope="scope">
             <span>
@@ -42,7 +42,7 @@
             <el-input v-model="formInit.id" autocomplete="off"></el-input>
           </el-form-item>
           <el-form-item
-            label="父节点"
+            :label="$t('tem.parentnode')"
             :label-width="formLabelWidth"
             :rules="[{ required: true, message: '父节点不能为空'}]"
           >
@@ -56,7 +56,7 @@
             <el-input v-model="formInit.itemValue" autocomplete="off"></el-input>
           </el-form-item>
           <el-form-item
-            label="字典代码"
+            :label="$t('tem.dictionarycode')"
             :label-width="formLabelWidth"
             :rules="[{ required: true, message: '字典代码不能为空'}]"
           >
@@ -99,7 +99,7 @@ export default {
         itemValue: "",
         itemCode: ""
       },
-      title: "新增",
+      title: "",
       row: null,
       item: null,
       isDisabled: true
@@ -137,12 +137,12 @@ export default {
       this.formInit.itemValue = row.itemValue;
       this.formInit.itemCode = row.itemCode;
       this.addEditVisible = true;
-      this.title = "编辑";
+      this.title = this.$t('table.edit');
     },
     topAction() {
       this.rest();
       this.addEditVisible = true;
-      this.title = "新增";
+      this.title = this.$t('tab.Add');
     },
     rest() {
       this.formInit.id = "";

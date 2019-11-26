@@ -1,10 +1,10 @@
 <template>
     <section class="search-form">
         <el-form :inline="true" :model="formInline" class="demo-form-inline" size="mini">
-            <el-form-item label="字典类型">
+            <el-form-item :label="$t('coll.DictType')">
                 <el-input style="width: 130px" v-model="formInline.name"></el-input>
             </el-form-item>
-            <el-form-item label="代码类型">
+            <el-form-item :label="$t('coll.Typecode')">
                 <el-input style="width: 130px" v-model="formInline.code"></el-input>
             </el-form-item>
             <el-form-item>

@@ -30,7 +30,7 @@
         <template slot-scope="scope">
           <!-- <el-button type="primary" size="mini" @click="handleAction('Edit',scope.row)">{{$t('table.edit')}}</el-button>  -->
           <el-button v-if="scope.row.status==31" type="primary" size="mini" @click="handleAction('Again',scope.row)">重新支付</el-button>
-          <!-- <el-button v-else type="primary" size="mini" @click="handleAction('Lock',scope.row)">{{$t('tips.Enable')}}</el-button>  -->
+          <!-- <el-button v-else type="primary" size="mini" @click="handleAction('Lock',scope.row)">{{$t('tips.Enabled')}}</el-button>  -->
         </template>
       </el-table-column>
     </el-table>

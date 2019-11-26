@@ -11,7 +11,7 @@
     >
       <el-table-column :label="$t('coll.Date')" prop="time"  fixed align="center" ></el-table-column>
       <el-table-column :label="$t('coll.Collectionmember')" prop="applyNumber" fixed="left" align="center" ></el-table-column>
-      <el-table-column label="分配订单" prop="loanNumber"  align="center"></el-table-column>
+      <el-table-column :label="$t('coll.AllocationOrder1')" prop="loanNumber"  align="center"></el-table-column>
       <el-table-column :label="$t('coll.SuccessOrder')" prop="loanAmount"  align="center"></el-table-column>
       <el-table-column :label="$t('coll.CollectionRate')" prop="firstBorrowingNumber"  align="center"></el-table-column>
     </el-table>

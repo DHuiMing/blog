@@ -13,7 +13,7 @@
       style="width: 100%;margin-bottom: 50px;"
     >
       <el-table-column
-        label="参数编号"
+        :label="$t('coll.Parameternumber')"
         :show-overflow-tooltip="true"
         prop="code"
         fixed
@@ -21,7 +21,7 @@
         width="250px"
       ></el-table-column>
       <el-table-column
-        label="参数名称"
+        :label="$t('coll.ParameterName')"
         :show-overflow-tooltip="true"
         prop="name"
         fixed
@@ -29,21 +29,21 @@
         width="250px"
       ></el-table-column>
       <el-table-column
-        label="参数值"
+        :label="$t('coll.parametervalues')"
         :show-overflow-tooltip="true"
         prop="value"
         width="220px"
         align="center"
       ></el-table-column>
       <el-table-column
-        label="参数类型"
+        :label="$t('coll.parametertype')"
         :show-overflow-tooltip="true"
         prop="typeStr"
         width="180px"
         align="center"
       ></el-table-column>
       <el-table-column
-        label="备注"
+        :label="$t('coll.Remarks')"
         :show-overflow-tooltip="true"
         prop="remark"
         width="180px"
@@ -57,10 +57,10 @@
       <el-table-column :label="$t('table.Operating')" fixed="right" width="300px" align="center">
         <template slot-scope="scope">
 
-            <el-button v-if="scope.row.status != 1" type="primary" size="mini" @click="handleAction('Lock',scope.row)">{{$t('tips.Enable')}}</el-button>
-             <el-button v-else type="primary" size="mini" @click="handleAction('Lock',scope.row)">禁止</el-button>
+            <el-button v-if="scope.row.status != 1" type="primary" size="mini" @click="handleAction('Lock',scope.row)">{{$t('tips.Enabled')}}</el-button>
+             <el-button v-else type="primary" size="mini" @click="handleAction('Lock',scope.row)">{{$t('tips.Disable')}}</el-button>
 
-            <el-button type="primary" size="mini" @click="handleAction('Edit',scope.row)">修改</el-button>
+            <el-button type="primary" size="mini" @click="handleAction('Edit',scope.row)">{{$t('tem.modification')}}</el-button>
 
         </template>
       </el-table-column>
@@ -93,7 +93,7 @@
           </el-col>
           <el-col :span="11">
             <el-form-item
-              label="参数编号"
+              :label="$t('coll.Parameternumber')"
               prop="code"
               :label-width="formLabelWidth"
               :rules="[{ required: true, message: '工号不能为空'}]"
@@ -103,7 +103,7 @@
           </el-col>
           <el-col :span="11">
             <el-form-item
-              label="参数名称"
+              :label="$t('coll.ParameterName')"
               prop="name"
               :label-width="formLabelWidth"
               :rules="[{ required: true, message: '真实姓名不能为空'}]"
@@ -113,7 +113,7 @@
           </el-col>
           <el-col :span="11">
             <el-form-item
-              label="参数值"
+              :label="$t('coll.parametervalues')"
               prop="value"
               :label-width="formLabelWidth"
               :rules="[{ required: true, message: '姓名不能为空'}]"
@@ -123,7 +123,7 @@
           </el-col>
           <el-col :span="12">
             <el-form-item
-              label="参数类型"
+              :label="$t('coll.parametertype')"
               prop="type"
               :label-width="formLabelWidth"
               :rules="[{ required: true, message: '不能为空'}]"
@@ -141,7 +141,7 @@
         </el-row>
         <el-row :gutter="20">
           <el-col :span="11">
-            <el-form-item label="备注" prop="remark" :label-width="formLabelWidth">
+            <el-form-item :label="$t('coll.Remarks')" prop="remark" :label-width="formLabelWidth">
               <el-input v-model="formInit.remark" autocomplete="off"></el-input>
             </el-form-item>
           </el-col>
@@ -284,7 +284,7 @@ export default {
         this.formInit.remark = row.remark;
         this.dialogFormVisible = true;
       } else if (actionTag == "Lock") {
-        let state = row.status == 1 ? this.$t('tips.Disable') : this.$t('tips.Enable');
+        let state = row.status == 1 ? this.$t('tips.Disable') : this.$t('tips.Enabled');
         this.$confirm(this.$t('tips.Areyousureto') + state, "", {
           confirmButtonText: _this.$t('tips.confirm'),
           cancelButtonText: _this.$t('tips.cancel'),

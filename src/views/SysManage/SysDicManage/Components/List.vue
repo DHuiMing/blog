@@ -19,20 +19,20 @@
       highlight-current-row
       style="width: 100%;padding-bottom: 50px"
     >
-      <el-table-column label="字典类型" prop="name" fixed align="center" width="200px"></el-table-column>
-      <el-table-column label="类型代码" prop="code" align="center"></el-table-column>
-      <el-table-column label="备注" prop="remark" width="220px" align="center"></el-table-column>
-      <el-table-column label="排序" prop="sort" width="180px" align="center"></el-table-column>
+      <el-table-column :label="$t('coll.DictType')" prop="name" fixed align="center" width="200px"></el-table-column>
+      <el-table-column :label="$t('tem.codetype')" prop="code" align="center"></el-table-column>
+      <el-table-column :label="$t('coll.Remarks')" prop="remark" width="220px" align="center"></el-table-column>
+      <el-table-column :label="$t('coll.Ranking')" prop="sort" width="180px" align="center"></el-table-column>
       <el-table-column :label="$t('table.Operating')" fixed="right" width="300px" align="center">
         <template slot-scope="scope">
-          <el-button type="primary" size="mini" @click="handleAction('Detail',scope.row)">详情</el-button>
+          <el-button type="primary" size="mini" @click="handleAction('Detail',scope.row)">{{$t('tem.Check')}}</el-button>
           <el-button
             v-if="scope.row.status==0"
             type="primary"
             size="mini"
             @click="handleAction('Edit',scope.row)"
-          >修改</el-button>
-          <el-button v-else type="primary" size="mini" @click="handleAction('Delete',scope.row)">删除</el-button>
+          >{{$t('tem.modification')}}</el-button>
+          <el-button v-else type="primary" size="mini" @click="handleAction('Delete',scope.row)">{{$t('table.delete')}}</el-button>
         </template>
       </el-table-column>
     </el-table>
