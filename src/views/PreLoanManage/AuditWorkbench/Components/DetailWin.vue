@@ -18,8 +18,8 @@
                 </el-tab-pane>
             </el-tabs>
             <!--<span slot="footer" class="dialog-footer">-->
-                <!--<el-button @click="dialogVisible = false">取 消</el-button>-->
-                <!--<el-button type="primary" @click="dialogVisible = false">确 定</el-button>-->
+                <!--<el-button @click="dialogVisible = false">{{$t('tips.cancel')}}</el-button>-->
+                <!--<el-button type="primary" @click="dialogVisible = false">{{$t('tips.confirm')}}</el-button>-->
             <!--</span>-->
         </el-dialog>
     </div>

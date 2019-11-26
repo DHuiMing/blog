@@ -9,17 +9,17 @@
       highlight-current-row
       style="width: 100%;margin-bottom: 50px;"
     >
-      <el-table-column label="日期" prop="time" width="200px" fixed align="center" ></el-table-column>
-      <el-table-column label="申请笔数" prop="applyNumber" fixed="left" align="center" width="120px"></el-table-column>
-      <el-table-column label="放款笔数" prop="loanNumber" width="200px" align="center"></el-table-column>
+      <el-table-column :label="$t('coll.Date')" prop="time" width="200px" fixed align="center" ></el-table-column>
+      <el-table-column :label="$t('coll.ApplyNumber')" prop="applyNumber" fixed="left" align="center" width="120px"></el-table-column>
+      <el-table-column :label="$t('coll.LoanNumber')" prop="loanNumber" width="200px" align="center"></el-table-column>
       <el-table-column :label="$t('tab.Loanamount')" prop="loanAmount" width="200px" align="center"></el-table-column>
-      <el-table-column label="首借人数" prop="firstBorrowingNumber" width="200px" align="center"></el-table-column>
-       <el-table-column label="首借金额" prop="firstBorrowingAmount" width="200px" align="center"></el-table-column>
-      <el-table-column label="续借人数" prop="reBorrowingNumber" width="200px" align="center"></el-table-column>
-      <el-table-column label="续借金额" prop="reBorrowingAmount" width="200px" align="center"></el-table-column>
+      <el-table-column :label="$t('coll.FirstBorrowingNumber')" prop="firstBorrowingNumber" width="200px" align="center"></el-table-column>
+       <el-table-column :label="$t('coll.FirstBorrowingAmount')" prop="firstBorrowingAmount" width="200px" align="center"></el-table-column>
+      <el-table-column :label="$t('coll.ReBorrowingNumber')" prop="reBorrowingNumber" width="200px" align="center"></el-table-column>
+      <el-table-column :label="$t('coll.ReBorrowingAmount')" prop="reBorrowingAmount" width="200px" align="center"></el-table-column>
        <el-table-column :label="$t('tab.TotalFee')" prop="totalFee" width="200px" align="center"></el-table-column>
-      <el-table-column label="首借占比" prop="waitCount" width="200px" align="center"></el-table-column>
-      <el-table-column label="通过率" prop="yesterdayCount" fixed="right"  align="center"></el-table-column>
+      <el-table-column :label="$t('coll.FirstRate')" prop="waitCount" width="200px" align="center"></el-table-column>
+      <el-table-column :label="$t('coll.PassRate')" prop="yesterdayCount" fixed="right"  align="center"></el-table-column>
 
     </el-table>
     <div class="pagination-box">

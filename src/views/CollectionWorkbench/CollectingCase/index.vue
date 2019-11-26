@@ -4,8 +4,8 @@
     <div class="tagc">
       <el-breadcrumb separator-class="el-icon-arrow-right">
         <el-breadcrumb-item :to="{ path: '/data/dataInfo' }">{{$t('route.dashboard')}}</el-breadcrumb-item>
-        <el-breadcrumb-item>催收工作台</el-breadcrumb-item>
-        <el-breadcrumb-item>催收中订单</el-breadcrumb-item>
+        <el-breadcrumb-item>{{$t('CollectionWorkbench')}}</el-breadcrumb-item>
+        <el-breadcrumb-item>{{$t('CollectingCase')}}</el-breadcrumb-item>
       </el-breadcrumb>
     </div>
     <div class="con">

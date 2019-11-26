@@ -1,7 +1,7 @@
 <template>
   <section class="search-form">
     <el-form :inline="true" :model="formInline" class="demo-form-inline" size="mini" v-if="isShow">
-      <el-form-item label="选项类型">
+      <el-form-item :label="$t('tab.OptionType')">
         <el-select style="width: 130px" v-model="formInline.codeType" :placeholder="$t('tab.All')">
           <el-option
             v-for="(item,index) in searchList.quartzList"

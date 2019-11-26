@@ -49,7 +49,7 @@
                     </el-form-item>
                 </el-col>
                 <el-col :span="8">
-                    <el-form-item label="放款时间">
+                    <el-form-item :label="$t('tab.Loantime')">
                         <el-input disabled v-model="dataList.loanTime" ></el-input>
                     </el-form-item>
                 </el-col>

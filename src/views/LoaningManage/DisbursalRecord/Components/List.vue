@@ -1,7 +1,7 @@
 <template>
   <section>
     <!-- <div style="margin: 4px 0;background-color: #fff;padding: 4px">
-      <el-button :disabled="isDisabled" @click="topAction('Add')" size="small" type="primary">新增</el-button>
+      <el-button :disabled="isDisabled" @click="topAction('Add')" size="small" type="primary">{{$t('tab.Add')}}</el-button>
     </div>-->
     <el-table
       v-loading="listLoading"
@@ -16,21 +16,21 @@
       <el-table-column :label="$t('table.name')" prop="accountName" fixed align="center" width="150px"></el-table-column>
       <el-table-column :label="$t('table.phone')" prop="phone"  align="center" width="120px"></el-table-column>
       <!-- <el-table-column :label="$t('tab.LoanTenure')" prop="loanTenure" width="220px" align="center"></el-table-column> -->
-      <el-table-column label="金额" prop="amount" width="180px" align="center"></el-table-column>
+      <el-table-column :label="$t('tab.Amount')" prop="amount" width="180px" align="center"></el-table-column>
       <!-- <el-table-column :label="$t('tab.Loanamount')" prop="disbursalAmount" fixed align="center" width="150px"></el-table-column> -->
-      <el-table-column label="银行" prop="bankName"  align="center" width="120px"></el-table-column>
-      <el-table-column label="卡号" prop="accountNumber" width="220px" align="center"></el-table-column>
-      <el-table-column label="支付通道" prop="channelId" width="180px" align="center">
+      <el-table-column :label="$t('tab.BankName')" prop="bankName"  align="center" width="120px"></el-table-column>
+      <el-table-column :label="$t('tab.AccountNumber')" prop="accountNumber" width="220px" align="center"></el-table-column>
+      <el-table-column :label="$t('tab.Channel')" prop="channelId" width="180px" align="center">
          <template slot-scope="scope">
           <span>{{channelId[scope.row.channelId]}}</span>
         </template>
       </el-table-column>
-      <el-table-column label="支付方式" prop="paymentMode" width="180px" align="center">
+      <el-table-column :label="$t('tab.PaymentMode')" prop="paymentMode" width="180px" align="center">
         <template slot-scope="scope">
           <span>{{paymentMode[scope.row.paymentMode]}}</span>
         </template>
       </el-table-column>
-      <el-table-column label="放款时间" prop="disbursalTime" width="180px" align="center"></el-table-column>
+      <el-table-column :label="$t('tab.Loantime')" prop="disbursalTime" width="180px" align="center"></el-table-column>
       <el-table-column :label="$t('table.status')" fixed="right" width="180px;" align="center">
         <template slot-scope="scope">
           <span>{{allList.payLogState?allList.payLogState[scope.row.status]:''}}</span>
@@ -66,7 +66,7 @@
           </el-col>
           <el-col :span="11">
             <el-form-item
-              label="选项名称:"
+              :label="$t('tab.OptionName')"
               prop="value"
               :label-width="formLabelWidth"
               :rules="[{ required: true, message: '选项名称不能为空'}]"
@@ -75,7 +75,7 @@
             </el-form-item>
           </el-col>
           <el-col :span="11">
-            <el-form-item label="选项类型" :label-width="formLabelWidth" v-if="!isEdit">
+            <el-form-item :label="$t('tab.OptionType')" :label-width="formLabelWidth" v-if="!isEdit">
               <el-select v-model="formInit.codeType" :placeholder="$t('tab.All')">
                 <el-option
                   v-for="(item,index) in allList.auditTypeList"
@@ -89,8 +89,8 @@
         </el-row>
         <div style="height: 60px">
           <el-form-item style="float: right;margin-top: 20px">
-            <el-button @click="cancel">取 消</el-button>
-            <el-button type="primary" @click="ensure('form')">确 定</el-button>
+            <el-button @click="cancel">{{$t('tips.cancel')}}</el-button>
+            <el-button type="primary" @click="ensure('form')">{{$t('tips.confirm')}}</el-button>
           </el-form-item>
         </div>
       </el-form>
@@ -111,27 +111,12 @@ export default {
       };
       return statusMap[status];
     },
-    typeFilter(type) {
-      let result = "";
-      switch (type) {
-        case "25":
-          result = "复审挂起";
-          break;
-        case "26":
-          result = "复审通过";
-          break;
-        default:
-          result = "复审拒绝";
-          break;
-      }
-      return result;
-    }
   },
   props: ["allList"],
   data() {
     return {
       paymentMode:{
-        10:'代付', 20:'代扣', 30:'线下代付',  40:'线下代扣', 50:'线上主动付款'
+        10:this.$t('tab.paid'), 20:this.$t('tab.autoDebit'), 30:this.$t('tab.paidOffine'),  40:this.$t('tab.autoDebitOffine'), 50:this.$t('tab.repayOnline')
       },
       channelId:{20:'cashFree'},
       isEdit: false,
@@ -235,7 +220,7 @@ export default {
         this.formInit.codeType = row.codeType;
         this.dialogFormVisible = true;
       } else if (actionTag == "Again") {
-        this.$confirm("是否确定重新支付", "提示", {
+        this.$confirm("是否确定重新支付", "", {
           confirmButtonText: _this.$t('tips.confirm'),
           cancelButtonText: _this.$t('tips.cancel'),
           type: "warning"

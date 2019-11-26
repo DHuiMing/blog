@@ -10,15 +10,15 @@
       style="width: 100%;margin-bottom: 50px;"
     >
       <el-table-column label="渠道" prop="time" width="200px" fixed align="center" ></el-table-column>
-      <el-table-column label="注册人数" prop="applyNumber" fixed="left" align="center" width="120px"></el-table-column>
+      <el-table-column :label="$t('coll.RegisterNumber')" prop="applyNumber" fixed="left" align="center" width="120px"></el-table-column>
       <el-table-column label="登录人数" prop="loanNumber" width="200px" align="center"></el-table-column>
-      <el-table-column label="申请人数" prop="loanAmount" width="200px" align="center"></el-table-column>
+      <el-table-column :label="$t('coll.Applynumber')" prop="loanAmount" width="200px" align="center"></el-table-column>
       <el-table-column label="放款人数" prop="firstBorrowingNumber" width="200px" align="center"></el-table-column>
        <el-table-column :label="$t('tab.Loanamount')" prop="firstBorrowingAmount" width="200px" align="center"></el-table-column>
-      <el-table-column label="注册-申请" prop="reBorrowingNumber" width="200px" align="center"></el-table-column>
-      <el-table-column label="申请-放款" prop="reBorrowingAmount" width="200px" align="center"></el-table-column>
-       <el-table-column label="注册-放款" prop="totalFee" width="200px" align="center"></el-table-column>
-      <el-table-column label="老用户" prop="waitCount" width="200px" align="center"></el-table-column>
+      <el-table-column :label="$t('coll.RegisterApply')" prop="reBorrowingNumber" width="200px" align="center"></el-table-column>
+      <el-table-column :label="$t('coll.ApplyApprovel')" prop="reBorrowingAmount" width="200px" align="center"></el-table-column>
+       <el-table-column :label="$t('coll.RegisterApprovel')" prop="totalFee" width="200px" align="center"></el-table-column>
+      <el-table-column :label="$t('coll.OldUsermber')" prop="waitCount" width="200px" align="center"></el-table-column>
     </el-table>
     <div class="pagination-box">
       <el-pagination

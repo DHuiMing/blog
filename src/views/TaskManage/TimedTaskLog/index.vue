@@ -4,8 +4,8 @@
     <div class="tagc">
       <el-breadcrumb separator-class="el-icon-arrow-right">
         <el-breadcrumb-item :to="{ path: '/Index' }">首页</el-breadcrumb-item>
-        <el-breadcrumb-item>定时任务</el-breadcrumb-item>
-        <el-breadcrumb-item>执行记录</el-breadcrumb-item>
+        <el-breadcrumb-item>{{$t('TaskManage')}}</el-breadcrumb-item>
+        <el-breadcrumb-item>{{$t('TimedTaskLog')}}</el-breadcrumb-item>
       </el-breadcrumb>
     </div>
     <div class="con">

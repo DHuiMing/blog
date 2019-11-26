@@ -10,7 +10,7 @@
       <el-form-item :label="$t('table.phone')">
         <el-input style="width: 130px" v-model="formInline.phone" :placeholder="$t('table.phone')"></el-input>
       </el-form-item>
-      <el-form-item label="审核人">
+      <el-form-item :label="$t('tab.Auditor')">
         <el-select style="width: 130px" v-model="formInline.auditName" :placeholder="$t('tab.All')">
           <el-option
             v-for="(item,index) in searchList.artificialList"
@@ -20,7 +20,7 @@
           >{{item.name}}</el-option>
         </el-select>
       </el-form-item>
-      <el-form-item label="分配人">
+      <el-form-item :label="$t('tab.Assigner')">
         <el-select style="width: 130px" v-model="formInline.allotSysUserId" :placeholder="$t('tab.All')">
           <el-option
             v-for="(item,index) in searchList.userExamineList"

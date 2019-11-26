@@ -11,16 +11,16 @@
       @selection-change="handleSelectionChange"
     >
       <el-table-column :label="$t('table.name')" prop="borrowName" fixed align="center" width="120px"></el-table-column>
-      <el-table-column label="手机：" prop="phone" fixed="left" align="center" width="120px"></el-table-column>
-      <el-table-column label="金额" prop="amount" width="200px" align="center"></el-table-column>
-      <el-table-column label="申请时间" prop="borrowTime" width="200px" align="center"></el-table-column>
-      <el-table-column label="放款时间" prop="disbursalTime" width="200px" align="center"></el-table-column>
-      <el-table-column label="应还日期" prop="repayTime" width="200px" align="center"></el-table-column>
+      <el-table-column :label="$t('table.phone')" prop="phone" fixed="left" align="center" width="120px"></el-table-column>
+      <el-table-column :label="$t('tab.Amount')" prop="amount" width="200px" align="center"></el-table-column>
+      <el-table-column :label="$t('tab.ApplyTime')" prop="borrowTime" width="200px" align="center"></el-table-column>
+      <el-table-column :label="$t('tab.Loantime')" prop="disbursalTime" width="200px" align="center"></el-table-column>
+      <el-table-column :label="$t('tab.Repaymentdate')" prop="repayTime" width="200px" align="center"></el-table-column>
       <el-table-column :label="$t('tab.DaysOverdue')" prop="penaltyDay" width="200px" align="center"></el-table-column>
-      <el-table-column label="逾期等级" prop="level" width="200px" align="center"></el-table-column>
-      <el-table-column label="滞纳金" prop="penaltyAmout" width="200px" align="center"></el-table-column>
-      <el-table-column label="催收员" prop="userName" width="200px" align="center"></el-table-column>
-      <el-table-column label="创建时间" prop="createTime" width="200px" align="center"></el-table-column>
+      <el-table-column :label="$t('coll.Overduelevel')" prop="level" width="200px" align="center"></el-table-column>
+      <el-table-column :label="$t('tab.Penaltycharge2')" prop="penaltyAmout" width="200px" align="center"></el-table-column>
+      <el-table-column :label="$t('coll.Collectionmember')" prop="userName" width="200px" align="center"></el-table-column>
+      <el-table-column :label="$t('tab.CreatTime')" prop="createTime" width="200px" align="center"></el-table-column>
       <el-table-column :label="$t('tab.Theorderstatus')" fixed="right" width="150px" align="center">
         <template slot-scope="scope">
           <span>{{ scope.row.state | typeFilter}}</span>
@@ -211,7 +211,7 @@ export default {
       } else if (actionTag == "Begin") {
         //
         let _this = this
-        this.$confirm("是否开始催收", "提示", {
+        this.$confirm("是否开始催收", "", {
           confirmButtonText: _this.$t("tips.confirm"),
           cancelButtonText: _this.$t("tips.cancel"),
           type: "warning"

@@ -34,14 +34,14 @@
         </el-row>
         <el-row>
           <el-col :span="24">
-            <el-form-item label="借款地址">
+            <el-form-item :label="$t('tab.Borrowingtheaddress')">
               <el-input disabled v-model="rowList.borrowingAddress"></el-input>
             </el-form-item>
           </el-col>
         </el-row>
         <el-row>
           <el-col :span="24">
-            <el-form-item label="借款地址经纬度">
+            <el-form-item :label="$t('tab.Latitudeandlongitude')">
               <el-input disabled v-model="rowList.geographicCoordinates"></el-input>
             </el-form-item>
           </el-col>
@@ -53,14 +53,14 @@
             </el-form-item>
           </el-col>
           <el-col :span="12">
-            <el-form-item label="手续费">
+            <el-form-item :label="$t('tab.poundage')">
               <el-input disabled v-model="rowList.processingFee"></el-input>
             </el-form-item>
           </el-col>
         </el-row>
         <el-row>
           <!-- <el-col :span="12">
-            <el-form-item label="逾期费用">
+            <el-form-item :label="$t('tab.Penaltycharge')">
               <el-input disabled v-model="rowList.penaltyCharge"></el-input>
             </el-form-item>
           </el-col> -->
@@ -77,7 +77,7 @@
             </el-form-item>
           </el-col>
           <el-col :span="12">
-            <el-form-item label="放款时间">
+            <el-form-item :label="$t('tab.Loantime')">
               <el-input disabled v-model="rowList.receiptTime"></el-input>
             </el-form-item>
           </el-col>
@@ -89,31 +89,31 @@
             </el-form-item>
           </el-col>
           <el-col :span="12">
-            <el-form-item label="逾期金额">
+            <el-form-item :label="$t('tab.Overdueamount')">
               <el-input disabled v-model="rowList.penaltyCharge"></el-input>
             </el-form-item>
           </el-col>
         </el-row>
         <el-row>
           <el-col :span="12">
-            <el-form-item label="应还时间">
+            <el-form-item :label="$t('tab.RepayTime')">
               <el-input disabled v-model="rowList.repaymentDate"></el-input>
             </el-form-item>
           </el-col>
           <el-col :span="12">
-            <el-form-item label="应还金额">
+            <el-form-item :label="$t('tab.RepaymentAmount')">
               <el-input disabled v-model="rowList.repaymentAmount"></el-input>
             </el-form-item>
           </el-col>
         </el-row>
          <el-row>
           <el-col :span="12">
-            <el-form-item label="已还时间">
+            <el-form-item :label="$t('tab.RepayedTime')">
               <el-input disabled v-model="rowList.repaidTime"></el-input>
             </el-form-item>
           </el-col>
           <el-col :span="12">
-            <el-form-item label="已还金额">
+            <el-form-item :label="$t('tab.RepaidAmout')">
               <el-input disabled v-model="rowList.repaidAmout"></el-input>
             </el-form-item>
           </el-col>

@@ -1,10 +1,10 @@
 <template>
     <section class="search-form" v-if="isShow">
         <el-form :inline="true" :model="formInline" class="demo-form-inline" size="mini">
-            <el-form-item label="复审备注:">
-                <el-input style="width: 130px" v-model="formInline.value" placeholder="复审备注"></el-input>
+            <el-form-item :label="$t('tab.Reviewnotes')">
+                <el-input style="width: 130px" v-model="formInline.value" :placeholder="$t('tab.Reviewnotes')"></el-input>
             </el-form-item>
-            <el-form-item label="选项类型">
+            <el-form-item :label="$t('tab.OptionType')">
                 <el-select style="width: 130px" v-model="formInline.codeType" :placeholder="$t('tab.All')">
                     <el-option v-for="(item,index) in allList.auditTypeList" :label="item" :key="index"  :value="index">{{item}}</el-option>
                 </el-select>

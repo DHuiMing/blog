@@ -1,7 +1,7 @@
 <template>
   <section>
     <div style="margin: 4px 0;background-color: #fff;padding: 4px">
-      <el-button :disabled="isDisabled" @click="topAction()" size="small" type="primary">新增</el-button>
+      <el-button :disabled="isDisabled" @click="topAction()" size="small" type="primary">{{$t('tab.Add')}}</el-button>
     </div>
     <el-table
       v-loading="listLoading"
@@ -51,17 +51,17 @@
       ></el-table-column>
       <el-table-column :label="$t('table.status')" fixed="right" align="center">
         <template slot-scope="scope">
-          <span>{{ scope.row.status == 1 ? "启用" : scope.row.status == 0 ? "禁用" : "-"}}</span>
+          <span>{{ scope.row.status == 1 ? $t('tips.Enabled') : scope.row.status == 0 ? $t('tips.Disabled') : "-"}}</span>
         </template>
       </el-table-column>
       <el-table-column :label="$t('table.Operating')" fixed="right" width="300px" align="center">
         <template slot-scope="scope">
-     
-            <el-button v-if="scope.row.status != 1" type="primary" size="mini" @click="handleAction('Lock',scope.row)">启用</el-button>
+
+            <el-button v-if="scope.row.status != 1" type="primary" size="mini" @click="handleAction('Lock',scope.row)">{{$t('tips.Enable')}}</el-button>
              <el-button v-else type="primary" size="mini" @click="handleAction('Lock',scope.row)">禁止</el-button>
 
             <el-button type="primary" size="mini" @click="handleAction('Edit',scope.row)">修改</el-button>
-   
+
         </template>
       </el-table-column>
     </el-table>
@@ -149,8 +149,8 @@
         </el-row>
         <div style="height: 60px">
           <el-form-item style="float: right;margin-top: 20px">
-            <el-button @click="cancel">取 消</el-button>
-            <el-button type="primary" @click="ensure('form')">确 定</el-button>
+            <el-button @click="cancel">{{$t('tips.cancel')}}</el-button>
+            <el-button type="primary" @click="ensure('form')">{{$t('tips.confirm')}}</el-button>
           </el-form-item>
         </div>
       </el-form>
@@ -284,8 +284,8 @@ export default {
         this.formInit.remark = row.remark;
         this.dialogFormVisible = true;
       } else if (actionTag == "Lock") {
-        let state = row.status == 1 ? "禁用" : "启用";
-        this.$confirm("是否确定" + state, "提示", {
+        let state = row.status == 1 ? this.$t('tips.Disable') : this.$t('tips.Enable');
+        this.$confirm(this.$t('tips.Areyousureto') + state, "", {
           confirmButtonText: _this.$t('tips.confirm'),
           cancelButtonText: _this.$t('tips.cancel'),
           type: "warning"

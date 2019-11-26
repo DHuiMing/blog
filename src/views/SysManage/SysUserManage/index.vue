@@ -3,7 +3,7 @@
         <div class="tagc">
       <el-breadcrumb separator-class="el-icon-arrow-right">
         <el-breadcrumb-item :to="{ path: '/data/dataInfo' }">{{$t('route.dashboard')}}</el-breadcrumb-item>
-        <el-breadcrumb-item>系统管理</el-breadcrumb-item>
+        <el-breadcrumb-item>{{$t('SysManage')}}</el-breadcrumb-item>
         <el-breadcrumb-item>{{$t('route.UserManagement')}}</el-breadcrumb-item>
       </el-breadcrumb>
     </div>
@@ -11,7 +11,7 @@
           <seach-form @changeParmas="passParmas($event)" :allList="allList"></seach-form>
       <list ref="list" :allList="allList"></list>
       </div>
-      
+
   </div>
 </template>
 

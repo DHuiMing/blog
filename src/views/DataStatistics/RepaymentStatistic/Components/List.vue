@@ -9,23 +9,23 @@
       highlight-current-row
       style="width: 100%;margin-bottom: 50px;"
     >
-      <el-table-column label="日期" prop="time" width="200px" fixed align="center" ></el-table-column>
-      <el-table-column label="应还订单" prop="repayedNumber" fixed="left" align="center" width="120px"></el-table-column>
-      <el-table-column label="提前还款" prop="prepayment" width="200px" align="center"></el-table-column>
-      <el-table-column label="正常还款" prop="ontimeRepayment" width="200px" align="center"></el-table-column>
-      <el-table-column label="逾期还款" prop="overdueRepayment" width="200px" align="center"></el-table-column>
-       <el-table-column label="逾期中" prop="overdue" width="200px" align="center"></el-table-column>
-      <el-table-column label="坏账" prop="badDebt" width="200px" align="center"></el-table-column>
-      <el-table-column label="催回订单" prop="collectedOrder" width="200px" align="center"></el-table-column>
-       <el-table-column label="应还金额" prop="totalRepaymentAmount" width="200px" align="center"></el-table-column>
-      <el-table-column label="实还金额" prop="repaidAmount" width="200px" align="center"></el-table-column>
+      <el-table-column :label="$t('coll.Date')" prop="time" width="200px" fixed align="center" ></el-table-column>
+      <el-table-column :label="$t('coll.RepaymentNumber')" prop="repayedNumber" fixed="left" align="center" width="120px"></el-table-column>
+      <el-table-column :label="$t('coll.Prepayment')" prop="prepayment" width="200px" align="center"></el-table-column>
+      <el-table-column :label="$t('coll.OntimeRepayment')" prop="ontimeRepayment" width="200px" align="center"></el-table-column>
+      <el-table-column :label="$t('coll.OverdueRepayment')" prop="overdueRepayment" width="200px" align="center"></el-table-column>
+       <el-table-column :label="$t('coll.Overdue')" prop="overdue" width="200px" align="center"></el-table-column>
+      <el-table-column :label="$t('tab.BadDebt')" prop="badDebt" width="200px" align="center"></el-table-column>
+      <el-table-column :label="$t('coll.SuccessOrder')" prop="collectedOrder" width="200px" align="center"></el-table-column>
+       <el-table-column :label="$t('tab.RepaymentAmount')" prop="totalRepaymentAmount" width="200px" align="center"></el-table-column>
+      <el-table-column :label="$t('coll.RepaidAmount')" prop="repaidAmount" width="200px" align="center"></el-table-column>
        <el-table-column :label="$t('tab.Loanamount')" prop="disbursalAmount" width="200px" align="center"></el-table-column>
-      <el-table-column label="罚金" prop="penaltyCharge" width="200px" align="center"></el-table-column>
-       <el-table-column label="减免金额" prop="reductionAmount" width="200px" align="center"></el-table-column>
-      <el-table-column label="待还金额" prop="remainingAmount" width="200px" align="center"></el-table-column>
-       <el-table-column label="催回率" prop="collectionRate" fixed="right"  align="center"></el-table-column>
-        <el-table-column label="首逾率" prop="firstOverdueRate" fixed="right"  align="center"></el-table-column>
-      <el-table-column label="逾期率" prop="overdueRate" fixed="right"  align="center"></el-table-column>
+      <el-table-column :label="$t('coll.Penaltycharge')" prop="penaltyCharge" width="200px" align="center"></el-table-column>
+       <el-table-column :label="$t('coll.ReductionAmount')" prop="reductionAmount" width="200px" align="center"></el-table-column>
+      <el-table-column :label="$t('coll.RemainingAmountctionRate')" prop="remainingAmount" width="200px" align="center"></el-table-column>
+       <el-table-column :label="$t('coll.CollectionRate')" prop="collectionRate" fixed="right"  align="center"></el-table-column>
+        <el-table-column :label="$t('coll.FirstOverdueRate')" prop="firstOverdueRate" fixed="right"  align="center"></el-table-column>
+      <el-table-column :label="$t('coll.OverdueRate')" prop="overdueRate" fixed="right"  align="center"></el-table-column>
 
     </el-table>
     <div class="pagination-box">

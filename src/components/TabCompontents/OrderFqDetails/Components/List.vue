@@ -35,13 +35,13 @@
             <el-table-column label="应还款日期" prop="repayPlanTime" width="180px" align="center">
             </el-table-column>
 
-            <!--<el-table-column label="审核人" prop="auditName" align="center" width="150px">-->
+            <!--<el-table-column :label="$t('tab.Auditor')" prop="auditName" align="center" width="150px">-->
             <!--</el-table-column>-->
             <el-table-column label="实际还款日期" prop="repayTime" width="180px" align="center">
             </el-table-column>
-            <el-table-column label="还款方式" prop="repayWay" width="180px" align="center">
+            <el-table-column :label="$t('tab.PaymentMode1')" prop="repayWay" width="180px" align="center">
                 <template slot-scope="scope">
-                    <span>{{ scope.row.repayWay==20?'银行卡转账' : scope.row.repayWay==10?'代扣' : scope.row.repayWay==30?'支付宝转账' : scope.row.repayWay==40?'40' :'_'}}</span>
+                    <span>{{ scope.row.repayWay==20?'银行卡转账' : scope.row.repayWay==10?$t('tab.autoDebit') : scope.row.repayWay==30?'支付宝转账' : scope.row.repayWay==40?'40' :'_'}}</span>
                 </template>
             </el-table-column>
             <el-table-column label="还款账号" prop="repayAccount" width="200px" align="center">
@@ -53,7 +53,7 @@
                     <span>{{ scope.row.borrowState == 40 ? '还款成功' : scope.row.borrowState == 30 ? '放款成功' : scope.row.borrowState == 41 ? '还款成功-金额减免' : scope.row.borrowState == 50 ? '逾期' : scope.row.borrowState == 90 ? '坏账' : '-'}}</span>
                 </template>
             </el-table-column>
-            <el-table-column label="还款状态" fixed="right" width="100px" align="center">
+            <el-table-column :label="$t('tab.Status')" fixed="right" width="100px" align="center">
                 <template slot-scope="scope">
                     <span>{{ scope.row.state==20?'未还款' : '已还款'}}</span>
                 </template>
@@ -103,7 +103,7 @@
                         </el-form-item>
                     </el-col>
                     <el-col :span="12">
-                        <el-form-item label="还款方式" prop="repayWay" :label-width="formLabelWidth" :rules="[{ required: true, message: '还款方式不能为空'}]">
+                        <el-form-item :label="$t('tab.PaymentMode1')" prop="repayWay" :label-width="formLabelWidth" :rules="[{ required: true, message: '还款方式不能为空'}]">
                             <el-select v-model="formInit.repayWay"  placeholder="还款方式">
                                 <el-option value="" label="全部"></el-option>
                                 <el-option value="20" label="银行卡转账"></el-option>
@@ -119,7 +119,7 @@
                         </el-form-item>
                     </el-col>
                     <el-col :span="12">
-                        <el-form-item label="还款时间" prop="repayTime" :label-width="formLabelWidth" :rules="[{ required: true, message: '还款时间不能为空'}]">
+                        <el-form-item :label="$t('tab.RepaymentTime')" prop="repayTime" :label-width="formLabelWidth" :rules="[{ required: true, message: '还款时间不能为空'}]">
                             <el-date-picker
                                     v-model="formInit.repayTime"
                                     type="datetime"
@@ -131,7 +131,7 @@
                 </el-row>
                 <el-row :gutter="20" v-if="show2">
                     <el-col :span="12">
-                        <el-form-item label="还款金额" prop="amount" :label-width="formLabelWidth" :rules="[{ required: true, message: '还款金额不能为空'}]">
+                        <el-form-item :label="$t('tab.RepaidAmount')" prop="amount" :label-width="formLabelWidth" :rules="[{ required: true, message: '还款金额不能为空'}]">
                             <el-input v-model="formInit.amount" autocomplete="off"></el-input>
                         </el-form-item>
                     </el-col>
@@ -143,15 +143,15 @@
                 </el-row>
                 <el-row :gutter="20" v-if="show1">
                     <el-col :span="12">
-                        <el-form-item label="减免金额" prop="derateAmount" :label-width="formLabelWidth" :rules="[{ required: true, message: '减免金额不能为空'}]">
+                        <el-form-item :label="$t('coll.ReductionAmount')" prop="derateAmount" :label-width="formLabelWidth" :rules="[{ required: true, message: '减免金额不能为空'}]">
                             <el-input v-model="formInit.derateAmount" autocomplete="off"></el-input>
                         </el-form-item>
                     </el-col>
                 </el-row>
             </el-form>
             <div slot="footer" class="dialog-footer">
-                <el-button @click="okVisible = false">取 消</el-button>
-                <el-button type="primary"  @click="ensure('form2')">确 定</el-button>
+                <el-button @click="okVisible = false">{{$t('tips.cancel')}}</el-button>
+                <el-button type="primary"  @click="ensure('form2')">{{$t('tips.confirm')}}</el-button>
             </div>
         </el-dialog>
     </section>
@@ -192,23 +192,23 @@
                 power:null,
                 actionList:null,
                 allBorrowState:{
-                    10: "申请成功待审核",
+                    10: this.$t('tab.Apply'),
                     12: "待活体自动放款",
                     14: "待活体自动人审",
-                    20: "自动审核通过",
-                    21: "自动审核不通过",
-                    22: "自动审核未决待人工复审",
-                    25: "人工复审挂起",
-                    26: "人工复审通过",
-                    27: "人工复审不通过",
+                    20: this.$t('tab.AutoReviewPass'),
+                    21: this.$t('tab.AutoReviewRefuse'),
+                    22: this.$t('tab.Reviewing'),
+                    25: this.$t('tab.ReviewHangup'),
+                    26: this.$t('tab.ReviewPass'),
+                    27: this.$t('tab.ReviewRefuse'),
                     28: "审核成功(待银程同意)",
                     29: "银程同意(待连连放款)",
-                    30: "放款成功",
-                    31: "放款失败",
-                    40: "还款成功",
-                    41: "还款成功-金额减免",
-                    50: "逾期",
-                    90: "坏账",
+                    30: this.$t('tab.LoanSuccess'),
+                    31: this.$t('tab.LoanFail'),
+                    40: this.$t('tab.Repayed'),
+                    41: this.$t('tab.RepayedReduced'),
+                    50: this.$t('tab.Overdue'),
+                    90: this.$t('tab.BadDebt'),
                 },
                 formLabelWidth: '120px',
                 formInit: {
@@ -287,7 +287,7 @@
                     let itemUrl = item.code
                     let title;
                     item.actionTag=='deduction'?title='补扣':title='退还'
-                    _this.$prompt(title, '提示', {
+                    _this.$prompt(title, '', {
                         confirmButtonText: '确定',
                         cancelButtonText: '取消',
                         inputPattern: '',

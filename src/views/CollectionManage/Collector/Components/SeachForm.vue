@@ -1,13 +1,13 @@
 <template>
   <section class="search-form" v-if="isShow">
     <el-form :inline="true" :model="formInline" class="demo-form-inline" size="mini">
-      <el-form-item label="姓名：">
+      <el-form-item :label="$t('table.name')">
         <el-input style="width: 130px" v-model="formInline.userName"></el-input>
       </el-form-item>
-      <el-form-item label="账号">
+      <el-form-item :label="$t('coll.AccountNumber')">
         <el-input style="width: 130px" v-model="formInline.phone"></el-input>
       </el-form-item>
-      <!-- <el-form-item label="催收状态：">
+      <!-- <el-form-item :label="$t('coll.Collectionstatus')">
         <el-select style="width: 130px" v-model="formInline.state" :placeholder="$t('tab.All')">
           <el-option
             v-for="(item,index) in searchList.collState"

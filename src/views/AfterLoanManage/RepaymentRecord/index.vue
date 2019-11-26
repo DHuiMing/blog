@@ -4,8 +4,8 @@
     <div class="tagc">
       <el-breadcrumb separator-class="el-icon-arrow-right">
         <el-breadcrumb-item :to="{ path: '/data/dataInfo' }">{{$t('route.dashboard')}}</el-breadcrumb-item>
-        <el-breadcrumb-item>贷后管理</el-breadcrumb-item>
-        <el-breadcrumb-item>还款记录</el-breadcrumb-item>
+        <el-breadcrumb-item>{{$t('AfterLoanManage')}}</el-breadcrumb-item>
+        <el-breadcrumb-item>{{$t('RepaymentRecord')}}</el-breadcrumb-item>
       </el-breadcrumb>
     </div>
     <div class="con">

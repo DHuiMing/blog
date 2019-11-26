@@ -180,7 +180,7 @@ export default {
       let _this = this;
       if (row.state == 20) {
         _this
-          .$prompt("请输入拉黑原因", "提示", {
+          .$prompt("请输入拉黑原因", "", {
             confirmButtonText: _this.$t('tips.confirm'),
             cancelButtonText: _this.$t('tips.cancel'),
             inputPattern: "",
@@ -214,7 +214,7 @@ export default {
           });
       } else {
         _this
-          .$confirm("是否取消黑名单?", "提示", {
+          .$confirm("是否取消黑名单?", "", {
             confirmButtonText: _this.$t('tips.confirm'),
             cancelButtonText: _this.$t('tips.cancel'),
             type: "info"

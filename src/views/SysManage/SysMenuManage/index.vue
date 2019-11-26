@@ -4,8 +4,8 @@
     <div class="tagc">
       <el-breadcrumb separator-class="el-icon-arrow-right">
         <el-breadcrumb-item :to="{ path: '/data/dataInfo' }">{{$t('route.dashboard')}}</el-breadcrumb-item>
-        <el-breadcrumb-item>系统管理</el-breadcrumb-item>
-        <el-breadcrumb-item>菜单管理</el-breadcrumb-item>
+        <el-breadcrumb-item>{{$t('SysManage')}}</el-breadcrumb-item>
+        <el-breadcrumb-item>{{$t('SysMenuManage')}}</el-breadcrumb-item>
       </el-breadcrumb>
     </div>
   </div>
@@ -16,7 +16,7 @@ export default {
   name: "CollectionTotalOrderList",
   data() {
     return {
- 
+
     };
   },
   components: {},

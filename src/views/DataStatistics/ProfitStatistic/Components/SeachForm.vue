@@ -1,7 +1,7 @@
 <template>
   <section class="search-form">
     <el-form :inline="true" :model="formInline" class="demo-form-inline" size="mini">
-    <el-form-item label="日期">
+    <el-form-item :label="$t('coll.Date')">
         <el-date-picker
           v-model="startEndTime"
           type="datetimerange"
@@ -10,7 +10,7 @@
           value-format="yyyy-MM-dd HH:mm:ss"
         ></el-date-picker>
       </el-form-item>
-   
+
       <el-form-item>
         <el-button type="primary" @click="onSubmit">{{$t('table.query')}}</el-button>
         <el-button type="primary" @click="Reset">{{$t('table.reset')}}</el-button>
@@ -24,13 +24,13 @@ export default {
   data() {
     return {
       formInline: {
-       
+
       },
       startEndTime:'',
     };
   },
   created() {
-    
+
   },
   methods: {
     onSubmit() {

@@ -1,8 +1,8 @@
 <template>
     <section class="search-form">
         <el-form :inline="true" :model="formInline" class="demo-form-inline" size="mini">
-            <el-form-item label="字典名称">
-                <el-input style="width: 130px" v-model="formInline.name" placeholder="字典名称"></el-input>
+            <el-form-item :label="$t('tab.ContaceWord')">
+                <el-input style="width: 130px" v-model="formInline.name" :placeholder="$t('tab.ContaceWord')"></el-input>
             </el-form-item>
 
 

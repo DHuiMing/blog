@@ -22,7 +22,7 @@
         </el-tooltip>-->
 
         <lang-select class="right-menu-item hover-effect" />
-        <!-- 
+        <!--
              <div class="user-info" v-if="usermsg">
             <span>
                 欢迎您, {{userMsg.name}}
@@ -52,7 +52,7 @@
       </el-dropdown>
       <el-dropdown class="avatar-container right-menu-item hover-effect">
         <span class="el-dropdown-link checkrole" style="font-size:14px;">
-           {{userMsg.name}} 
+           {{userMsg.name}}
           <i class="el-icon-arrow-down el-icon--right"></i>
         </span>
         <el-dropdown-menu slot="dropdown">
@@ -123,7 +123,7 @@ export default {
     handleCommand(command) {
       let _this = this;
       _this
-        .$confirm("你真的要切换吗?", "提示", {
+        .$confirm("你真的要切换吗?", "", {
           confirmButtonText: "确定",
           cancelButtonText: "取消",
           type: "warning"

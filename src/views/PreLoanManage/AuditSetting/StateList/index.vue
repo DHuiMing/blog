@@ -4,13 +4,13 @@
     <div class="tagc">
       <el-breadcrumb separator-class="el-icon-arrow-right">
         <el-breadcrumb-item :to="{ path: '/data/dataInfo' }">{{$t('route.dashboard')}}</el-breadcrumb-item>
-        <el-breadcrumb-item>贷前管理</el-breadcrumb-item>
-        <el-breadcrumb-item>风控信审设置</el-breadcrumb-item>
-        <el-breadcrumb-item>省份字典库</el-breadcrumb-item>
+        <el-breadcrumb-item>{{$t('PreLoanManage')}}</el-breadcrumb-item>
+        <el-breadcrumb-item>{{$t('AuditSetting')}}</el-breadcrumb-item>
+        <el-breadcrumb-item>{{$t('StateList')}}</el-breadcrumb-item>
       </el-breadcrumb>
     </div>
     <div class="con">
-      
+
       <!-- <seach-form @changeParmas="passParmas($event)" :allList="allList"></seach-form>
       <list ref="list" :allList="allList"></list> -->
     </div>

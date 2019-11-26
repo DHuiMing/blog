@@ -5,11 +5,11 @@
   >
     <el-tabs v-if="show" v-model="active" type="card" @tab-click="handleClick">
       <!--用户管理-->
-      <el-tab-pane :label="$t('tab.BasicInfo')" name="first">
+      <el-tab-pane :label="$t('tab.BasicInfo')" name="first" v-if="dataList.userIdentificationInfo">
         <el-row>
           <el-col :span="6">
             <div class="grid-content bg-purple-dark">{{$t('tab.selfie')}}</div>
-            <div class="tup">
+            <div class="tup" v-if="dataList.userIdentificationInfo && dataList.userIdentificationInfo.livingProofImg">
               <el-popover placement="right" trigger="click">
                 <img class="max-img" :src="path+'/'+path+'/'+dataList.userIdentificationInfo.livingProofImg.split(';')[0] || noImg">
                 <el-button slot="reference" class="small-img">
@@ -39,7 +39,7 @@
         <el-row>
              <el-col :span="6">
             <div class="grid-content bg-purple-dark">{{$t('tab.AadhaarFont')}}</div>
-            <div class="tup">
+            <div class="tup" v-if="dataList.userIdentificationInfo && dataList.userIdentificationInfo.aadhaarCardFrontImg">
               <el-popover placement="right" trigger="click">
                 <img
                   class="max-img"
@@ -224,7 +224,7 @@
       </el-tab-pane>
       <!--配置管理-->
       <el-tab-pane :label="$t('tab.ComanyProof')" name="2">
-        <el-form ref="form" label-width="100px">
+        <el-form ref="form" label-width="100px" v-if="dataList.userJobInfo">
           <el-row>
             <el-col :span="8">
               <el-form-item :label="$t('tab.EmployeeType')">
@@ -310,7 +310,7 @@
         </el-form>
       </el-tab-pane>
       <el-tab-pane :label="$t('tab.SocailInfo')" name="3">
-        <el-form ref="form" label-width="100px">
+        <el-form ref="form" label-width="100px" v-if="dataList.userSocialInfo">
           <el-row>
             <el-col :span="8">
               <el-form-item :label="$t('tab.FatherName')">
@@ -360,7 +360,7 @@
         </el-form>
       </el-tab-pane>
       <el-tab-pane :label="$t('tab.BankInfo')" name="4">
-        <el-form ref="form" label-width="100px">
+        <el-form ref="form" label-width="100px" v-if="dataList.userPayInfo">
           <el-row>
             <el-col :span="8">
               <el-form-item :label="$t('tab.BankName')">

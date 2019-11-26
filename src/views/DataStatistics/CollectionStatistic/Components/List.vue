@@ -9,18 +9,18 @@
       highlight-current-row
       style="width: 100%;margin-bottom: 50px;"
     >
-      <el-table-column label="日期" prop="time" width="200px" fixed align="center" ></el-table-column>
-      <el-table-column label="应还订单" prop="allocationOrder" fixed="left" align="center" width="120px"></el-table-column>
+      <el-table-column :label="$t('coll.Date')" prop="time" width="200px" fixed align="center" ></el-table-column>
+      <el-table-column :label="$t('coll.RepaymentNumber')" prop="allocationOrder" fixed="left" align="center" width="120px"></el-table-column>
       <el-table-column label="入催订单" prop="collectedOrder" width="200px" align="center"></el-table-column>
-      <el-table-column label="催回订单" prop="collectedOrder" width="200px" align="center"></el-table-column>
+      <el-table-column :label="$t('coll.SuccessOrder')" prop="collectedOrder" width="200px" align="center"></el-table-column>
       <el-table-column label="催回率1天" prop="collection1" width="200px" align="center"></el-table-column>
        <el-table-column label="催回率3天" prop="collection3" width="200px" align="center"></el-table-column>
       <el-table-column label="催回率7天" prop="collection7" width="200px" align="center"></el-table-column>
       <el-table-column label="催回率15天" prop="collection15" width="200px" align="center"></el-table-column>
-      <el-table-column label="催回率" prop="collectionRate" fixed="right"  align="center"></el-table-column>
-      <el-table-column label="首逾率" prop="firstOverdueRate" fixed="right"  align="center"></el-table-column>
-      <el-table-column label="逾期率" prop="overdueRate" fixed="right"  align="center"></el-table-column>
-      
+      <el-table-column :label="$t('coll.CollectionRate')" prop="collectionRate" fixed="right"  align="center"></el-table-column>
+      <el-table-column :label="$t('coll.FirstOverdueRate')" prop="firstOverdueRate" fixed="right"  align="center"></el-table-column>
+      <el-table-column :label="$t('coll.OverdueRate')" prop="overdueRate" fixed="right"  align="center"></el-table-column>
+
     </el-table>
     <div class="pagination-box">
       <el-pagination
@@ -41,10 +41,10 @@
 export default {
   name: "list",
   components: {
- 
+
   },
   filters: {
-  
+
 
   },
   data() {

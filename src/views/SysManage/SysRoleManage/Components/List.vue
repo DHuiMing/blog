@@ -1,7 +1,7 @@
 <template>
   <section>
     <div style="margin: 4px 0;background-color: #fff;padding: 4px">
-     <el-button  @click="topAction('Add')" size="small" type="primary">新增</el-button>
+     <el-button  @click="topAction('Add')" size="small" type="primary">{{$t('tab.Add')}}</el-button>
     </div>
     <el-table
       v-loading="listLoading"
@@ -14,7 +14,7 @@
     >
       <el-table-column label="角色名称" prop="name" fixed align="center" width="200px"></el-table-column>
       <el-table-column label="角色唯一标示" prop="nid" fixed align="center" width="120px"></el-table-column>
-      <el-table-column label="创建时间" prop="addTime" width="220px" align="center"></el-table-column>
+      <el-table-column :label="$t('tab.CreatTime')" prop="addTime" width="220px" align="center"></el-table-column>
       <el-table-column label="修改时间" prop="updateTime" width="180px" align="center"></el-table-column>
       <el-table-column label="修改人" prop="updateUser" width="150px" align="center"></el-table-column>
       <el-table-column label="备注" prop="remark" width="300px" align="center"></el-table-column>
@@ -25,14 +25,14 @@
       </el-table-column>
       <el-table-column :label="$t('table.Operating')" fixed="right" width="300px" align="center">
         <template slot-scope="scope">
-          <el-button type="primary" size="mini" @click="handleAction('Edit',scope.row)">编辑</el-button>
+          <el-button type="primary" size="mini" @click="handleAction('Edit',scope.row)">{{$t('table.edit')}}</el-button>
           <el-button
             v-if="scope.row.isDelete==0"
             type="primary"
             size="mini"
             @click="handleAction('Lock',scope.row)"
-          >禁用</el-button>
-          <el-button v-else type="primary" size="mini" @click="handleAction('Lock',scope.row)">启用</el-button>
+          >{{$t('tips.Disable')}}</el-button>
+          <el-button v-else type="primary" size="mini" @click="handleAction('Lock',scope.row)">{{$t('tips.Enable')}}</el-button>
           <el-button type="primary" size="mini" @click="handleAction('Allot',scope.row)">分配权限</el-button>
         </template>
       </el-table-column>
@@ -117,8 +117,8 @@
         </el-row>
         <div style="height: 60px">
           <el-form-item style="float: right;margin-top: 20px">
-            <el-button @click="cancel">取 消</el-button>
-            <el-button type="primary" @click="ensure('form')">确 定</el-button>
+            <el-button @click="cancel">{{$t('tips.cancel')}}</el-button>
+            <el-button type="primary" @click="ensure('form')">{{$t('tips.confirm')}}</el-button>
           </el-form-item>
         </div>
       </el-form>
@@ -256,13 +256,13 @@ export default {
         this.rest();
         this.dialogFormVisible = true;
         this.formInit.id = row.id;
-        this.formInit.isDelete = row.isDelete == 1 ? "禁用" : "启用";
+        this.formInit.isDelete = row.isDelete == 1 ? this.$t('tips.Disable') : this.$t('tips.Enable');
         this.formInit.name = row.name;
         this.formInit.nid = row.nid;
         this.formInit.remark = row.remark;
       } else if (actionTag == "Lock") {
-        let state = row.isDelete == 0 ? "停用" : "启用";
-        this.$confirm("是否确定" + state, "提示", {
+        let state = row.isDelete == 0 ? this.$t('tips.Disabled') : this.$t('tips.Enabled');
+        this.$confirm(this.$t('tips.Areyousureto') + state, "", {
           confirmButtonText: _this.$t('tips.confirm'),
           cancelButtonText: _this.$t('tips.cancel'),
           type: "warning"

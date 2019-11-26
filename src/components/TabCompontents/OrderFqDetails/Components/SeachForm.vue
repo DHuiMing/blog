@@ -36,12 +36,12 @@
                     <el-option v-for="(item,index) in searchList.borrowState" :key="index" :label="item" :value="index">{{item}}</el-option>
                 </el-select>
             </el-form-item>
-            <el-form-item label="还款状态" v-if="isShow">
+            <el-form-item :label="$t('tab.Status')" v-if="isShow">
                 <el-select style="width: 130px" v-model="formInline.repayState" :placeholder="$t('tab.All')">
                     <el-option v-for="(item,index) in searchList.repayState" :key="index" :label="item" :value="index">{{item}}</el-option>
                 </el-select>
             </el-form-item>
-            <el-form-item label="还款方式" v-if="isShow">
+            <el-form-item :label="$t('tab.PaymentMode1')" v-if="isShow">
                 <el-select style="width: 130px" v-model="formInline.repayWay" :placeholder="$t('tab.All')">
                     <el-option v-for="(item,index) in searchList.repayWay" :key="index" :label="item" :value="index">{{item}}</el-option>
                 </el-select>

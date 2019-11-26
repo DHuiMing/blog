@@ -7,15 +7,15 @@
         type="primary"
         @click="plfp"
         class="people"
-      >批量分配</el-button>
+      >{{$t('tab.Assigncreditauditors')}}</el-button>
       <el-dialog
-        :title="fp"
+        title=""
         v-if="allotManListShow"
         :visible.sync="dialogFormVisible"
         v-loading="listLoadingFp"
       >
         <el-form :model="form">
-          <el-form-item label="分配催收人员" :label-width="formLabelWidth">
+          <el-form-item :label="$t('tab.Allocation')" :label-width="formLabelWidth">
             <el-select v-model="form.collectionId" placeholder>
               <el-option
                 v-for="item in allotManList"
@@ -27,8 +27,8 @@
           </el-form-item>
         </el-form>
         <div slot="footer" class="dialog-footer">
-          <el-button @click="dialogFormVisible = false">取 消</el-button>
-          <el-button type="primary" @click="ensure">确 定</el-button>
+          <el-button @click="dialogFormVisible = false">{{$t('tips.cancel')}}</el-button>
+          <el-button type="primary" @click="ensure">{{$t('tips.confirm')}}</el-button>
         </div>
       </el-dialog>
     </div>
@@ -44,16 +44,16 @@
     >
       <el-table-column :selectable="checkboxInit" type="selection" width="55"></el-table-column>
       <el-table-column :label="$t('table.name')" prop="borrowName" fixed align="center" width="120px"></el-table-column>
-      <el-table-column label="手机：" prop="phone" fixed="left" align="center" width="120px"></el-table-column>
-      <el-table-column label="金额" prop="amount" width="200px" align="center"></el-table-column>
-      <el-table-column label="申请时间" prop="borrowTime" width="200px" align="center"></el-table-column>
-      <el-table-column label="放款时间" prop="disbursalTime" width="200px" align="center"></el-table-column>
-      <el-table-column label="应还日期" prop="repayTime" width="200px" align="center"></el-table-column>
+      <el-table-column :label="$t('table.phone')" prop="phone" fixed="left" align="center" width="120px"></el-table-column>
+      <el-table-column :label="$t('tab.Amount')" prop="amount" width="200px" align="center"></el-table-column>
+      <el-table-column :label="$t('tab.ApplyTime')" prop="borrowTime" width="200px" align="center"></el-table-column>
+      <el-table-column :label="$t('tab.Loantime')" prop="disbursalTime" width="200px" align="center"></el-table-column>
+      <el-table-column :label="$t('tab.Repaymentdate')" prop="repayTime" width="200px" align="center"></el-table-column>
       <el-table-column :label="$t('tab.DaysOverdue')" prop="penaltyDay" width="200px" align="center"></el-table-column>
-      <el-table-column label="逾期等级" prop="level" width="200px" align="center"></el-table-column>
-      <el-table-column label="滞纳金" prop="penaltyAmout" width="200px" align="center"></el-table-column>
-      <el-table-column label="催收员" prop="userName" width="200px" align="center"></el-table-column>
-      <el-table-column label="催收时间" prop="collectionTime" width="200px" align="center"></el-table-column>
+      <el-table-column :label="$t('coll.Overduelevel')" prop="level" width="200px" align="center"></el-table-column>
+      <el-table-column :label="$t('tab.Penaltycharge2')" prop="penaltyAmout" width="200px" align="center"></el-table-column>
+      <el-table-column :label="$t('coll.Collectionmember')" prop="userName" width="200px" align="center"></el-table-column>
+      <el-table-column :label="$t('coll.Collectiontime')" prop="collectionTime" width="200px" align="center"></el-table-column>
       <el-table-column :label="$t('tab.Theorderstatus')" fixed="right" width="150px" align="center">
         <template slot-scope="scope">
           <span>{{ scope.row.state | typeFilter}}</span>
@@ -61,8 +61,8 @@
       </el-table-column>
       <el-table-column :label="$t('table.Operating')" fixed="right" width="250px" align="center">
         <template slot-scope="scope">
-          <el-button type="primary" size="mini" @click="handleAction('Info',scope.row)">处理</el-button>
-          <el-button type="primary" v-if="scope.row.state !=40" size="mini" @click="handleAction('Allot',scope.row)">分配</el-button>
+          <el-button type="primary" size="mini" @click="handleAction('Info',scope.row)">{{$t('coll.handle')}}</el-button>
+          <el-button type="primary" v-if="scope.row.state !=40" size="mini" @click="handleAction('Allot',scope.row)">{{$t('tab.Allocation')}}</el-button>
         </template>
       </el-table-column>
     </el-table>

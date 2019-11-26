@@ -28,7 +28,7 @@
             </el-table-column>
             <el-table-column label="芝麻授信" prop="zhiMaMember" width="200px"  align="center">
             </el-table-column>
-            <el-table-column label="申请人数" prop="borrowMember" width="200px"  align="center">
+            <el-table-column :label="$t('coll.Applynumber')" prop="borrowMember" width="200px"  align="center">
             </el-table-column>
             <el-table-column label="放款人数" prop="loanMember" width="200px"  align="center">
             </el-table-column>
@@ -38,7 +38,7 @@
             </el-table-column>
             <el-table-column label="转化率(%)" prop="toFixed" width="200px"  align="center">
             </el-table-column>
-            <el-table-column label="老用户" prop="oldMember" width="200px"  align="center">
+            <el-table-column :label="$t('coll.OldUsermber')" prop="oldMember" width="200px"  align="center">
             </el-table-column>
             <el-table-column :label="$t('table.Operating')" fixed="right" width="250px" align="center">
                 <template slot-scope="scope">

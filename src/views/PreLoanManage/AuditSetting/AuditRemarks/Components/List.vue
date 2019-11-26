@@ -1,7 +1,7 @@
 <template>
   <section>
     <div style="margin: 4px 0;background-color: #fff;padding: 4px">
-      <el-button :disabled="isDisabled" @click="topAction('Add')" size="small" type="primary">新增</el-button>
+      <el-button :disabled="isDisabled" @click="topAction('Add')" size="small" type="primary">{{$t('tab.Add')}}</el-button>
     </div>
     <el-table
       v-loading="listLoading"
@@ -12,25 +12,25 @@
       highlight-current-row
       style="width: 100%;padding-bottom: 50px"
     >
-      <el-table-column label="序号" prop="code" fixed align="center" width="150px"></el-table-column>
-      <el-table-column label="选项名称" prop="value" fixed align="center" width="120px"></el-table-column>
-      <el-table-column label="创建时间" prop="createTime" width="220px" align="center"></el-table-column>
-      <el-table-column label="更新人" prop="mender" width="180px" align="center"></el-table-column>
-      <el-table-column label="选项类型" fixed="right" align="center">
+      <el-table-column :label="$t('tab.Number')" prop="code" fixed align="center" width="150px"></el-table-column>
+      <el-table-column :label="$t('tab.OptionName')" prop="value" fixed align="center" width="120px"></el-table-column>
+      <el-table-column :label="$t('tab.CreatTime')" prop="createTime" width="220px" align="center"></el-table-column>
+      <el-table-column :label="$t('tab.Updateone')" prop="mender" width="180px" align="center"></el-table-column>
+      <el-table-column :label="$t('tab.OptionType')" fixed="right" align="center">
         <template slot-scope="scope">
-          <span>{{ scope.row.codeType | typeFilter}}</span>
+          <span>{{ changeStatus(scope.row.codeType)}}</span>
         </template>
       </el-table-column>
       <el-table-column :label="$t('table.status')" fixed="right" align="center">
         <template slot-scope="scope">
-          <span>{{ (scope.row.state==10)?"启用" : (scope.row.state==20) ? "禁用" : "-"}}</span>
+          <span>{{ (scope.row.state==10)?$t('tips.Enabled') : (scope.row.state==20) ? $t('tips.Disabled') : "-"}}</span>
         </template>
       </el-table-column>
       <el-table-column :label="$t('table.Operating')" fixed="right" width="300px" align="center">
         <template slot-scope="scope">
-          <el-button type="primary" size="mini" @click="handleAction('Edit',scope.row)">编辑</el-button>
-          <el-button v-if="scope.row.state==10" type="primary" size="mini" @click="handleAction('Lock',scope.row)">禁用</el-button>
-          <el-button v-else type="primary" size="mini" @click="handleAction('Lock',scope.row)">启用</el-button>
+          <el-button type="primary" size="mini" @click="handleAction('Edit',scope.row)">{{$t('table.edit')}}</el-button>
+          <el-button v-if="scope.row.state==10" type="primary" size="mini" @click="handleAction('Lock',scope.row)">{{$t('tips.Disable')}}</el-button>
+          <el-button v-else type="primary" size="mini" @click="handleAction('Lock',scope.row)">{{$t('tips.Enable')}}</el-button>
         </template>
       </el-table-column>
     </el-table>
@@ -47,7 +47,7 @@
       ></el-pagination>
     </div>
     <el-dialog
-      title="新增"
+      title=""
       :visible.sync="dialogFormVisible"
       v-if="dialogFormVisible"
       :before-close="handleClose"
@@ -62,7 +62,7 @@
           </el-col>
           <el-col :span="11">
             <el-form-item
-              label="选项名称:"
+              :label="$t('tab.OptionName')"
               prop="value"
               :label-width="formLabelWidth"
               :rules="[{ required: true, message: '选项名称不能为空'}]"
@@ -71,7 +71,7 @@
             </el-form-item>
           </el-col>
           <el-col :span="11">
-            <el-form-item label="选项类型" :label-width="formLabelWidth" v-if="!isEdit">
+            <el-form-item :label="$t('tab.OptionType')" :label-width="formLabelWidth" v-if="!isEdit">
               <el-select v-model="formInit.codeType" :placeholder="$t('tab.All')">
                 <el-option
                   v-for="(item,index) in allList.auditTypeList"
@@ -85,8 +85,8 @@
         </el-row>
         <div style="height: 60px">
           <el-form-item style="float: right;margin-top: 20px">
-            <el-button @click="cancel">取 消</el-button>
-            <el-button type="primary" @click="ensure('form')">确 定</el-button>
+            <el-button @click="cancel">{{$t('tips.cancel')}}</el-button>
+            <el-button type="primary" @click="ensure('form')">{{$t('tips.confirm')}}</el-button>
           </el-form-item>
         </div>
       </el-form>
@@ -111,13 +111,13 @@ export default {
       let result = "";
       switch (type) {
         case "25":
-          result = "复审挂起";
+          result = "人工复审挂起";
           break;
         case "26":
-          result = "复审通过";
+          result = "人工复审通过";
           break;
         default:
-          result = "复审拒绝";
+          result = "人工复审拒绝";
           break;
       }
       return result;
@@ -165,6 +165,15 @@ export default {
     }
   },
   methods: {
+    changeStatus(type) {
+      if (type == "25") {
+        return this.$t('tab.ReviewHangup')
+      } else if (type == "26") {
+        return this.$t('tab.ReviewPass')
+      } else{
+        return this.$t('tab.ReviewRefuse')
+      }
+    },
     getActionList(list) {
       if (
         list.BtnPermList &&
@@ -227,8 +236,8 @@ export default {
         this.formInit.codeType = row.codeType;
         this.dialogFormVisible = true;
       } else if (actionTag == "Lock") {
-        let state = row.state == 10 ? "禁用" : "启用";
-        this.$confirm("是否确定" + state, "提示", {
+        let state = row.state == 10 ? this.$t('tips.Disable') : this.$t('tips.Enable');
+        this.$confirm(this.$t('tips.Areyousureto') + state, "", {
           confirmButtonText: _this.$t('tips.confirm'),
           cancelButtonText: _this.$t('tips.cancel'),
           type: "warning"

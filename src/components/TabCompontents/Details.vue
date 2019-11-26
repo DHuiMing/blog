@@ -54,8 +54,8 @@
           :id="borrowId"
           :userId="userId"
         />
-        <!--<el-button @click="dialogVisible = false">取 消</el-button>-->
-        <!--<el-button type="primary" @click="dialogVisible = false">确 定</el-button>-->
+        <!--<el-button @click="dialogVisible = false">{{$t('tips.cancel')}}</el-button>-->
+        <!--<el-button type="primary" @click="dialogVisible = false">{{$t('tips.confirm')}}</el-button>-->
         <section style="background-color: #f5f5f5;padding: 6px;border-radius: 4px;" v-if="isRefuse">
           <el-form ref="form" label-width="80px" style="width: 660px;" label-position="left">
             <el-form-item label="审批意见">

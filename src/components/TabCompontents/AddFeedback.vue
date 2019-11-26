@@ -16,7 +16,7 @@
                 </el-row>
                 <el-row>
                     <el-col :span="12">
-                        <el-form-item label="金额" :label-width="formLabelWidth">
+                        <el-form-item :label="$t('tab.Amount')" :label-width="formLabelWidth">
                             <el-input disabled v-model="rowList.amount" autocomplete="off"></el-input>
                         </el-form-item>
                     </el-col>
@@ -45,7 +45,7 @@
                         </el-form-item>
                     </el-col>
                     <el-col :span="12">
-                        <el-form-item label="逾期等级" :label-width="formLabelWidth">
+                        <el-form-item :label="$t('coll.Overduelevel')" :label-width="formLabelWidth">
                             <el-input disabled v-model="rowList.level" autocomplete="off"></el-input>
                         </el-form-item>
                     </el-col>
@@ -65,7 +65,7 @@
 
                 <el-row>
                     <el-col :span="12">
-                        <el-form-item label="催收时间" prop="createTime" :label-width="formLabelWidth">
+                        <el-form-item :label="$t('coll.Collectiontime')" prop="createTime" :label-width="formLabelWidth">
                             <el-date-picker
                                     v-model="form.createTime"
                                     type="datetime"
@@ -90,7 +90,7 @@
                                 <el-option label="请选择" value="">请选择</el-option>
                                 <el-option label="催收中" value="20"></el-option>
                                 <el-option label="承诺还款" value="30"></el-option>
-                                <el-option label="坏账" value="50"></el-option>
+                                <el-option :label="$t('tab.BadDebt')" value="50"></el-option>
                             </el-select>
                         </el-form-item>
                     </el-col>
@@ -111,8 +111,8 @@
                 </el-form-item>
             </el-form>
             <div slot="footer" class="dialog-footer">
-                <el-button @click="cancel">取 消</el-button>
-                <el-button type="primary" @click="submitForm('feedForm')">确 定</el-button>
+                <el-button @click="cancel">{{$t('tips.cancel')}}</el-button>
+                <el-button type="primary" @click="submitForm('feedForm')">{{$t('tips.confirm')}}</el-button>
             </div>
         </el-dialog>
     </section>

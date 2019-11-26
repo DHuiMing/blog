@@ -1,7 +1,7 @@
 <template>
     <section>
         <div style="margin: 4px 0;background-color: #fff;padding: 4px">
-            <el-button  @click="topAction('Add')" size="small" type="primary">新增</el-button>
+            <el-button  @click="topAction('Add')" size="small" type="primary">{{$t('tab.Add')}}</el-button>
         </div>
         <el-table
                 v-loading="listLoading"
@@ -27,9 +27,9 @@
             </el-table-column>
             <el-table-column :label="$t('table.Operating')" fixed="right" width="300px" align="center">
                 <template slot-scope="scope">
-                     <el-button type="primary" size="mini" @click="handleAction('Edit',scope.row)">编辑</el-button>
-                      <el-button v-if="scope.row.status==0" type="primary" size="mini" @click="handleAction('Lock',scope.row)">禁用</el-button>
-                       <el-button v-else type="primary" size="mini" @click="handleAction('Lock',scope.row)">启用</el-button>
+                     <el-button type="primary" size="mini" @click="handleAction('Edit',scope.row)">{{$t('table.edit')}}</el-button>
+                      <el-button v-if="scope.row.status==0" type="primary" size="mini" @click="handleAction('Lock',scope.row)">{{$t('tips.Disable')}}</el-button>
+                       <el-button v-else type="primary" size="mini" @click="handleAction('Lock',scope.row)">{{$t('tips.Enable')}}</el-button>
                 </template>
             </el-table-column>
         </el-table>
@@ -103,8 +103,8 @@
                 </el-row>
                 <div style="height: 60px">
                     <el-form-item  style="float: right;margin-top: 20px">
-                        <el-button @click="cancel">取 消</el-button>
-                        <el-button type="primary" @click="ensure('form')">确 定</el-button>
+                        <el-button @click="cancel">{{$t('tips.cancel')}}</el-button>
+                        <el-button type="primary" @click="ensure('form')">{{$t('tips.confirm')}}</el-button>
                     </el-form-item>
                 </div>
             </el-form>
@@ -169,10 +169,10 @@
                 },
                 options: [{
                     value: '0',
-                    label: '启用'
+                    label: this.$t('tips.Enabled')
                 }, {
                     value: '1',
-                    label: '禁用'
+                    label: this.$t('tips.Disable')
                 }],
                 formLoading:false,
                 topUrl:'',
@@ -257,8 +257,8 @@
                     this.formInit.remark=row.remark
                     this.dialogFormVisible=true
                 }else if(actionTag=="Lock"){
-                    let state = row.status==0?'停用':'启用'
-                    this.$confirm('是否确定'+state, '提示', {
+                    let state = row.status==0?_this.$t('tips.Disable'):_this.$t('tips.Enabled')
+                    this.$confirm(_this.$t('tips.Areyousureto') +state, '', {
                         confirmButtonText: _this.$t('tips.confirm'),
                         cancelButtonText: _this.$t('tips.cancel'),
                         type: 'warning'
@@ -284,7 +284,7 @@
                     });
 
                 }else if(actionTag=="ResetPassWord"){
-                    this.$confirm('是否确定重置密码', '提示', {
+                    this.$confirm('是否确定重置密码', '', {
                         confirmButtonText: _this.$t('tips.confirm'),
                         cancelButtonText: _this.$t('tips.cancel'),
                         type: 'warning'

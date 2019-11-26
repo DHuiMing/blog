@@ -1,7 +1,7 @@
 <template>
   <section>
     <div style="margin: 4px 0;background-color: #fff;padding: 4px">
-      <el-button  @click="topAction('Add')" size="small" type="primary">新增</el-button>
+      <el-button  @click="topAction('Add')" size="small" type="primary">{{$t('tab.Add')}}</el-button>
     </div>
     <div class="pagination-box">
       <el-pagination
@@ -24,21 +24,21 @@
       highlight-current-row
       style="width: 100%;margin-bottom: 50px;"
     >
-      <el-table-column label="序号" prop="id"  align="center" ></el-table-column>
-      <el-table-column label="通讯录字典名称" align="center" prop="name"  ></el-table-column>
-      <el-table-column label="通讯录类型" prop="type"   align="center">
+      <el-table-column :label="$t('tab.Number')" prop="id"  align="center" ></el-table-column>
+      <el-table-column :label="$t('tab.ContaceWord')" align="center" prop="name"  ></el-table-column>
+      <el-table-column :label="$t('tab.ContactType')" prop="type"   align="center">
          <template slot-scope="scope">
-          <span>{{ scope.row.type==1 ? '亲属':'专线'}}</span>
+          <span>{{ scope.row.type==1 ? $t('tab.kinsfolk'):$t('tab.specialtelephoneline')}}</span>
         </template>
       </el-table-column>
 
-      <!-- <el-table-column label="逾期费用" prop="penaltyCharge" width="180px" align="center"></el-table-column>
-      <el-table-column label="已还金额" prop="repaidAmout" width="180px" align="center"></el-table-column>
-      <el-table-column label="到账时间" prop="receiptTime" width="180px" align="center"></el-table-column>
-      <el-table-column label="应还日期" prop="repaymentDate" width="180px" align="center"></el-table-column>
-      <el-table-column label="实际还款时间" prop="repaidTime" width="180px" align="center"></el-table-column>
+      <!-- <el-table-column :label="$t('tab.Penaltycharge')" prop="penaltyCharge" width="180px" align="center"></el-table-column>
+      <el-table-column :label="$t('tab.RepaidAmout')" prop="repaidAmout" width="180px" align="center"></el-table-column>
+      <el-table-column :label="$t('tab.ReceiptTime')" prop="receiptTime" width="180px" align="center"></el-table-column>
+      <el-table-column :label="$t('tab.Repaymentdate')" prop="repaymentDate" width="180px" align="center"></el-table-column>
+      <el-table-column :label="$t('tab.RepaidTime')" prop="repaidTime" width="180px" align="center"></el-table-column>
       <el-table-column :label="$t('tab.DaysOverdue')" prop="daysOverdue" width="180px" align="center"></el-table-column>
-      <el-table-column label="客群" prop="userGroup" width="180px" align="center">
+      <el-table-column :label="$t('tab.UserGroup')" prop="userGroup" width="180px" align="center">
           <template slot-scope="scope">
           <span>{{ scope.row.userGroup ? '老客':'新客'}}</span>
         </template>
@@ -46,15 +46,15 @@
 
       <el-table-column :label="$t('table.Operating')" fixed="right" width="300px" align="center">
         <template slot-scope="scope">
-          <el-button type="primary" size="mini" @click="handleAction('Edit',scope.row)">编辑</el-button>
-          <!-- <el-button v-if="scope.row.state==10" type="primary" size="mini" @click="handleAction('Lock',scope.row)">禁用</el-button>
-          <el-button v-else type="primary" size="mini" @click="handleAction('Lock',scope.row)">启用</el-button>  -->
+          <el-button type="primary" size="mini" @click="handleAction('Edit',scope.row)">{{$t('table.edit')}}</el-button>
+          <!-- <el-button v-if="scope.row.state==10" type="primary" size="mini" @click="handleAction('Lock',scope.row)">{{$t('tips.Disable')}}</el-button>
+          <el-button v-else type="primary" size="mini" @click="handleAction('Lock',scope.row)">{{$t('tips.Enable')}}</el-button>  -->
         </template>
       </el-table-column>
     </el-table>
 
      <el-dialog
-      title="新增"
+      title=""
       :visible.sync="dialogFormVisible"
       v-if="dialogFormVisible"
       :before-close="handleClose"
@@ -69,7 +69,7 @@
           </el-col>
           <el-col :span="11">
             <el-form-item
-              label="通讯录字典名称:"
+              :label="$t('tab.ContaceWord')"
               prop="name"
               :label-width="formLabelWidth"
               :rules="[{ required: true, message: '通讯录字典名称不能为空'}]"
@@ -78,7 +78,7 @@
             </el-form-item>
           </el-col>
               <el-col :span="11">
-            <el-form-item label="通讯录类型" :label-width="formLabelWidth">
+            <el-form-item :label="$t('tab.ContactType')" :label-width="formLabelWidth">
               <el-select v-model="formInit.type" :placeholder="$t('tab.All')">
                 <el-option
                   v-for="(item,index) in auditTypeList"
@@ -92,8 +92,8 @@
         </el-row>
         <div style="height: 60px">
           <el-form-item style="float: right;margin-top: 20px">
-            <el-button @click="cancel">取 消</el-button>
-            <el-button type="primary" @click="ensure('form')">确 定</el-button>
+            <el-button @click="cancel">{{$t('tips.cancel')}}</el-button>
+            <el-button type="primary" @click="ensure('form')">{{$t('tips.confirm')}}</el-button>
           </el-form-item>
         </div>
       </el-form>
@@ -135,24 +135,24 @@ export default {
       power: null,
       actionList: null,
       allBorrowState: {
-        "10": "申请成功待审核",
-        "20": "自动审核通过",
-        "21": "自动审核不通过",
-        "22": "自动审核未决待人工复审",
-        "25": "人工复审挂起",
-        "26": "人工复审通过",
-        "27": "人工复审不通过",
-        "30": "放款成功",
-        "31": "放款失败",
-        "40": "还款成功",
-        "41": "还款成功-金额减免",
-        "45": "还款中",
-        "50": "逾期",
-        "90": "坏账"
+        "10": this.$t('tab.Apply'),
+        "20": this.$t('tab.AutoReviewPass'),
+        "21": this.$t('tab.AutoReviewRefuse'),
+        "22": this.$t('tab.Reviewing'),
+        "25": this.$t('tab.ReviewHangup'),
+        "26": this.$t('tab.ReviewPass'),
+        "27": this.$t('tab.ReviewRefuse'),
+        "30": this.$t('tab.LoanSuccess'),
+        "31": this.$t('tab.LoanFail'),
+        "40": this.$t('tab.Repayed'),
+        "41": this.$t('tab.RepayedReduced'),
+        "45": this.$t('tab.Repaying'),
+        "50": this.$t('tab.Overdue'),
+        "90": this.$t('tab.BadDebt')
       },
       auditTypeList:{
-        1:'亲属',
-        2:'专线'
+        1:this.$t('tab.kinsfolk'),
+        2:this.$t('tab.specialtelephoneline')
       }
     };
   },
@@ -215,8 +215,8 @@ export default {
         this.formInit.type = row.type.toString();
         this.dialogFormVisible = true;
       } else if (actionTag == "Lock") {
-        let state = row.state == 10 ? "禁用" : "启用";
-        this.$confirm("是否确定" + state, "提示", {
+        let state = row.state == 10 ? this.$t('tips.Disable') : this.$t('tips.Enable');
+        this.$confirm(this.$t('tips.Areyousureto') + state, "", {
           confirmButtonText: _this.$t('tips.confirm'),
           cancelButtonText: _this.$t('tips.cancel'),
           type: "warning"

@@ -9,9 +9,9 @@
       highlight-current-row
       style="width: 100%;margin-bottom: 50px;"
     >
-      <el-table-column label="日期" prop="date" fixed align="center" ></el-table-column>
+      <el-table-column :label="$t('coll.Date')" prop="date" fixed align="center" ></el-table-column>
       <el-table-column :label="$t('tab.Loanamount')" prop="income"  align="center"></el-table-column>
-      <el-table-column label="已还金额" prop="expend"  align="center"></el-table-column>
+      <el-table-column :label="$t('tab.RepaidAmout')" prop="expend"  align="center"></el-table-column>
        <el-table-column label="放款利润" prop="loanProfit" align="center"></el-table-column>
       <el-table-column label="放款利润率" prop="loanProfitRate" align="center"></el-table-column>
     </el-table>

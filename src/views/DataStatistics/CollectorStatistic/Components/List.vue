@@ -9,11 +9,11 @@
       highlight-current-row
       style="width: 100%;margin-bottom: 50px;"
     >
-      <el-table-column label="日期" prop="time"  fixed align="center" ></el-table-column>
-      <el-table-column label="催收员" prop="applyNumber" fixed="left" align="center" ></el-table-column>
+      <el-table-column :label="$t('coll.Date')" prop="time"  fixed align="center" ></el-table-column>
+      <el-table-column :label="$t('coll.Collectionmember')" prop="applyNumber" fixed="left" align="center" ></el-table-column>
       <el-table-column label="分配订单" prop="loanNumber"  align="center"></el-table-column>
-      <el-table-column label="催回订单" prop="loanAmount"  align="center"></el-table-column>
-      <el-table-column label="催回率" prop="firstBorrowingNumber"  align="center"></el-table-column>
+      <el-table-column :label="$t('coll.SuccessOrder')" prop="loanAmount"  align="center"></el-table-column>
+      <el-table-column :label="$t('coll.CollectionRate')" prop="firstBorrowingNumber"  align="center"></el-table-column>
     </el-table>
     <div class="pagination-box">
       <el-pagination
@@ -34,10 +34,10 @@
 export default {
   name: "list",
   components: {
- 
+
   },
   filters: {
-  
+
 
   },
   data() {

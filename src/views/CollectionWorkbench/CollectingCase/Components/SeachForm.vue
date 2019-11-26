@@ -1,13 +1,13 @@
 <template>
   <section class="search-form" v-if="isShow">
     <el-form :inline="true" :model="formInline" class="demo-form-inline" size="mini">
-      <el-form-item label="姓名：">
+      <el-form-item :label="$t('table.name')">
         <el-input style="width: 130px" v-model="formInline.borrowName"></el-input>
       </el-form-item>
-      <el-form-item label="手机：">
+      <el-form-item :label="$t('table.phone')">
         <el-input style="width: 130px" v-model="formInline.phone"></el-input>
       </el-form-item>
-      <!-- <el-form-item label="催收状态：">
+      <!-- <el-form-item :label="$t('coll.Collectionstatus')">
         <el-select style="width: 130px" v-model="formInline.state" :placeholder="$t('tab.All')">
           <el-option
             v-for="(item,index) in searchList.collState"
@@ -18,7 +18,7 @@
         </el-select>
       </el-form-item> -->
 
-      <el-form-item label="逾期等级：">
+      <el-form-item :label="$t('coll.Overduelevel')">
         <el-select style="width: 130px" v-model="formInline.level" :placeholder="$t('tab.All')">
           <el-option
             v-for="(item,index) in searchList.overdueLevel"
@@ -28,7 +28,7 @@
           >{{item}}</el-option>
         </el-select>
       </el-form-item>
-      <el-form-item label="逾期天数：">
+      <el-form-item :label="$t('coll.DaysOverdue')">
         <el-input style="width: 130px" v-model="formInline.penaltyDay"></el-input>
       </el-form-item>
       <el-form-item>

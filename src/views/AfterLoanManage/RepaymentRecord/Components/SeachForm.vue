@@ -5,7 +5,7 @@
         <el-input style="width: 130px" v-model="formInline.name" :placeholder="$t('table.name')"></el-input>
       </el-form-item>
       <el-form-item :label="$t('table.phone')">
-        <el-input style="width: 130px" v-model="formInline.phone" placeholder="手机"></el-input>
+        <el-input style="width: 130px" v-model="formInline.phone" :placeholder="$t('table.phone')"></el-input>
       </el-form-item>
        <el-form-item :label="$t('tab.OrderNumber')">
         <el-input style="width: 130px" v-model="formInline.orderNo" :placeholder="$t('tab.OrderNumber')"></el-input>

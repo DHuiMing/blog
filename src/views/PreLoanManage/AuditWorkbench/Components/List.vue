@@ -7,10 +7,10 @@
         type="primary"
         @click="plfp"
         class="people"
-      >批量分配</el-button>
-      <el-dialog :title="fp" :visible.sync="dialogFormVisible" v-loading="listLoadingFp">
+      >{{$t('tab.Assigncreditauditors')}}</el-button>
+      <el-dialog  :visible.sync="dialogFormVisible" v-loading="listLoadingFp">
         <el-form :model="form">
-          <el-form-item label="分配信审人员" :label-width="formLabelWidth">
+          <el-form-item :label="$t('tab.Assigncreditauditors')" label-width="200px">
             <el-select v-model="form.collectionId" placeholder>
               <el-option
                 v-for="item in allotManList"
@@ -22,8 +22,36 @@
           </el-form-item>
         </el-form>
         <div slot="footer" class="dialog-footer">
-          <el-button @click="dialogFormVisible = false">取 消</el-button>
-          <el-button type="primary" @click="ensure">确 定</el-button>
+          <el-button @click="dialogFormVisible = false">{{$t('tips.cancel')}}</el-button>
+          <el-button type="primary" @click="ensure">{{$t('tips.confirm')}}</el-button>
+        </div>
+      </el-dialog>
+      <el-button
+        size="small"
+        type="primary"
+        @click="dialogxsVisible = true"
+      >{{$t('tab.Letteronstatistical')}}</el-button>
+      <el-dialog width="500px" :visible.sync="dialogxsVisible">
+        <div v-if="manageAuditLogCount">
+          <el-row style="padding: 10px 0">
+            <el-col :span="12"><div>{{$t('tab.platformAuditAmout')}} : {{manageAuditLogCount.platformAuditAmout}}</div></el-col>
+            <el-col :span="12"><div>{{$t('tab.platformTotalAuditAmout')}} ：{{manageAuditLogCount.platformTotalAuditAmout}}</div></el-col>
+          </el-row>
+          <el-row style="padding: 10px 0">
+            <el-col :span="12"><div>{{$t('tab.auditAmount')}} ：{{manageAuditLogCount.auditAmount}}</div></el-col>
+            <el-col :span="12"><div>{{$t('tab.totalAuditAmount')}} ：{{manageAuditLogCount.totalAuditAmount}}</div></el-col>
+          </el-row>
+          <el-row style="padding: 10px 0">
+            <el-col :span="12"><div>{{$t('tab.passAmount')}} ：{{manageAuditLogCount.passAmount}}</div></el-col>
+            <el-col :span="12"><div>{{$t('tab.totalPassAmount')}} ：{{manageAuditLogCount.totalPassAmount}}</div></el-col>
+          </el-row>
+          <el-row style="padding: 10px 0">
+            <el-col :span="12"><div>{{$t('tab.rejectAmount')}} ：{{manageAuditLogCount.rejectAmount}}</div></el-col>
+            <el-col :span="12"><div>{{$t('tab.totalRejectAmount')}} ：{{manageAuditLogCount.totalRejectAmount}}</div></el-col>
+          </el-row>
+        </div>
+        <div slot="footer" class="dialog-footer">
+          <el-button @click="dialogxsVisible = false">关闭</el-button>
         </div>
       </el-dialog>
     </div>
@@ -55,21 +83,21 @@
       <!-- <el-table-column :label="$t('tab.OrderNumber')" prop="orderNumber" fixed width="180px" align="center"></el-table-column> -->
       <el-table-column :label="$t('tab.LoanAmount')" prop="loanAmount" width="180px" align="center"></el-table-column>
       <el-table-column :label="$t('tab.LoanTenure')" prop="loanTenure" width="180px" align="center"></el-table-column>
-      <el-table-column label="到帐金额" prop="disbursalAmount" width="180px" align="center"></el-table-column>
-      <!-- <el-table-column label="手续费" prop="processingFee" width="180px" align="center"></el-table-column>
-      <el-table-column label="利息" prop="interest" width="180px" align="center"></el-table-column>-->
-      <el-table-column label="应还金额" prop="repaymentAmount" width="180px" align="center"></el-table-column>
-      <el-table-column label="下单时间" prop="applyTime" width="180px" align="center"></el-table-column>
-      <!-- <el-table-column label="逾期费用" prop="penaltyCharge" width="180px" align="center"></el-table-column>
-      <el-table-column label="已还金额" prop="repaidAmout" width="180px" align="center"></el-table-column>
-      <el-table-column label="到账时间" prop="receiptTime" width="180px" align="center"></el-table-column>
-      <el-table-column label="应还日期" prop="repaymentDate" width="180px" align="center"></el-table-column>
-      <el-table-column label="实际还款时间" prop="repaidTime" width="180px" align="center"></el-table-column>
+      <el-table-column :label="$t('tab.Arrivalamount')" prop="disbursalAmount" width="180px" align="center"></el-table-column>
+      <!-- <el-table-column :label="$t('tab.poundage')" prop="processingFee" width="180px" align="center"></el-table-column>
+      <el-table-column :label="$t('interests')" prop="interest" width="180px" align="center"></el-table-column>-->
+      <el-table-column :label="$t('tab.RepaymentAmount')" prop="repaymentAmount" width="180px" align="center"></el-table-column>
+      <el-table-column :label="$t('tab.ApplyTime')" prop="applyTime" width="180px" align="center"></el-table-column>
+      <!-- <el-table-column :label="$t('tab.Penaltycharge')" prop="penaltyCharge" width="180px" align="center"></el-table-column>
+      <el-table-column :label="$t('tab.RepaidAmout')" prop="repaidAmout" width="180px" align="center"></el-table-column>
+      <el-table-column :label="$t('tab.ReceiptTime')" prop="receiptTime" width="180px" align="center"></el-table-column>
+      <el-table-column :label="$t('tab.Repaymentdate')" prop="repaymentDate" width="180px" align="center"></el-table-column>
+      <el-table-column :label="$t('tab.RepaidTime')" prop="repaidTime" width="180px" align="center"></el-table-column>
       <el-table-column :label="$t('tab.DaysOverdue')" prop="daysOverdue" width="180px" align="center"></el-table-column>-->
       <!-- <el-table-column label="渠道" prop="channel" width="180px" align="center"></el-table-column> -->
-      <el-table-column label="客群" prop="userGroup" width="180px" align="center">
+      <el-table-column :label="$t('tab.UserGroup')" prop="userGroup" width="180px" align="center">
         <template slot-scope="scope">
-          <span>{{ scope.row.userGroup ? '老客':'新客'}}</span>
+          <span>{{ scope.row.userGroup ? $t('tab.Oldcustomers'):$t('tab.Newcustomers')}}</span>
         </template>
       </el-table-column>
       <!-- <el-table-column :label="$t('tab.Theorderstatus')" fixed="right" width="200px" align="center">
@@ -77,11 +105,11 @@
           <span>{{ allBorrowState[scope.row.status]}}</span>
         </template>
       </el-table-column>-->
-      <el-table-column :label="$t('table.Operating')" fixed="right" width="250px" align="center">
+      <el-table-column :label="$t('table.Operating')" fixed="right" width="400px" align="center">
         <template slot-scope="scope">
           <el-button type="primary" size="mini" @click="handleAction('Info',scope.row)">{{$t('tem.Check')}}</el-button>
-          <el-button type="primary" size="mini" @click="handleAction('Verify',scope.row)">复审</el-button>
-          <el-button type="primary" size="mini" @click="handleAction('Allot',scope.row)">分配</el-button>
+          <el-button type="primary" size="mini" @click="handleAction('Verify',scope.row)">{{$t('tab.Recheck')}}</el-button>
+          <el-button type="primary" size="mini" @click="handleAction('Allot',scope.row)">{{$t('tab.Allocation')}}</el-button>
         </template>
       </el-table-column>
     </el-table>
@@ -115,6 +143,7 @@ export default {
       form: {
         collectionId: ""
       },
+      dialogxsVisible:false,
       detailWinShow: false,
       formInit: {},
       contractUrl: "",
@@ -125,25 +154,26 @@ export default {
       power: null,
       actionList: null,
       allBorrowState: {
-        "10": "申请成功待审核",
-        "20": "自动审核通过",
-        "21": "自动审核不通过",
-        "22": "自动审核未决待人工复审",
-        "25": "人工复审挂起",
-        "26": "人工复审通过",
-        "27": "人工复审不通过",
-        "30": "放款成功",
-        "31": "放款失败",
-        "40": "还款成功",
-        "41": "还款成功-金额减免",
-        "45": "还款中",
-        "50": "逾期",
-        "90": "坏账"
+        "10": this.$t('tab.Apply'),
+        "20": this.$t('tab.AutoReviewPass'),
+        "21": this.$t('tab.AutoReviewRefuse'),
+        "22": this.$t('tab.Reviewing'),
+        "25": this.$t('tab.ReviewHangup'),
+        "26": this.$t('tab.ReviewPass'),
+        "27": this.$t('tab.ReviewRefuse'),
+        "30": this.$t('tab.LoanSuccess'),
+        "31": this.$t('tab.LoanFail'),
+        "40": this.$t('tab.Repayed'),
+        "41": this.$t('tab.RepayedReduced'),
+        "45": this.$t('tab.Repaying'),
+        "50": this.$t('tab.Overdue'),
+        "90": this.$t('tab.BadDebt')
       },
       isDisabled: true,
       allotManList: null,
       fp: "分配",
       formLabelWidth: "120px",
+      manageAuditLogCount: null,
       checkCollection: "", //选中单子的id   分配催收人员时用到
       checkCollections: "" //选中单子的id   分配催收人员时用到  批量
     };
@@ -193,7 +223,9 @@ export default {
           url: "/manage/risk/manageAuditLogCount.htm",
           data: {searchParams:''}
         })
-        .then(res => {})
+        .then(res => {
+          _this.manageAuditLogCount = res.content.data
+        })
         .catch(err => {});
     },
     handleSizeChange(val) {

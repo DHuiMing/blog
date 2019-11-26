@@ -4,7 +4,7 @@
             <el-form-item label="省份名称:">
                 <el-input style="width: 130px" v-model="formInline.value" placeholder="省份名称"></el-input>
             </el-form-item>
-            <!-- <el-form-item label="选项类型">
+            <!-- <el-form-item :label="$t('tab.OptionType')">
                 <el-select style="width: 130px" v-model="formInline.codeType" :placeholder="$t('tab.All')">
                     <el-option v-for="(item,index) in allList.auditTypeList" :label="item" :key="index"  :value="index">{{item}}</el-option>
                 </el-select>

@@ -35,11 +35,11 @@
             <el-table-column label="应还款日期" prop="repayPlanTime" width="180px" align="center">
             </el-table-column>
 
-            <el-table-column label="审核人" prop="auditName" align="center" width="150px">
+            <el-table-column :label="$t('tab.Auditor')" prop="auditName" align="center" width="150px">
             </el-table-column>
             <el-table-column label="实际还款日期" prop="repayTime" width="180px" align="center">
             </el-table-column>
-            <el-table-column label="还款方式" prop="repayWay" width="180px" align="center">
+            <el-table-column :label="$t('tab.PaymentMode1')" prop="repayWay" width="180px" align="center">
             </el-table-column>
             <el-table-column label="还款账号" prop="repayAccount" width="200px" align="center">
             </el-table-column>
@@ -50,7 +50,7 @@
                     <span>{{ scope.row.borrowState == 40 ? '还款成功' : scope.row.borrowState == 30 ? '放款成功' : scope.row.borrowState == 41 ? '还款成功-金额减免' : scope.row.borrowState == 50 ? '逾期' : scope.row.borrowState == 90 ? '坏账' : '-'}}</span>
                 </template>
             </el-table-column>
-            <el-table-column label="还款状态" fixed="right" width="100px" align="center">
+            <el-table-column :label="$t('tab.Status')" fixed="right" width="100px" align="center">
                 <template slot-scope="scope">
                     <span>{{ scope.row.state==20?'未还款' : '已还款'}}</span>
                 </template>
@@ -118,23 +118,23 @@
                 power:null,
                 actionList:null,
                 allBorrowState:{
-                    10: "申请成功待审核",
+                    10: this.$t('tab.Apply'),
                     12: "待活体自动放款",
                     14: "待活体自动人审",
-                    20: "自动审核通过",
-                    21: "自动审核不通过",
-                    22: "自动审核未决待人工复审",
-                    25: "人工复审挂起",
-                    26: "人工复审通过",
-                    27: "人工复审不通过",
+                    20: this.$t('tab.AutoReviewPass'),
+                    21: this.$t('tab.AutoReviewRefuse'),
+                    22: this.$t('tab.Reviewing'),
+                    25: this.$t('tab.ReviewHangup'),
+                    26: this.$t('tab.ReviewPass'),
+                    27: this.$t('tab.ReviewRefuse'),
                     28: "审核成功(待银程同意)",
                     29: "银程同意(待连连放款)",
-                    30: "放款成功",
-                    31: "放款失败",
-                    40: "还款成功",
-                    41: "还款成功-金额减免",
-                    50: "逾期",
-                    90: "坏账",
+                    30: this.$t('tab.LoanSuccess'),
+                    31: this.$t('tab.LoanFail'),
+                    40: this.$t('tab.Repayed'),
+                    41: this.$t('tab.RepayedReduced'),
+                    50: this.$t('tab.Overdue'),
+                    90: this.$t('tab.BadDebt'),
                 }
             }
         },
@@ -190,7 +190,7 @@
 
                 }else if(item.actionTag=='PayAgain'){
                     let _this = this;
-                    this.$confirm('是否确定再次支付', '提示', {
+                    this.$confirm('是否确定再次支付', '', {
                         confirmButtonText: '确定',
                         cancelButtonText: '取消',
                         type: 'warning'

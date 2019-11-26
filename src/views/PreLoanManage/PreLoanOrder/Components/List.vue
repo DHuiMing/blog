@@ -27,17 +27,17 @@
       <el-table-column :label="$t('tab.LoanAmount')" prop="loanAmount" width="180px" align="center"></el-table-column>
       <el-table-column :label="$t('tab.LoanTenure')" prop="loanTenure" width="180px" align="center"></el-table-column>
       <el-table-column :label="$t('tab.Loanamount')" prop="disbursalAmount" width="180px" align="center"></el-table-column>
-      <el-table-column label="手续费" prop="processingFee" width="180px" align="center"></el-table-column>
-      <el-table-column label="利息" prop="interest" width="180px" align="center"></el-table-column>
-      <el-table-column label="应还金额" prop="repaymentAmount" width="180px" align="center"></el-table-column>
-      <el-table-column label="下单时间" prop="applyTime" width="180px" align="center"></el-table-column>
-      <!-- <el-table-column label="逾期费用" prop="penaltyCharge" width="180px" align="center"></el-table-column>
-      <el-table-column label="已还金额" prop="repaidAmout" width="180px" align="center"></el-table-column>
-      <el-table-column label="到账时间" prop="receiptTime" width="180px" align="center"></el-table-column>
-      <el-table-column label="应还日期" prop="repaymentDate" width="180px" align="center"></el-table-column>
-      <el-table-column label="实际还款时间" prop="repaidTime" width="180px" align="center"></el-table-column>
+      <el-table-column :label="$t('tab.poundage')" prop="processingFee" width="180px" align="center"></el-table-column>
+      <el-table-column :label="$t('interests')" prop="interest" width="180px" align="center"></el-table-column>
+      <el-table-column :label="$t('tab.RepaymentAmount')" prop="repaymentAmount" width="180px" align="center"></el-table-column>
+      <el-table-column :label="$t('tab.ApplyTime')" prop="applyTime" width="180px" align="center"></el-table-column>
+      <!-- <el-table-column :label="$t('tab.Penaltycharge')" prop="penaltyCharge" width="180px" align="center"></el-table-column>
+      <el-table-column :label="$t('tab.RepaidAmout')" prop="repaidAmout" width="180px" align="center"></el-table-column>
+      <el-table-column :label="$t('tab.ReceiptTime')" prop="receiptTime" width="180px" align="center"></el-table-column>
+      <el-table-column :label="$t('tab.Repaymentdate')" prop="repaymentDate" width="180px" align="center"></el-table-column>
+      <el-table-column :label="$t('tab.RepaidTime')" prop="repaidTime" width="180px" align="center"></el-table-column>
       <el-table-column :label="$t('tab.DaysOverdue')" prop="daysOverdue" width="180px" align="center"></el-table-column>
-      <el-table-column label="客群" prop="userGroup" width="180px" align="center">
+      <el-table-column :label="$t('tab.UserGroup')" prop="userGroup" width="180px" align="center">
           <template slot-scope="scope">
           <span>{{ scope.row.userGroup ? '老客':'新客'}}</span>
         </template>
@@ -102,20 +102,20 @@ export default {
       power: null,
       actionList: null,
       allBorrowState: {
-        "10": "申请成功待审核",
-        "20": "自动审核通过",
-        "21": "自动审核不通过",
-        "22": "自动审核未决待人工复审",
-        "25": "人工复审挂起",
-        "26": "人工复审通过",
-        "27": "人工复审不通过",
-        "30": "放款成功",
-        "31": "放款失败",
-        "40": "还款成功",
-        "41": "还款成功-金额减免",
-        "45": "还款中",
-        "50": "逾期",
-        "90": "坏账"
+        "10": this.$t('tab.Apply'),
+        "20": this.$t('tab.AutoReviewPass'),
+        "21": this.$t('tab.AutoReviewRefuse'),
+        "22": this.$t('tab.Reviewing'),
+        "25": this.$t('tab.ReviewHangup'),
+        "26": this.$t('tab.ReviewPass'),
+        "27": this.$t('tab.ReviewRefuse'),
+        "30": this.$t('tab.LoanSuccess'),
+        "31": this.$t('tab.LoanFail'),
+        "40": this.$t('tab.Repayed'),
+        "41": this.$t('tab.RepayedReduced'),
+        "45": this.$t('tab.Repaying'),
+        "50": this.$t('tab.Overdue'),
+        "90": this.$t('tab.BadDebt')
       }
     };
   },
@@ -190,7 +190,7 @@ export default {
         });
       } else if (item.actionTag == "PayAgain") {
         let _this = this;
-        this.$confirm("是否确定再次支付", "提示", {
+        this.$confirm("是否确定再次支付", "", {
           confirmButtonText: _this.$t('tips.confirm'),
           cancelButtonText: _this.$t('tips.cancel'),
           type: "warning"

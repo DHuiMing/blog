@@ -12,8 +12,8 @@
       label-position="left"
       v-if="isShow"
     >
-      <el-form-item label="审批意见">
-        <el-select v-model="form.state" placeholder="请选择审批意见" @change="checkOpinion">
+      <el-form-item :label="$t('tab.approvalopinion')">
+        <el-select v-model="form.state" :placeholder="$t('tab.approvalopinion')" @change="checkOpinion">
           <el-option
             v-for="(item,index) in list.allExamineTypeList"
             :key="index"
@@ -22,7 +22,7 @@
           ></el-option>
         </el-select>
       </el-form-item>
-      <el-form-item label="拒绝原因" v-show="refuse">
+      <el-form-item :label="$t('tab.Refusetoreason')" v-show="refuse">
         <el-checkbox-group v-model="form.orderView">
           <el-checkbox
             v-for="(item,index) in list.allExamineList"
@@ -34,11 +34,11 @@
           ></el-checkbox>
         </el-checkbox-group>
       </el-form-item>
-      <el-form-item label="备注说明">
+      <el-form-item :label="$t('tab.descr')">
         <el-input type="textarea" v-model="form.remark"></el-input>
       </el-form-item>
       <el-form-item>
-        <el-button type="primary" @click="onSubmit">确定</el-button>
+        <el-button type="primary" @click="onSubmit">{{$t('tips.confirm')}}</el-button>
         <!--<el-button>取消</el-button>-->
       </el-form-item>
     </el-form>

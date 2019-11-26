@@ -20,8 +20,8 @@
             </el-tabs>
             <span slot="footer" class="dialog-footer" style="text-align: left">
                 <review-opinion v-if="isReview" :title="title" @refush="refush($event)" :id="rowList.id" :userId="rowList.userId"/>
-                <!--<el-button @click="dialogVisible = false">取 消</el-button>-->
-                <!--<el-button type="primary" @click="dialogVisible = false">确 定</el-button>-->
+                <!--<el-button @click="dialogVisible = false">{{$t('tips.cancel')}}</el-button>-->
+                <!--<el-button type="primary" @click="dialogVisible = false">{{$t('tips.confirm')}}</el-button>-->
             </span>
         </el-dialog>
     </div>

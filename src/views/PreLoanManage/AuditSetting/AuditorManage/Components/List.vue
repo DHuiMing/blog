@@ -7,10 +7,10 @@
         type="primary"
         @click="plAction"
         class="people"
-      >批量添加信审人员</el-button>
-      <el-dialog title="批量添加信审人员" :visible.sync="dialogFormVisible" v-loading="winLoad">
+      >{{$t('tab.Addauditors')}}</el-button>
+      <el-dialog title="" :visible.sync="dialogFormVisible" v-loading="winLoad">
         <el-form :model="form">
-          <el-form-item label="信审人员" :label-width="formLabelWidth">
+          <el-form-item :label="$t('tab.Addauditors')"  :label-width="formLabelWidth">
             <el-select v-model="form.userIds" multiple placeholder>
               <el-option
                 v-for="(item,index) in careFull"
@@ -22,8 +22,8 @@
           </el-form-item>
         </el-form>
         <div slot="footer" class="dialog-footer">
-          <el-button @click="dialogFormVisible = false">取 消</el-button>
-          <el-button type="primary" @click="submitBtn">确 定</el-button>
+          <el-button @click="dialogFormVisible = false">{{$t('tips.cancel')}}</el-button>
+          <el-button type="primary" @click="submitBtn">{{$t('tips.confirm')}}</el-button>
         </div>
       </el-dialog>
     </div>
@@ -36,12 +36,12 @@
       highlight-current-row
       style="width: 100%;margin-bottom: 50px;"
     >
-      <el-table-column label="信审人姓名" prop="userName" fixed align="center"></el-table-column>
+      <el-table-column :label="$t('table.name')" prop="userName" fixed align="center"></el-table-column>
       <!-- <el-table-column label="更新时间" prop="createTime" align="center"></el-table-column> -->
-      <el-table-column label="创建时间" prop="createTime" align="center"></el-table-column>
+      <el-table-column :label="$t('tab.CreatTime')" prop="createTime" align="center"></el-table-column>
       <el-table-column :label="$t('table.status')" fixed="right" align="center">
         <template slot-scope="scope">
-          <span>{{ scope.row.status | typeFilter}}</span>
+          <span>{{ scope.row.status == 1? $t('tips.Enabled') : $t('tips.Disable') }}</span>
         </template>
       </el-table-column>
       <el-table-column :label="$t('table.Operating')" fixed="right" width="250px" align="center">
@@ -51,8 +51,8 @@
             type="primary"
             size="mini"
             @click="handleAction('Lock',scope.row)"
-          >禁用</el-button>
-          <el-button v-else type="primary" size="mini" @click="handleAction('Lock',scope.row)">启用</el-button>
+          >{{$t('tips.Disable')}}</el-button>
+          <el-button v-else type="primary" size="mini" @click="handleAction('Lock',scope.row)">{{$t('tips.Enable')}}</el-button>
         </template>
       </el-table-column>
     </el-table>
@@ -184,8 +184,8 @@ export default {
           this.$refs.deatilwin.getUserInfo(item.code, row);
         }, 0.5 * 1000);
       } else if (actionTag == "Lock") {
-        let state = row.status == 1 ? "禁用" : "启用";
-        this.$confirm("是否确定" + state, "提示", {
+        let state = row.status == 1 ? this.$t('tips.Disable') : this.$t('tips.Enable');
+        this.$confirm(this.$t('tips.Areyousureto') + state, "", {
           confirmButtonText: _this.$t("tips.confirm"),
           cancelButtonText: _this.$t("tips.cancel"),
           type: "warning"

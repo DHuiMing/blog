@@ -7,7 +7,7 @@
       width="1000px"
     >
       <div style="margin: 4px 0;background-color: #fff;padding: 4px">
-        <el-button @click="topAction()" size="small" type="primary">新增</el-button>
+        <el-button @click="topAction()" size="small" type="primary">{{$t('tab.Add')}}</el-button>
       </div>
       <el-table
         v-loading="listLoading"
@@ -30,7 +30,7 @@
         <el-table-column :label="$t('table.Operating')" fixed="right" width="300px" align="center">
           <template slot-scope="scope">
             <span>
-              <el-button type="primary" size="mini" @click="handleAction(scope.row)">编辑</el-button>
+              <el-button type="primary" size="mini" @click="handleAction(scope.row)">{{$t('table.edit')}}</el-button>
             </span>
           </template>
         </el-table-column>
@@ -49,7 +49,7 @@
             <el-input v-model="formInit.parentId" autocomplete="off" :disabled="isDisabled"></el-input>
           </el-form-item>
           <el-form-item
-            label="字典名称"
+            :label="$t('tab.ContaceWord')"
             :label-width="formLabelWidth"
             :rules="[{ required: true, message: '字典名称不能为空'}]"
           >
@@ -64,8 +64,8 @@
           </el-form-item>
         </el-form>
         <div slot="footer" class="dialog-footer">
-          <el-button @click="addEditVisible = false">取 消</el-button>
-          <el-button type="primary" @click="ensure('form2')">确 定</el-button>
+          <el-button @click="addEditVisible = false">{{$t('tips.cancel')}}</el-button>
+          <el-button type="primary" @click="ensure('form2')">{{$t('tips.confirm')}}</el-button>
         </div>
       </el-dialog>
     </el-dialog>

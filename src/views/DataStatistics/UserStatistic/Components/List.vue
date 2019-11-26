@@ -9,20 +9,20 @@
       highlight-current-row
       style="width: 100%;margin-bottom: 50px;"
     >
-      <el-table-column label="日期" prop="time" width="200px" fixed align="center" ></el-table-column>
-      <el-table-column label="注册人数" prop="registerNumber" fixed="left" align="center" width="120px"></el-table-column>
-      <el-table-column label="申请人数" prop="applyNumber" width="200px" align="center"></el-table-column>
-      <el-table-column label="新用户" prop="newUser" width="200px" align="center"></el-table-column>
-      <el-table-column label="老用户" prop="oldUser" width="200px" align="center"></el-table-column>
-       <el-table-column label="放款笔数" prop="loanNumber" width="200px" align="center"></el-table-column>
-      <el-table-column label="首借" prop="firstBorrowingNumber" width="200px" align="center"></el-table-column>
-      <el-table-column label="续借" prop="reBorrowingNumber" width="200px" align="center"></el-table-column>
-       <el-table-column label="注册-申请" prop="registLoanNumberToday" width="200px" align="center"></el-table-column>
-      <el-table-column label="申请-放款" prop="applyApprovel" width="200px" align="center"></el-table-column>
-      <el-table-column label="注册-放款" prop="registLoanNumberToday" fixed="right"  align="center"></el-table-column>
-      <el-table-column label="新用户放款率" prop="newUserApplyLoanNumberToday" fixed="right"  align="center"></el-table-column>
-      <el-table-column label="老用户放款率" prop="oldUserApplyLoanNumberToday" fixed="right"  align="center"></el-table-column>
-      
+      <el-table-column :label="$t('coll.Date')" prop="time" width="200px" fixed align="center" ></el-table-column>
+      <el-table-column :label="$t('coll.RegisterNumber')" prop="registerNumber" fixed="left" align="center" width="120px"></el-table-column>
+      <el-table-column :label="$t('coll.Applynumber')" prop="applyNumber" width="200px" align="center"></el-table-column>
+      <el-table-column :label="$t('coll.NewUser')" prop="newUser" width="200px" align="center"></el-table-column>
+      <el-table-column :label="$t('coll.OldUsermber')" prop="oldUser" width="200px" align="center"></el-table-column>
+       <el-table-column :label="$t('coll.LoanNumber')" prop="loanNumber" width="200px" align="center"></el-table-column>
+      <el-table-column :label="$t('coll.FirstTimeBorrowing')" prop="firstBorrowingNumber" width="200px" align="center"></el-table-column>
+      <el-table-column :label="$t('coll.ReBorrowing')" prop="reBorrowingNumber" width="200px" align="center"></el-table-column>
+       <el-table-column :label="$t('coll.RegisterApply')" prop="registLoanNumberToday" width="200px" align="center"></el-table-column>
+      <el-table-column :label="$t('coll.ApplyApprovel')" prop="applyApprovel" width="200px" align="center"></el-table-column>
+      <el-table-column :label="$t('coll.RegisterApprovel')" prop="registLoanNumberToday" fixed="right"  align="center"></el-table-column>
+      <el-table-column :label="$t('coll.ONewUserApprovelRate')" prop="newUserApplyLoanNumberToday" fixed="right"  align="center"></el-table-column>
+      <el-table-column :label="$t('coll.OldUserApprovelRate')" prop="oldUserApplyLoanNumberToday" fixed="right"  align="center"></el-table-column>
+
     </el-table>
     <div class="pagination-box">
       <el-pagination
@@ -43,10 +43,10 @@
 export default {
   name: "list",
   components: {
- 
+
   },
   filters: {
-  
+
 
   },
   data() {

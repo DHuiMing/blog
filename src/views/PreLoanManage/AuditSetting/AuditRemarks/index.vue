@@ -4,9 +4,9 @@
     <div class="tagc">
       <el-breadcrumb separator-class="el-icon-arrow-right">
         <el-breadcrumb-item :to="{ path: '/data/dataInfo' }">{{$t('route.dashboard')}}</el-breadcrumb-item>
-        <el-breadcrumb-item>贷前管理</el-breadcrumb-item>
-        <el-breadcrumb-item>风控信审设置</el-breadcrumb-item>
-        <el-breadcrumb-item>复审备注项库</el-breadcrumb-item>
+        <el-breadcrumb-item>{{$t('PreLoanManage')}}</el-breadcrumb-item>
+        <el-breadcrumb-item>{{$t('AuditSetting')}}</el-breadcrumb-item>
+        <el-breadcrumb-item>{{$t('AuditRemarks')}}</el-breadcrumb-item>
       </el-breadcrumb>
     </div>
     <div class="con">

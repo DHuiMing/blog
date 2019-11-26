@@ -23,10 +23,10 @@
       <el-table-column label="渠道名称" prop="name" fixed align="center" width="120px"></el-table-column>
       <el-table-column label="联系人" prop="linker" width="220px" align="center"></el-table-column>
       <el-table-column label="联系人" prop="phone" width="220px" align="center"></el-table-column>
-      <el-table-column label="创建时间" prop="createTime" width="220px" align="center"></el-table-column>
+      <el-table-column :label="$t('tab.CreatTime')" prop="createTime" width="220px" align="center"></el-table-column>
       <el-table-column :label="$t('table.status')" fixed="right" align="center">
         <template slot-scope="scope">
-          <span>{{ scope.row.state==10?"启用" : scope.row.state==20 ? "禁用" : "-"}}</span>
+          <span>{{ scope.row.state==10?$t('tips.Enabled') : scope.row.state==20 ? $t('tips.Disabled') : "-"}}</span>
         </template>
       </el-table-column>
       <el-table-column :label="$t('table.Operating')" fixed="right" width="300px" align="center">
@@ -124,8 +124,8 @@
         </el-row>
         <div style="height: 60px">
           <el-form-item style="float: right;margin-top: 20px">
-            <el-button @click="cancel">取 消</el-button>
-            <el-button type="primary" @click="ensure('form')">确 定</el-button>
+            <el-button @click="cancel">{{$t('tips.cancel')}}</el-button>
+            <el-button type="primary" @click="ensure('form')">{{$t('tips.confirm')}}</el-button>
           </el-form-item>
         </div>
       </el-form>
@@ -257,8 +257,8 @@ export default {
         this.formInit.phone = row.phone;
         this.dialogFormVisible = true;
       } else if (actionTag == "Lock") {
-        let state = row.state == 10 ? "停用" : "启用";
-        this.$confirm("是否确定" + state, "提示", {
+        let state = row.state == 10 ? this.$t('tips.Disabled') : this.$t('tips.Enabled');
+        this.$confirm(this.$t('tips.Areyousureto') + state, "", {
           confirmButtonText: _this.$t('tips.confirm'),
           cancelButtonText: _this.$t('tips.cancel'),
           type: "warning"

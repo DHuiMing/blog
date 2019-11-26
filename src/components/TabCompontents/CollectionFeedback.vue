@@ -2,7 +2,7 @@
 <template>
     <section style="background-color: #fff;padding-top: 10px;height: 60vh;overflow: auto">
         <div style="margin: 4px 0;background-color: #fff;padding: 4px">
-            <el-button  size="small" type="primary" @click="addFeed" class="people">新增</el-button>
+            <el-button  size="small" type="primary" @click="addFeed" class="people">{{$t('tab.Add')}}</el-button>
         </div>
         <el-table
                 v-loading="listLoading"
@@ -19,9 +19,9 @@
                     <span>{{ scope.row.way | typeFilter}}</span>
                 </template>
             </el-table-column>
-            <el-table-column label="催收时间" prop="createTime"  align="center">
+            <el-table-column :label="$t('coll.Collectiontime')" prop="createTime"  align="center">
             </el-table-column>
-            <el-table-column label="催收状态"  prop="name" fixed  align="center">
+            <el-table-column :label="$t('coll.Collectionstatus')"  prop="name" fixed  align="center">
                 <template slot-scope="scope">
                     <span>{{ scope.row.state | stateFilter}}</span>
                 </template>

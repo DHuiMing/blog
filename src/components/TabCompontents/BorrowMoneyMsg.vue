@@ -66,16 +66,16 @@ export default {
           result = "机审拒绝";
           break;
         case "22":
-          result = "待复审";
+          result = this.$t('tab.Reviewing');
           break;
         case "25":
-          result = "复审挂起";
+          result = "人工复审挂起";
           break;
         case "26":
-          result = "复审通过";
+          result = "人工复审通过";
           break;
         case "27":
-          result = "复审拒绝";
+          result = "人工复审拒绝";
           break;
         case "28":
           result = "审核成功(待银程同意)";
@@ -84,16 +84,16 @@ export default {
           result = "银程同意(待放款)";
           break;
         case "30":
-          result = "放款成功";
+          result = this.$t('tab.LoanSuccess');
           break;
         case "31":
-          result = "放款失败";
+          result = this.$t('tab.LoanFail');
           break;
         case "40":
-          result = "还款成功";
+          result = this.$t('tab.Repayed');
           break;
         case "41":
-          result = "还款成功-金额减免";
+          result = this.$t('tab.RepayedReduced');
           break;
         default:
           result = "-";

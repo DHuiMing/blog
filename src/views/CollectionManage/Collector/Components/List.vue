@@ -11,11 +11,11 @@
       @selection-change="handleSelectionChange"
     >
       <el-table-column :label="$t('table.name')" prop="userName" fixed align="center" ></el-table-column>
-      <el-table-column label="账号" prop="phone" fixed="left" align="center" width="120px"></el-table-column>
-      <el-table-column label="催收总数" prop="count" width="200px" align="center"></el-table-column>
-      <el-table-column label="待催收数" prop="waitCount" width="200px" align="center"></el-table-column>
-      <el-table-column label="催收成功数" prop="successCount" width="200px" align="center"></el-table-column>
-      <el-table-column label="昨日催收数" prop="yesterdayCount" fixed="right"  align="center"></el-table-column>
+      <el-table-column :label="$t('coll.AccountNumber')" prop="phone" fixed="left" align="center" width="120px"></el-table-column>
+      <el-table-column :label="$t('coll.TotalcollectionNumber')" prop="count" width="200px" align="center"></el-table-column>
+      <el-table-column :label="$t('coll.Uncompleted')" prop="waitCount" width="200px" align="center"></el-table-column>
+      <el-table-column :label="$t('coll.Success')" prop="successCount" width="200px" align="center"></el-table-column>
+      <el-table-column :label="$t('coll.yesterdaycollectionNumber')" prop="yesterdayCount" fixed="right"  align="center"></el-table-column>
       <!-- <el-table-column :label="$t('table.status')" fixed="right" width="150px" align="center">
         <template slot-scope="scope">
           <span>{{ scope.row.state | typeFilter}}</span>
