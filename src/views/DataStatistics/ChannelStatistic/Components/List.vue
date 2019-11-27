@@ -18,7 +18,7 @@
       <el-table-column :label="$t('coll.RegisterApply')" prop="reBorrowingNumber" width="200px" align="center"></el-table-column>
       <el-table-column :label="$t('coll.ApplyApprovel')" prop="reBorrowingAmount" width="200px" align="center"></el-table-column>
        <el-table-column :label="$t('coll.RegisterApprovel')" prop="totalFee" width="200px" align="center"></el-table-column>
-      <el-table-column :label="$t('coll.OldUsermber')" prop="waitCount" width="200px" align="center"></el-table-column>
+      <el-table-column :label="$t('coll.OldUser')" prop="waitCount" width="200px" align="center"></el-table-column>
     </el-table>
     <div class="pagination-box">
       <el-pagination

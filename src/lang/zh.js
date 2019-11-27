@@ -10,6 +10,13 @@ export default {
     parentnode:'父节点',
     modification :'修改',
     Refreshthecache:'刷新缓存',
+    CollectionRate:'催回率',
+    NewUserRate:'新用户占比',
+    RegisterUser:'注册用户数',
+    LoanUser:'放款人数',
+    LoanAmount:'放款量',
+    OverdueRateFinal:'逾期率（终逾）',
+    OverdueRateFirst :'逾期率（首逾）',
   },
   tab: {
     UserInfo: '用户信息',
