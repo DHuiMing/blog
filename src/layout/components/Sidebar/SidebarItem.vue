@@ -8,7 +8,7 @@
       <!--</app-link>-->
     <!--</template>-->
     <template v-if="!item.children">
-      <app-link  :to="'/'+item.href" v-show="item.label!='用户反馈列表' & item.label!='线下还款' & item.label!='信审设置'& item.label!='菜单管理'">
+      <app-link  :to="'/'+item.href" v-show="item.label!='用户反馈列表' & item.label!='线下还款' & item.label!='信审设置'& item.label!='菜单管理' & item.label!='省份字典库'">
         <el-menu-item :index=" item.value " :class="{'submenu-title-noDropdown':!isNest}">
           <span style="margin-left: 14px;">{{$t(item.href)}} </span>
           <!-- <span style="margin-left: 14px;">{{generateTitle(item.label)}}</span> -->
