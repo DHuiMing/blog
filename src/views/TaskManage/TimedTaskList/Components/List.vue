@@ -17,32 +17,32 @@
       highlight-current-row
       style="width: 100%;padding-bottom: 50px"
     >
-      <el-table-column label="任务名" prop="name" fixed align="center" width="200px"></el-table-column>
-      <el-table-column label="任务标识" prop="code" fixed align="center" width="200px"></el-table-column>
-      <el-table-column label="任务周期" prop="cycle" width="220px" align="center"></el-table-column>
+      <el-table-column :label="$t('tem.Taskname')" prop="name" fixed align="center" width="200px"></el-table-column>
+      <el-table-column :label="$t('tem.TaskIdentification')" prop="code" fixed align="center" width="200px"></el-table-column>
+      <el-table-column :label="$t('tem.Taskcycle')" prop="cycle" width="220px" align="center"></el-table-column>
       <el-table-column
-        label="任务方法名"
+        :label="$t('tem.Taskmethodname')"
         :show-overflow-tooltip="true"
         prop="className"
         width="180px"
         align="center"
       ></el-table-column>
       <el-table-column :label="$t('tab.CreatTime')" prop="createTime" width="180px" align="center"></el-table-column>
-      <el-table-column label="上次执行时间" prop="lastStartTime" width="180px" align="center"></el-table-column>
-      <el-table-column label="成功次数" prop="roleName" width="180px" align="center"></el-table-column>
-      <el-table-column label="失败次数" prop width="180px" align="center"></el-table-column>
-      <el-table-column label="成功率" prop="fail" width="180px" align="center"></el-table-column>
+      <el-table-column :label="$t('tem.Lastexecutiontime')" prop="lastStartTime" width="180px" align="center"></el-table-column>
+      <el-table-column :label="$t('tem.Numberofsuccessful')" prop="roleName" width="180px" align="center"></el-table-column>
+      <el-table-column :label="$t('tem.Defeated')" prop width="180px" align="center"></el-table-column>
+      <el-table-column :label="$t('tem.Successrateated')" prop="fail" width="180px" align="center"></el-table-column>
       <el-table-column :label="$t('table.status')" fixed="right" align="center">
         <template slot-scope="scope">
-          <span>{{ (scope.row.state==10)?$t('tips.Enabled') : (scope.row.state==20) ? $t('tips.Disabled') : "-"}}</span>
+          <span>{{ (scope.row.state==10)?$t('tips.Enabled') : (scope.row.state==20) ? $t('tips.Disable') : "-"}}</span>
         </template>
       </el-table-column>
-      <el-table-column :label="$t('table.Operating')" fixed="right" width="300px" align="center">
+      <el-table-column :label="$t('table.Operating')" fixed="right" width="400px" align="center">
         <template slot-scope="scope">
           <el-button type="primary" size="mini" @click="handleAction('Edit',scope.row)">{{$t('table.edit')}}</el-button>
            <el-button v-if="scope.row.state==20" type="primary" size="mini" @click="handleAction('Lock',scope.row)">{{$t('tips.Enabled')}}</el-button>
             <el-button v-else type="primary" size="mini" @click="handleAction('Lock',scope.row)">{{$t('tips.Disable')}}</el-button>
-             <el-button type="primary" size="mini" @click="handleAction('Run',scope.row)">立即执行一次</el-button>
+             <el-button type="primary" size="mini" @click="handleAction('Run',scope.row)">{{$t('tem.Executeonceimmediately')}}</el-button>
         </template>
       </el-table-column>
     </el-table>

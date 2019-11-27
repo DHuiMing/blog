@@ -19,14 +19,14 @@
       highlight-current-row
       style="width: 100%;margin-bottom: 50px;"
     >
-      <el-table-column label="渠道编码" prop="code" fixed align="center" width="150px"></el-table-column>
-      <el-table-column label="渠道名称" prop="name" fixed align="center" width="120px"></el-table-column>
-      <el-table-column label="联系人" prop="linker" width="220px" align="center"></el-table-column>
-      <el-table-column label="联系人" prop="phone" width="220px" align="center"></el-table-column>
+      <el-table-column :label="$t('tem.Channelcoding')" prop="code" fixed align="center" width="150px"></el-table-column>
+      <el-table-column :label="$t('tem.Channelname')" prop="name" fixed align="center" width="120px"></el-table-column>
+      <el-table-column :label="$t('table.name')" prop="linker" width="220px" align="center"></el-table-column>
+      <el-table-column :label="$t('table.phone')" prop="phone" width="220px" align="center"></el-table-column>
       <el-table-column :label="$t('tab.CreatTime')" prop="createTime" width="220px" align="center"></el-table-column>
       <el-table-column :label="$t('table.status')" fixed="right" align="center">
         <template slot-scope="scope">
-          <span>{{ scope.row.state==10?$t('tips.Enabled') : scope.row.state==20 ? $t('tips.Disabled') : "-"}}</span>
+          <span>{{ scope.row.state==10?$t('tips.Enabled') : scope.row.state==20 ? $t('tips.Disable') : "-"}}</span>
         </template>
       </el-table-column>
       <el-table-column :label="$t('table.Operating')" fixed="right" width="300px" align="center">
@@ -83,7 +83,7 @@
           <!--</el-col>-->
           <el-col :span="11">
             <el-form-item
-              label="渠道编码："
+              :label="$t('tem.Channelcoding')"
               prop="code"
               :label-width="formLabelWidth"
               :rules="[{ required: true, message: '渠道编码不能为空'}]"
@@ -93,7 +93,7 @@
           </el-col>
           <el-col :span="11">
             <el-form-item
-              label="渠道名称："
+              :label="$t('tem.Channelname')"
               prop="name"
               :label-width="formLabelWidth"
               :rules="[{ required: true, message: '渠道方式不能为空'}]"
@@ -257,7 +257,7 @@ export default {
         this.formInit.phone = row.phone;
         this.dialogFormVisible = true;
       } else if (actionTag == "Lock") {
-        let state = row.state == 10 ? this.$t('tips.Disabled') : this.$t('tips.Enabled');
+        let state = row.state == 10 ? this.$t('tips.Disable') : this.$t('tips.Enabled');
         this.$confirm(this.$t('tips.Areyousureto') + state, "", {
           confirmButtonText: _this.$t('tips.confirm'),
           cancelButtonText: _this.$t('tips.cancel'),

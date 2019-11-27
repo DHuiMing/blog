@@ -1,7 +1,7 @@
 <template>
     <section class="search-form">
         <el-form :inline="true" :model="formInline" class="demo-form-inline" size="mini">
-            <el-form-item label="任务名">
+            <el-form-item :label="$t('tem.Taskname')">
                 <el-input style="width: 130px" v-model="formInline.name"></el-input>
             </el-form-item>
             <el-form-item>

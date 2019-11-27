@@ -9,7 +9,7 @@
                 highlight-current-row
                 style="width: 100%;margin-bottom: 50px;"
         >
-            <el-table-column label="渠道名称"  prop="name" fixed  align="center" width="120px">
+            <el-table-column :label="$t('tem.Channelname')"  prop="name" fixed  align="center" width="120px">
             </el-table-column>
             <el-table-column label="注册量：" prop="registerCount" fixed="left"  align="center" width="120px">
             </el-table-column>

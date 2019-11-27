@@ -1,16 +1,16 @@
 <template>
     <section class="search-form">
         <el-form :inline="true" :model="formInline" class="demo-form-inline" size="mini">
-            <el-form-item label="渠道编码：">
+            <el-form-item :label="$t('tem.Channelcoding')">
                 <el-input style="width: 130px" v-model="formInline.code"></el-input>
             </el-form-item>
-            <el-form-item label="联系人姓名：">
+            <el-form-item :label="$t('table.name')">
                 <el-input style="width: 130px" v-model="formInline.linker"></el-input>
             </el-form-item>
-            <el-form-item label="渠道名称：">
+            <el-form-item :label="$t('tem.Channelname')">
                 <el-input style="width: 130px" v-model="formInline.name"></el-input>
             </el-form-item>
-            <el-form-item label="联系方式：">
+            <el-form-item :label="$t('table.phone')">
                 <el-input style="width: 130px" v-model="formInline.phone"></el-input>
             </el-form-item>
             <el-form-item>

@@ -10,7 +10,7 @@
                         value-format="yyyy-MM-dd HH:mm:ss">
                 </el-date-picker>
             </el-form-item>
-            <el-form-item label="渠道名称：">
+            <el-form-item :label="$t('tem.Channelname')">
                 <el-input style="width: 130px" v-model="formInline.name"></el-input>
             </el-form-item>
             <el-form-item>

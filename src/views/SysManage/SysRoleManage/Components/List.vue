@@ -261,7 +261,7 @@ export default {
         this.formInit.nid = row.nid;
         this.formInit.remark = row.remark;
       } else if (actionTag == "Lock") {
-        let state = row.isDelete == 0 ? this.$t('tips.Disabled') : this.$t('tips.Enabled');
+        let state = row.isDelete == 0 ? this.$t('tips.Disable') : this.$t('tips.Enabled');
         this.$confirm(this.$t('tips.Areyousureto') + state, "", {
           confirmButtonText: _this.$t('tips.confirm'),
           cancelButtonText: _this.$t('tips.cancel'),

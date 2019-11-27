@@ -18,7 +18,7 @@
       <el-table-column :label="$t('tab.CreatTime')" prop="mender" width="180px" align="center"></el-table-column>
       <el-table-column :label="$t('table.status')" fixed="right" align="center">
         <template slot-scope="scope">
-          <span>{{ (scope.row.state==10)?$t('tips.Enabled') : (scope.row.state==20) ? $t('tips.Disabled') : "-"}}</span>
+          <span>{{ (scope.row.state==10)?$t('tips.Enabled') : (scope.row.state==20) ? $t('tips.Disable') : "-"}}</span>
         </template>
       </el-table-column>
       <!-- <el-table-column :label="$t('table.Operating')" fixed="right" width="300px" align="center">

@@ -51,7 +51,7 @@
       ></el-table-column>
       <el-table-column :label="$t('table.status')" fixed="right" align="center">
         <template slot-scope="scope">
-          <span>{{ scope.row.status == 1 ? $t('tips.Enabled') : scope.row.status == 0 ? $t('tips.Disabled') : "-"}}</span>
+          <span>{{ scope.row.status == 1 ? $t('tips.Enabled') : scope.row.status == 0 ? $t('tips.Disable') : "-"}}</span>
         </template>
       </el-table-column>
       <el-table-column :label="$t('table.Operating')" fixed="right" width="300px" align="center">

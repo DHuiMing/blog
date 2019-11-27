@@ -3,7 +3,7 @@
   <div class="TimedTaskList">
     <div class="tagc">
       <el-breadcrumb separator-class="el-icon-arrow-right">
-        <el-breadcrumb-item :to="{ path: '/Index' }">首页</el-breadcrumb-item>
+        <el-breadcrumb-item :to="{ path: '/data/dataInfo' }">{{$t('route.dashboard')}}</el-breadcrumb-item>
         <el-breadcrumb-item>{{$t('TaskManage')}}</el-breadcrumb-item>
         <el-breadcrumb-item>{{$t('TimedTaskList')}}</el-breadcrumb-item>
       </el-breadcrumb>

@@ -12,16 +12,16 @@
     >
       <el-table-column
         :show-overflow-tooltip="true"
-        label="任务名"
+        :label="$t('tem.Taskname')"
         prop="name"
         fixed
         align="center"
         width="250px"
       ></el-table-column>
-      <el-table-column label="执行结果" prop="resultStr" width="200px" align="center"></el-table-column>
-      <el-table-column label="执行时间" prop="startTime" width="200px" align="center"></el-table-column>
-      <el-table-column label="执行结果" :show-overflow-tooltip="true" prop="remark" align="center"></el-table-column>
-      <el-table-column label="用时(毫秒)" prop="time" width="200px" align="center"></el-table-column>
+      <el-table-column :label="$t('tem.ResultSet')" prop="resultStr" width="200px" align="center"></el-table-column>
+      <el-table-column :label="$t('tem.Executiontime')" prop="startTime" width="200px" align="center"></el-table-column>
+      <el-table-column :label="$t('tem.ResultSet')" :show-overflow-tooltip="true" prop="remark" align="center"></el-table-column>
+      <el-table-column :label="$t('tem.Timemilliseconds')" prop="time" width="200px" align="center"></el-table-column>
       <!--<el-table-column :label="$t('table.Operating')" fixed="right" width="250px" align="center">-->
       <!--<template slot-scope="scope">-->
       <!--&lt;!&ndash;if(item.label.indexOf('|') > -1){&ndash;&gt;-->
