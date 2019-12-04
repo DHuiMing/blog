@@ -203,7 +203,7 @@ export default {
       if (actionTag == "Info") {
         this.detailWinShow = true;
         setTimeout(() => {
-          this.$refs.deatilwin.getUserInfo(row);
+          this.$refs.deatilwin.getUserInfo(row,'collecting');
           // this.$router.push({path:'/UserDetails',query:{userId:row.userId}})
         }, 0.5 * 1000);
       } else if (actionTag == "Allot") {

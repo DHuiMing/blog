@@ -5,8 +5,8 @@
   >
     <el-tabs v-if="show" v-model="active" type="card" @tab-click="handleClick">
       <!--用户管理-->
-      <el-tab-pane :label="$t('tab.BasicInfo')" name="first" v-if="dataList.userIdentificationInfo">
-        <el-row>
+      <el-tab-pane :label="$t('tab.BasicInfo')" name="first">
+        <el-row v-if="dataList.userIdentificationInfo">
           <el-col :span="6">
             <div class="grid-content bg-purple-dark">{{$t('tab.selfie')}}</div>
             <div class="tup" v-if="dataList.userIdentificationInfo && dataList.userIdentificationInfo.livingProofImg">
@@ -36,7 +36,7 @@
             </div>
           </el-col>
         </el-row>
-        <el-row>
+        <el-row v-if="dataList.userIdentificationInfo">
              <el-col :span="6">
             <div class="grid-content bg-purple-dark">{{$t('tab.AadhaarFont')}}</div>
             <div class="tup" v-if="dataList.userIdentificationInfo && dataList.userIdentificationInfo.aadhaarCardFrontImg">
@@ -91,7 +91,7 @@
           </el-col>
         </el-row>
 
-        <el-form ref="form" label-width="100px">
+        <el-form ref="form" label-width="100px" v-if="dataList.userBaseInfo">
           <el-row>
             <el-col :span="4">
               <el-form-item :label="$t('tab.LastName')">
@@ -151,7 +151,7 @@
              <el-row>
             <el-col :span="8">
               <el-form-item :label="$t('tab.State')">
-                <el-input disabled v-model="dataList.userBaseInfo.geographicCoordinates"></el-input>
+                <el-input disabled v-model="dataList.userBaseInfo.stateDescribetion"></el-input>
               </el-form-item>
             </el-col>
             <el-col :span="8">
@@ -204,7 +204,7 @@
             </el-col>
           </el-row>
           <el-row>
-            <el-col :span="8">
+            <el-col :span="8" v-if="dataList.userIdentificationInfo && dataList.userIdentificationInfo.addressProofImg">
               <el-form-item :label="$t('tab.AddressProof')">
                 <div style="display: flex;justify-content: space-around;margin-left:350px;">
                   <el-popover style="margin-left:10px;"  placement="right" trigger="click" v-for="(item,index) in dataList.userIdentificationInfo.addressProofImg.split(';')" :key="index">
@@ -291,7 +291,7 @@
             </el-col>
           </el-row>
           <el-row>
-            <el-col :span="8">
+            <el-col :span="8" v-if="dataList.userIdentificationInfo">
               <el-form-item :label="$t('tab.CompanyProof')">
                 <div style="display: flex;justify-content: space-around;margin-left:350px;">
                   <el-popover style="margin-left:10px;"  placement="right" trigger="click" v-for="(item,index) in dataList.userIdentificationInfo.companyProofImg.split(';')" :key="index">
@@ -427,7 +427,7 @@ export default {
             _this.show = true;
           } else {
             _this.$message({
-              message: "暂无数据",
+              message: _this.$t('tem.nodata'),
               type: "warning"
             });
           }

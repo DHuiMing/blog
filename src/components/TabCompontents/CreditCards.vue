@@ -402,7 +402,7 @@
                             _this.dataList=JSON.parse(res.content.data);
                         }else{
                             _this.$message({
-                                message: '暂无数据',
+                                message: _this.$t('tem.nodata'),
                                 type: 'warning'
                             });
                         }

@@ -109,25 +109,16 @@ export default {
             let p1 = content[i];
             p1.id = p1.value*1;
             _this.allKey.push(p1.value);
-            if (p1.checked == 1) {
-              _this.defaultKeys.push(p1.value);
-            }
             if (p1.children && p1.children.length >= 1) {
               for (let j = 0; j < p1.children.length; j++) {
                 let p2 = p1.children[j];
                 p2.id = p2.value*1;
                 _this.allKey.push(p2.value);
-                if (p2.checked == 1) {
-                  _this.defaultKeys.push(p2.value);
-                }
                 if (p2.children && p2.children.length) {
                   for (let k = 0; k < p2.children.length; k++) {
                     let p3 = p2.children[k];
                     p3.id = p3.value*1;
                     _this.allKey.push(p3.value);
-                    if (p3.checked == 1) {
-                      _this.defaultKeys.push(p3.value);
-                    }
                     if(p3.children && p3.children.length){
                        for (let n = 0; n < p3.children.length; n++) {
                            let p4 = p3.children[n];
@@ -137,9 +128,21 @@ export default {
                               _this.defaultKeys.push(p4.value);
                             }
                        }
+                    }else {
+                      if (p3.checked == 1) {
+                        _this.defaultKeys.push(p3.value);
+                      }
                     }
                   }
+                }else {
+                  if (p2.checked == 1) {
+                    _this.defaultKeys.push(p2.value);
+                  }
                 }
+              }
+            }else {
+              if (p1.checked == 1) {
+                _this.defaultKeys.push(p1.value);
               }
             }
           }

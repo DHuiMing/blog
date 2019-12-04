@@ -31,6 +31,8 @@ export default {
     Executiontime:'执行时间',
     ResultSet:'执行结果',
     Executeonceimmediately:'立即执行一次',
+    comingsoon: '敬请期待',
+    nodata: '暂无数据',
   },
   tab: {
     UserInfo: '用户信息',

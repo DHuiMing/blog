@@ -137,7 +137,10 @@ export default {
             })
             .then(res => {
               _this.$router.push('/data/dataInfo')
-              window.location.reload();
+              setTimeout(function(){
+                window.location.reload();
+              }, 500);
+              // _this.$router.push('/data/dataInfo')
             })
             .catch(err => {});
         })

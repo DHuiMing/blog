@@ -31,6 +31,8 @@ export default {
     Executiontime:'Execution time',
     ResultSet:'ResultSet',
     Executeonceimmediately:'Execute once immediately',
+    comingsoon: 'coming soon',
+    nodata: 'No Data'
   },
   tab: {
     UserInfo: 'UserInfo',

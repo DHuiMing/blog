@@ -449,7 +449,7 @@ export const constantRoutes = [{
     children: [{
       path: '/ChannelStatistic',
       component: () => import('@/views/DataStatistics/ChannelStatistic/index.vue'),
-      name: 'ChannelStatistic',
+      name: 'ChannelStatistic1',
       meta: {
         title: '渠道统计',
         icon: 'dashboard',

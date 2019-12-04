@@ -5,7 +5,7 @@
       <el-breadcrumb separator-class="el-icon-arrow-right">
         <el-breadcrumb-item :to="{ path: '/data/dataInfo' }">{{$t('route.dashboard')}}</el-breadcrumb-item>
         <el-breadcrumb-item>{{$t('route.UserManagement')}}</el-breadcrumb-item>
-        <el-breadcrumb-item>{{$t('Thirdpartydata')}}</el-breadcrumb-item>
+        <el-breadcrumb-item>{{$t('tab.Thirdpartydata')}}</el-breadcrumb-item>
       </el-breadcrumb>
     </div>
     <div class="con">

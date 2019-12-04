@@ -2,6 +2,7 @@
   <section>
     <div style="margin: 4px 0;background-color: #fff;padding: 4px">
       <el-button
+        v-if="isfp"
         :disabled="isDisabled"
         size="small"
         type="primary"
@@ -27,6 +28,7 @@
         </div>
       </el-dialog>
       <el-button
+        v-if="istj"
         size="small"
         type="primary"
         @click="dialogxsVisible = true"
@@ -109,7 +111,7 @@
         <template slot-scope="scope">
           <el-button type="primary" size="mini" @click="handleAction('Info',scope.row)">{{$t('tem.Check')}}</el-button>
           <el-button type="primary" size="mini" @click="handleAction('Verify',scope.row)">{{$t('tab.Recheck')}}</el-button>
-          <el-button type="primary" size="mini" @click="handleAction('Allot',scope.row)">{{$t('tab.Allocation')}}</el-button>
+          <el-button v-if="isfp" type="primary" size="mini" @click="handleAction('Allot',scope.row)">{{$t('tab.Allocation')}}</el-button>
         </template>
       </el-table-column>
     </el-table>
@@ -175,16 +177,22 @@ export default {
       formLabelWidth: "120px",
       manageAuditLogCount: null,
       checkCollection: "", //选中单子的id   分配催收人员时用到
-      checkCollections: "" //选中单子的id   分配催收人员时用到  批量
+      checkCollections: "", //选中单子的id   分配催收人员时用到  批量
+      isfp: false,
+      istj: false
     };
   },
   computed: {},
-  mounted() {},
-  created() {
+  mounted() {
+    this.isfp = this.$PermList.checkPerm('AuditWorkbench','/manage/risk/allotBorrowOrder.htm')
+    this.istj = this.$PermList.checkPerm('AuditWorkbench','/manage/risk/manageAuditLogCount.htm')
+    // console.log('111111111111111'+this.$PermList.checkPerm('信审工作台','/manage/risk/allotBorrowOrder.htm'))
     this.params.searchParams = JSON.stringify(this.params.searchParams);
     this.getList();
     this.actionList = this.getActionList(this.$route.params);
     this.plAction();
+  },
+  created() {
   },
   methods: {
     getActionList(list) {
@@ -217,16 +225,18 @@ export default {
           }, 0.5 * 1000);
         })
         .catch(err => {});
-      _this
-        .$axios({
-          method: "post",
-          url: "/manage/risk/manageAuditLogCount.htm",
-          data: {searchParams:''}
-        })
-        .then(res => {
-          _this.manageAuditLogCount = res.content.data
-        })
-        .catch(err => {});
+      if (_this.istj) {
+        _this
+          .$axios({
+            method: "post",
+            url: "/manage/risk/manageAuditLogCount.htm",
+            data: {searchParams:''}
+          })
+          .then(res => {
+            _this.manageAuditLogCount = res.content.data
+          })
+          .catch(err => {});
+      }
     },
     handleSizeChange(val) {
       this.params.pageSize = val;

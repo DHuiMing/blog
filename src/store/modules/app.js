@@ -8,7 +8,8 @@ const state = {
   },
   device: 'desktop',
   language: getLanguage(),
-  size: Cookies.get('size') || 'medium'
+  size: Cookies.get('size') || 'medium',
+  perm: []
 }
 
 const mutations = {
@@ -36,6 +37,11 @@ const mutations = {
   SET_SIZE: (state, size) => {
     state.size = size
     Cookies.set('size', size)
+  },
+  SET_PERM: (state, perm) => {
+    state.perm = perm
+    Cookies.set('perm', JSON.stringify(perm))
+    localStorage.setItem('perm',JSON.stringify(perm))
   }
 }
 
@@ -54,6 +60,9 @@ const actions = {
   },
   setSize({ commit }, size) {
     commit('SET_SIZE', size)
+  },
+  setPerm({commit}, perm) {
+    commit('SET_PERM', perm)
   }
 }
 

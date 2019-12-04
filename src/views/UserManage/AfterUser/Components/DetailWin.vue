@@ -17,15 +17,15 @@
                 </el-tab-pane> -->
                     <el-tab-pane label="用户信息"><user-info v-if="userInfo" v-bind:userId="rowList.userId" /></el-tab-pane>
                      <el-tab-pane label="通讯录"><phone-book v-if="phoneBook" v-bind:userId="rowList.userId" /></el-tab-pane>
-                     <el-tab-pane label="通话记录"> <div class='nodate'>暂无数据</div> </el-tab-pane>
+                     <el-tab-pane label="通话记录"> <div class='nodate'>{{$t('tem.nodata')}}</div> </el-tab-pane>
                      <el-tab-pane label="短信数据"><message-record v-if="messagerecord" v-bind:userId="rowList.userId"></message-record> </el-tab-pane>
                      <el-tab-pane label="应用列表"> <application v-if="application" v-bind:userId="rowList.userId" /></el-tab-pane>
-                     <el-tab-pane label="第三方数据"><div class='nodate'>暂无数据</div></el-tab-pane>
-                     <el-tab-pane label="征信记录"><div class='nodate'>暂无数据</div></el-tab-pane>
+                     <el-tab-pane label="第三方数据"><div class='nodate'>{{$t('tem.nodata')}}</div></el-tab-pane>
+                     <el-tab-pane label="征信记录"><div class='nodate'>{{$t('tem.nodata')}}</div></el-tab-pane>
                      <!-- <el-tab-pane label="运营商通话"><carrieroperator v-if="carrieroperator" v-bind:userId="rowList.userId" /></el-tab-pane> -->
                      <!-- <el-tab-pane label="信用卡报告"><credit-cards v-if="creditcards" v-bind:userId="rowList.userId" /></el-tab-pane> -->
                      <el-tab-pane label="借款信息"><borrow-money-msg v-if="borrowmoneymsg" v-bind:userId="rowList.userId" /></el-tab-pane>
-                     <el-tab-pane label="bettec credit"><div class='nodate'>敬请期待</div></el-tab-pane>
+                     <el-tab-pane label="bettec credit"><div class='nodate'>{{$t('tem.comingsoon')}}</div></el-tab-pane>
 
             </el-tabs>
         </el-dialog>

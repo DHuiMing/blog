@@ -177,7 +177,10 @@ export default {
   computed: {},
   mounted() {
     setTimeout(() => {
-      // let power = this.$store.state.app.power;
+      let _this = this;
+      if (!_this.$PermList.checkPerm('工作台')) {
+        return
+      }
       // if (power.children) {
         this.isShow = true;
       //   let code = JSON.parse(power.children[0].code).data;
@@ -185,7 +188,6 @@ export default {
       //   for (let i in code) {
       //     if (code[i].actionTag == "todayCount") {
             //"首页今日数据统计"
-            let _this = this;
             _this
               .$axios({
                 method: "get",

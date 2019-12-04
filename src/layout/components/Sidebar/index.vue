@@ -65,13 +65,14 @@
         console.log(data)
         if (data.code == "2000") {
           _this.routers = data.content
+          _this.$store.dispatch('app/setPerm', data.content)
         } else if (data.code == "6520") {
 
         }
       }).catch(err => {
 
       })
-      
+
       console.log(this.routers)
     }
   }

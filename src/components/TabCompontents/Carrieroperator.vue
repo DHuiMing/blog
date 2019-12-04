@@ -40,7 +40,7 @@
                             return;
                         }
                         if(!res.content.data){
-                            _this.$message('暂无数据')
+                            _this.$message(_this.$t('tem.nodata'))
                             _this.againShow=true
                             return;
                         }

@@ -23,7 +23,7 @@
           <phone-book v-if="phoneBook" v-bind:userId="userId"/>
         </el-tab-pane>
         <el-tab-pane :label="$t('tab.telephonerecord')" name="telephonerecord">
-          <div class="nodate">暂无数据</div>
+          <div class="nodate">{{$t('tem.nodata')}}</div>
         </el-tab-pane>
         <el-tab-pane :label="$t('tab.Textdata')" name="Textdata">
           <message-record v-if="messagerecord" v-bind:userId="userId"></message-record>
@@ -32,10 +32,10 @@
           <application v-if="application" v-bind:userId="userId"/>
         </el-tab-pane>
         <el-tab-pane :label="$t('tab.Thirdpartydata')" name="Thirdpartydata">
-          <div class="nodate">暂无数据</div>
+          <div class="nodate">{{$t('tem.nodata')}}</div>
         </el-tab-pane>
         <el-tab-pane :label="$t('tab.Referencedata')" name="Referencedata">
-          <div class="nodate">暂无数据</div>
+          <div class="nodate">{{$t('tem.nodata')}}</div>
         </el-tab-pane>
         <!-- <el-tab-pane label="运营商通话"><carrieroperator v-if="carrieroperator" v-bind:userId="rowList.userId" /></el-tab-pane> -->
         <!-- <el-tab-pane label="信用卡报告"><credit-cards v-if="creditcards" v-bind:userId="rowList.userId" /></el-tab-pane> -->
@@ -43,7 +43,7 @@
           <borrow-money-msg v-if="borrowmoneymsg" v-bind:userId="userId"/>
         </el-tab-pane>
         <el-tab-pane label="bettec credit">
-          <div class="nodate">敬请期待</div>
+          <div class="nodate">{{$t('tem.comingsoon')}}</div>
         </el-tab-pane>
       </el-tabs>
       <span slot="footer" class="dialog-footer" style="text-align: left">
