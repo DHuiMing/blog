@@ -71,22 +71,25 @@
             this.getData(this.rowList)
         },
         methods:{
-            getData(rowList){
+            getData(row){
+              console.log(row)
                 let _this = this;
                 _this.listLoading = true;
-                _this.params.borrowId=rowList.borrowId;
-                _this.$axios.post({
-                    url: '/manage/loanother/logListbyBorrowId.htm',
-                    data: _this.params,
-                    callback(res) {
-
-                        _this.list = res.content.data;
-                        _this.total = res.content.page.total;
-                        setTimeout(() => {
-                            _this.listLoading = false
-                        }, 0.5 * 1000)
-                    }
+                _this.params.borrowId=row.borrowUserId;
+              _this
+                .$axios({
+                  method: "post",
+                  url: "/manage/logListbyBorrowId.htm",
+                  data: _this.params,
                 })
+                .then(res => {
+                  _this.list = res.content.data;
+                  _this.total = res.content.page.total;
+                  setTimeout(() => {
+                    _this.listLoading = false
+                  }, 0.5 * 1000)
+                })
+                .catch(err => {});
             },
             addFeed(){
                 this.addFeedShow=true

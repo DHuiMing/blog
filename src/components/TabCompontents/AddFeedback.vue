@@ -1,6 +1,6 @@
 <template>
     <section>
-        <el-dialog title="收货地址" :visible.sync="showAdd" append-to-body width="50%" :before-close="AddClose">
+        <el-dialog title="" :visible.sync="showAdd" append-to-body width="50%" :before-close="AddClose">
             <el-form :model="form" :rules="rules" ref="feedForm">
                 <el-row>
                     <el-col :span="12">
@@ -159,13 +159,17 @@
         methods:{
             getWay(){
                 let _this=this
-                _this.$axios.post({
-                    url: '/manage/loanother/collFindDict.htm',
-                    data: {current:1,pageSize:100,code:'URGE_WAY'},
-                    callback(res) {
-                        _this.wayList = res.content.data;
-                    }
+
+              _this
+                .$axios({
+                  method: "post",
+                  url: "/manage/collFindDict.htm",
+                  data: {current:1,pageSize:100,code:'URGE_WAY'},
                 })
+                .then(res => {
+                  _this.wayList = res.content.data;
+                })
+                .catch(err => {});
             },
             AddClose(done){
                 let _this = this;
@@ -195,13 +199,16 @@
                         if(!_this.form.promiseTime){
                             delete(_this.form.promiseTime )
                         }
-                        _this.$axios.post({
-                            url: '/manage/loanother/saveOrderInfo.htm',
-                            data: _this.form,
-                            callback(res) {
-                                _this.$emit('closeAdd',false)
-                            }
+                      _this
+                        .$axios({
+                          method: "post",
+                          url: "/manage/saveOrderInfo.htm",
+                          data: _this.form,
                         })
+                        .then(res => {
+                          _this.$emit('closeAdd',false)
+                        })
+                        .catch(err => {});
                     } else {
 
                         return false;

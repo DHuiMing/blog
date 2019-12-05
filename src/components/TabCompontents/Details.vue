@@ -45,6 +45,9 @@
         <el-tab-pane label="bettec credit">
           <div class="nodate">{{$t('tem.comingsoon')}}</div>
         </el-tab-pane>
+        <el-tab-pane v-if="iscolling" label="催收反馈" name="collectionfeedback">
+          <collection-feedback v-if="collectionfeedback" v-bind:rowList="rows"></collection-feedback>
+        </el-tab-pane>
       </el-tabs>
       <span slot="footer" class="dialog-footer" style="text-align: left">
         <review-opinion
@@ -85,6 +88,7 @@ import BorrowMoneyMsg from "@/components/TabCompontents/BorrowMoneyMsg";
 import Application from "@/components/TabCompontents/Application";
 import MessageRecord from "@/components/TabCompontents/MessageRecord";
 import ReviewOpinion from "@/components/TabCompontents/ReviewOpinion"; //复审意见
+import CollectionFeedback from "@/components/TabCompontents/CollectionFeedback";
 export default {
   name: "detailWin",
   data() {
@@ -101,6 +105,8 @@ export default {
       application: false,
       isShow: false,
       messagerecord: false,
+      collectionfeedback: false,
+      iscolling: false,
       userId: "",
       borrowId: "",
       isReview: false, //是否是复审
@@ -120,7 +126,8 @@ export default {
     BorrowMoneyMsg,
     Application,
     MessageRecord,
-    ReviewOpinion //复审意见
+    ReviewOpinion, //复审意见
+    CollectionFeedback
   },
   mounted() {
     // this.userId = this.$route.query.userId;
@@ -132,9 +139,14 @@ export default {
     // this.getUserInfo();
   },
   methods: {
-    getUserInfo(row, type) {
+    getUserInfo(row, type, type2) {
       let _this = this;
       // _this.topList=JSON.parse(code).data
+      if (type2=='collecting') {
+        console.log(row)
+          _this.rows=row
+          _this.iscolling = true
+      }
       if(type=='collecting'){
           this.userId=row.borrowUserId
       }else{
@@ -159,7 +171,6 @@ export default {
         .catch(_ => {});
     },
     handleClick(tab, event) {
-      console.log(tab)
       tab.name == "addresslist"
         ? (this.phoneBook = true)
         : (this.phoneBook = false);
@@ -178,6 +189,9 @@ export default {
       tab.name == "applicationlist"
         ? (this.application = true)
         : (this.application = false);
+      tab.name == "collectionfeedback"
+        ? (this.collectionfeedback = true)
+        : (this.collectionfeedback = false)
     },
     refush() {
       this.$emit("refush", true);
