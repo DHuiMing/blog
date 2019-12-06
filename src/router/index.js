@@ -288,6 +288,19 @@ export const constantRoutes = [{
       }
     }]
   }, {
+    path: '/NBFCRecord', //贷中管理    NBFC
+    component: Layout,
+    children: [{
+      path: '/NBFCRecord',
+      component: () => import('@/views/LoaningManage/NBFCRecord/index.vue'),
+      name: 'NBFCRecord',
+      meta: {
+        title: 'NBFC',
+        icon: 'dashboard',
+        affix: false
+      }
+    }]
+  }, {
     path: '/DisbursalRecord', //贷中管理    放款记录
     component: Layout,
     children: [{

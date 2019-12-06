@@ -8,18 +8,27 @@
         <el-breadcrumb-item>{{$t('KeyIndex')}}</el-breadcrumb-item>
       </el-breadcrumb>
     </div>
-    <div>
+    <div style="min-width: 1200px">
+     <div style="text-align: center;margin: 10px 0">
+       <el-date-picker
+         v-model="startEndTime"
+         type="datetimerange"
+         :start-placeholder="$t('table.startdate')"
+         :end-placeholder="$t('table.enddate')"
+         value-format="yyyy-MM-dd HH:mm:ss"
+       ></el-date-picker>
+     </div>
       <el-row>
-        <el-col :span="12"><div id="overdue" style="width: 100%;height: 40vh;"> </div></el-col>
-        <el-col :span="12"><div id="loank" style="width: 100%;height: 40vh;"> </div></el-col>
+        <el-col :span="12"><div id="overdue" style="width: 100%;height: 40vh;min-width: 520px"> </div></el-col>
+        <el-col :span="12"><div id="loank" style="width: 100%;height: 40vh;min-width: 520px"> </div></el-col>
       </el-row>
       <el-row>
-        <el-col :span="12"><div id="loanNumber" style="width: 100%;height: 40vh;"> </div></el-col>
-        <el-col :span="12"><div id="registerNumber" style="width: 100%;height: 40vh;"> </div></el-col>
+        <el-col :span="12"><div id="loanNumber" style="width: 100%;height: 40vh;min-width: 520px"> </div></el-col>
+        <el-col :span="12"><div id="registerNumber" style="width: 100%;height: 40vh;min-width: 520px"> </div></el-col>
       </el-row>
       <el-row>
-        <el-col :span="12"><div id="newUserLoanNumberRate" style="width: 100%;height: 40vh;"> </div></el-col>
-        <el-col :span="12"><div id="collectedRate" style="width: 100%;height: 40vh;"> </div></el-col>
+        <el-col :span="12"><div id="newUserLoanNumberRate" style="width: 100%;height: 40vh;min-width: 520px"> </div></el-col>
+        <el-col :span="12"><div id="collectedRate" style="width: 100%;height: 40vh;min-width: 520px"> </div></el-col>
       </el-row>
     </div>
   </div>
@@ -36,6 +45,7 @@ export default {
         pageSize: 10,
         searchParams: {}
       },
+      startEndTime: ''
     };
   },
   components: {},

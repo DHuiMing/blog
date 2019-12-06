@@ -1,5 +1,15 @@
 <template>
     <div>
+      <div style="text-align: center;margin: 10px 0">
+        <el-date-picker
+          size="mini"
+          v-model="startEndTime"
+          type="datetimerange"
+          :start-placeholder="$t('table.startdate')"
+          :end-placeholder="$t('table.enddate')"
+          value-format="yyyy-MM-dd HH:mm:ss"
+        ></el-date-picker>
+      </div>
         <div id="bar2" style='height: 340px; width: 550px; margin: 0 auto;'></div>
     </div>
 </template>
@@ -20,7 +30,8 @@
                 item: [],
                 data2: [],
                 max: 1,
-                first: true
+                first: true,
+                startEndTime: []
             };
         },
         computed:{},
@@ -96,7 +107,7 @@
                             var series = option.series;
                             for (var i = 0; i < xAxis[0].data.length; i++) {
                                 if(xAxis[0].data[i] == params[0].name){
-                                    res += series[0].name + ': ' + series[0].data[i] + me.$t('index.unit')+'<br/>' + series[1].name + ': ' + series[1].data[i] + me.$t('index.unit')+'<br/>' + series[2].name + ': ' + series[2].data[i] + '%<br/>'
+                                    res += series[0].name + ': ' + series[0].data[i] + ' '+ me.$t('index.unit')+'<br/>' + series[1].name + ': ' + series[1].data[i] + ' '+ me.$t('index.unit')+'<br/>' + series[2].name + ': ' + series[2].data[i] + '%<br/>'
                                 }
                             }
                             return res;

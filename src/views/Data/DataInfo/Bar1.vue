@@ -1,5 +1,15 @@
 <template>
     <div>
+      <div style="text-align: center;margin: 10px 0">
+        <el-date-picker
+          size="mini"
+          v-model="startEndTime"
+          type="datetimerange"
+          :start-placeholder="$t('table.startdate')"
+          :end-placeholder="$t('table.enddate')"
+          value-format="yyyy-MM-dd HH:mm:ss"
+        ></el-date-picker>
+      </div>
         <div id="bar" style='height: 340px; width: 550px; margin: 0 auto;'></div>
     </div>
 </template>
@@ -17,7 +27,8 @@
                 loading: false,
                 data: [],
                 item: [],
-                first: true
+                first: true,
+                startEndTime: []
             };
         },
         computed:{},
@@ -70,7 +81,7 @@
                     },
                     tooltip: {
                         trigger: 'axis',
-                        formatter: '{a} <br/>{b}: {c}'+me.$t('index.unit'),
+                        formatter: '{a} <br/>{b}: {c}'+ ' '+ me.$t('index.unit'),
                         axisPointer: {            // 坐标轴指示器，坐标轴触发有效
                             type: 'shadow'        // 默认为直线，可选为：'line' | 'shadow'
                         }

@@ -33,6 +33,8 @@ export default {
     Executeonceimmediately:'立即执行一次',
     comingsoon: '敬请期待',
     nodata: '暂无数据',
+    processname: '流程名称',
+    Topush: '重新推送',
   },
   tab: {
     UserInfo: '用户信息',
@@ -304,6 +306,7 @@ export default {
   PreLoanOrder:'贷前订单',
   AuditWorkbench:'信审工作台',
   AuditRecord:'人工信审记录',
+  NBFCRecord: 'NBFC请求流程',
   AuditSetting:'风控信审设置',
   AuditRemarks:'复审备注项库',
   ContactWordList:'通讯录字典库',

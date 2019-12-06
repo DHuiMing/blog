@@ -17,7 +17,7 @@
     </template>
     <el-submenu v-else ref="subMenu" :index=" item.value " popper-append-to-body>
       <template slot="title">
-        <i style="margin-left: 10px;" class="iconfont" :class='item.icon_cls '></i>
+        <i style="margin-left: 10px;" class="iconfont" :class='item.iconCls'></i>
         <span style="margin-left: 4px;"> {{$t(item.href)}}</span>
       </template>
       <sidebar-item

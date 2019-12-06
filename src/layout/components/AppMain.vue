@@ -28,7 +28,7 @@ export default {
   min-height: calc(100vh - 50px);
   width: 100%;
   position: relative;
-  overflow: hidden;
+  /*overflow: hidden;*/
   background-color: #f5f5f5;
   // padding: 8px;
   // border-radius: 8px;

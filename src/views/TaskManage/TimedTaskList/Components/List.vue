@@ -15,7 +15,7 @@
       border
       fit
       highlight-current-row
-      style="width: 100%;padding-bottom: 50px"
+      style="width: 100%"
     >
       <el-table-column :label="$t('tem.Taskname')" prop="name" fixed align="center" width="200px"></el-table-column>
       <el-table-column :label="$t('tem.TaskIdentification')" prop="code" fixed align="center" width="200px"></el-table-column>
